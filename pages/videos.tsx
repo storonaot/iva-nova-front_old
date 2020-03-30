@@ -1,5 +1,7 @@
 import React from 'react'
 
-const Videos = () => <div>Videos</div>
+import Layout from '../src/components/Layout'
+
+const Videos = () => <Layout>Videos</Layout>
 
 export default Videos

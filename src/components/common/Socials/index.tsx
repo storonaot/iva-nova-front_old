@@ -7,22 +7,13 @@ import InstaIcon from '../../../static/svg/insta.svg'
 
 import { SocialsRoot, IconWrapper } from './styles'
 
-export enum DisplayOn {
-  mobile = 'mobile',
-  desktop = 'desktop',
-}
-
-export enum Size {
-  small = 'small',
-  regular = 'regular',
-}
 export interface Props {
-  displayOn?: DisplayOn
-  size?: Size
+  size?: number
+  padded?: boolean
 }
 
-const Socials = ({ displayOn = DisplayOn.desktop, size = Size.regular }: Props) => (
-  <SocialsRoot displayOn={displayOn} size={size}>
+const Socials = ({ size = 40, padded = true }: Props) => (
+  <SocialsRoot padded={padded}>
     <IconWrapper size={size}>
       <VkIcon />
     </IconWrapper>

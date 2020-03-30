@@ -1,25 +1,20 @@
 import styled from 'styled-components'
 import media from 'styled-media-query'
 
+import Container, { Props as ContainerProps } from '../common/Container'
+
 export const HeaderRoot = styled.div`
   position: relative;
   height: ${({ theme: { customSizes } }) => customSizes.headerHeight};
   border-bottom: ${({ theme: { colors } }) => `1px solid ${colors.lines}`};
 `
 
-export const HeaderInner = styled.div`
-  max-width: ${({ theme: { customSizes } }) => customSizes.conteinerMaxWidth};
-  width: 100%;
+export const HeaderInner = styled(Container)<ContainerProps>`
   display: flex;
-  margin: 0 auto;
   height: 100%;
   position: relative;
   z-index: 1;
   background: #fff;
-  /* line-height: ${({ theme: { customSizes } }) => customSizes.headerHeight}; */
-  ${media.greaterThan('medium')`
-    padding: ${({ theme: { spacing } }) => `0 ${spacing.units * 2}px`};
-  `}
 `
 
 export const LogoRoot = styled.div`
@@ -40,8 +35,6 @@ export const LogoWrapper = styled.div`
   min-width: 80px;
 `
 
-// width="146" height="24"
-
 export const BurgerContainer = styled.button`
   display: flex;
   align-items: center;
@@ -53,4 +46,11 @@ export const BurgerContainer = styled.button`
   ${media.greaterThan('medium')`
     display: none;
   `}
+`
+
+export const SocialsWrapper = styled.div`
+  display: none;
+  ${media.greaterThan('large')`
+    display: block;
+  `};
 `

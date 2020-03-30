@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 import { MENU_ITEMS, MenuItem as MenuItemType } from '../../../constants/ui'
 
-import Socials, { DisplayOn } from '../Socials'
+import Socials from '../../common/Socials'
 
 import { MenuRoot, MenuItem, Overlay } from './styles'
 
@@ -24,7 +24,7 @@ const MobileMenu = ({ isActive }: Props) => {
             <MenuItem isActive={router.pathname === menuItem.source}>{menuItem.title}</MenuItem>
           </Link>
         ))}
-        <Socials displayOn={DisplayOn.mobile} />
+        <Socials size={45} />
       </MenuRoot>
     </div>
   )

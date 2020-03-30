@@ -9,6 +9,7 @@ interface Spasing {
 interface CustomSizes {
   headerHeight: string
   conteinerMaxWidth: string
+  buttonHeight: string
 }
 
 interface Fonts {
@@ -20,6 +21,7 @@ export interface Theme {
   spacing: Spasing
   customSizes: CustomSizes
   fonts: Fonts
+  borderRadius: string
 }
 
 export default {
@@ -38,7 +40,9 @@ export default {
   customSizes: {
     headerHeight: '64px',
     conteinerMaxWidth: '1184px',
+    buttonHeight: '40px',
   },
+  borderRadius: '4px',
   fonts: ['ProximaNova', 'Podkova'],
 }
 
