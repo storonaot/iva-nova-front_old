@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import Layout from '../components/Layout';
+import Layout from '../src/components/Layout'
 
-const Home = () => <Layout>Home</Layout>;
+const Home = () => <Layout>Home</Layout>
 
-export default Home;
+export default Home
