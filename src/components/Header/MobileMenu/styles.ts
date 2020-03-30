@@ -16,6 +16,9 @@ export const Overlay = styled.div<Props>`
   top: ${({ isActive }) => (isActive ? 0 : '-101vh')};
   left: 0;
   transition: top 0.5s;
+  ${media.greaterThan('medium')`
+    display: none;
+  `}
 `
 
 export const MenuRoot = styled.nav<Props>`
@@ -37,4 +40,5 @@ export const MenuItem = styled.a<Props>`
   font-size: 1.5em;
   padding: ${({ theme: { spacing } }) => `${spacing.units}px ${spacing.units * 2}px`};
   color: ${({ isActive, theme: { colors } }) => (isActive ? colors.accent2 : 'inherit')};
+  cursor: pointer;
 `

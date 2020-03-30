@@ -1,5 +1,7 @@
 import React from 'react'
 
-const Mucic = () => <div>Mucic</div>
+import Layout from '../src/components/Layout'
+
+const Mucic = () => <Layout>Mucic</Layout>
 
 export default Mucic

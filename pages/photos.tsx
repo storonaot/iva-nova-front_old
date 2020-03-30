@@ -1,5 +1,7 @@
 import React from 'react'
 
-const Photos = () => <div>Photos</div>
+import Layout from '../src/components/Layout'
+
+const Photos = () => <Layout>Photos</Layout>
 
 export default Photos

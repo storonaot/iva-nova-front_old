@@ -2,11 +2,18 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 
 import Menu from './Menu'
-import Socials, { DisplayOn, Size } from './Socials'
+import Socials from '../common/Socials'
 import Lang from './Lang'
 import MobileMenu from './MobileMenu'
 
-import { HeaderRoot, HeaderInner, LogoRoot, BurgerContainer, LogoWrapper } from './styles'
+import {
+  HeaderRoot,
+  HeaderInner,
+  LogoRoot,
+  BurgerContainer,
+  LogoWrapper,
+  SocialsWrapper,
+} from './styles'
 
 import BurgerIcon from '../../static/svg/burger.svg'
 import CrossIcon from '../../static/svg/cross.svg'
@@ -17,7 +24,7 @@ const Header = () => {
 
   return (
     <HeaderRoot>
-      <HeaderInner>
+      <HeaderInner padded={false}>
         <BurgerContainer onClick={() => setMenuState(!isMenuActive)}>
           {isMenuActive ? <CrossIcon /> : <BurgerIcon />}
         </BurgerContainer>
@@ -29,7 +36,9 @@ const Header = () => {
           </LogoRoot>
         </Link>
         <Menu />
-        <Socials displayOn={DisplayOn.desktop} size={Size.small} />
+        <SocialsWrapper>
+          <Socials size={30} />
+        </SocialsWrapper>
         <Lang />
       </HeaderInner>
       <MobileMenu isActive={isMenuActive} />
