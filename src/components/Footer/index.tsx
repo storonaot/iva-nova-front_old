@@ -13,7 +13,6 @@ import {
   Title,
   SocialsWrapper,
   Copyright,
-  FooterInner,
 } from './styles'
 
 const Footer = () => (
@@ -21,13 +20,15 @@ const Footer = () => (
     <TadpolesContainer />
     <CarrierContainer />
     <FooterContainer>
-      <FooterInner>
+      <div>
         <Title>ИВА НОВА (этно-экстрим, world music)</Title>
         <SocialsWrapper>
           <Socials size={40} padded={false} />
         </SocialsWrapper>
-        <Button href={CONTACTS_URL}>контакты</Button>
-      </FooterInner>
+        <Button href={CONTACTS_URL} isGhost>
+          контакты
+        </Button>
+      </div>
       <Copyright>&copy; 2020 Ива Нова, официальный сайт</Copyright>
     </FooterContainer>
   </FooterRoot>

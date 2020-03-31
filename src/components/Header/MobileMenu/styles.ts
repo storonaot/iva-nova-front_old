@@ -8,6 +8,12 @@ interface Props {
   isActive?: boolean
 }
 
+export const MenuWrapper = styled.div`
+  position: relative;
+  top: 1px;
+  z-index: 1;
+`
+
 export const Overlay = styled.div<Props>`
   position: absolute;
   width: 100vw;
@@ -36,7 +42,7 @@ export const MenuRoot = styled.nav<Props>`
 
 export const MenuItem = styled.a<Props>`
   display: block;
-  font-family: ${({ theme: { fonts } }) => fonts[1]};
+  font-family: ${({ theme: { fonts } }) => fonts.secondary};
   font-size: 1.5em;
   padding: ${({ theme: { spacing } }) => `${spacing.units}px ${spacing.units * 2}px`};
   color: ${({ isActive, theme: { colors } }) => (isActive ? colors.accent2 : 'inherit')};

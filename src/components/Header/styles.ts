@@ -7,6 +7,8 @@ export const HeaderRoot = styled.div`
   position: relative;
   height: ${({ theme: { customSizes } }) => customSizes.headerHeight};
   border-bottom: ${({ theme: { colors } }) => `1px solid ${colors.lines}`};
+  background-color: #fff;
+  z-index: 1;
 `
 
 export const HeaderInner = styled(Container)<ContainerProps>`
@@ -14,7 +16,6 @@ export const HeaderInner = styled(Container)<ContainerProps>`
   height: 100%;
   position: relative;
   z-index: 1;
-  background: #fff;
 `
 
 export const LogoRoot = styled.div`

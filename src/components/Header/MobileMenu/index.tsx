@@ -6,18 +6,19 @@ import { MENU_ITEMS, MenuItem as MenuItemType } from '../../../constants/ui'
 
 import Socials from '../../common/Socials'
 
-import { MenuRoot, MenuItem, Overlay } from './styles'
+import { MenuRoot, MenuItem, Overlay, MenuWrapper } from './styles'
 
 interface Props {
   isActive?: boolean
+  setInactive: () => void
 }
 
-const MobileMenu = ({ isActive }: Props) => {
+const MobileMenu = ({ isActive, setInactive }: Props) => {
   const router = useRouter()
 
   return (
-    <div style={{ position: 'relative', top: '1px' }}>
-      <Overlay isActive={isActive} />
+    <MenuWrapper>
+      <Overlay isActive={isActive} onClick={setInactive} />
       <MenuRoot isActive={isActive}>
         {MENU_ITEMS.map((menuItem: MenuItemType) => (
           <Link key={menuItem.source} href={menuItem.source}>
@@ -26,7 +27,7 @@ const MobileMenu = ({ isActive }: Props) => {
         ))}
         <Socials size={45} />
       </MenuRoot>
-    </div>
+    </MenuWrapper>
   )
 }
 

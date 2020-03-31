@@ -7,7 +7,7 @@ interface Props {
 
 export const LangRoot = styled.div<Props>`
   display: flex;
-  font-family: ${({ theme: { fonts } }) => fonts[1]};
+  font-family: ${({ theme: { fonts } }) => fonts.secondary};
   font-weight: 600;
 `
 
