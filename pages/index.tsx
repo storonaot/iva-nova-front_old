@@ -1,16 +1,20 @@
 import React from 'react'
-import Head from 'next/head'
 
 import Layout from '../src/components/Layout'
+import Hero from '../src/components/Home/Hero'
+import Schedule from '../src/components/Home/Schedule'
+import News from '../src/components/Home/News'
+import Music from '../src/components/Home/Music'
+import Video from '../src/components/Home/Video'
 
-const Home = () => (
+const Index = () => (
   <Layout>
-    <Head>
-      <title>My page title</title>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
-    </Head>
-    Home
+    <Hero />
+    <Schedule />
+    <News />
+    <Music />
+    <Video />
   </Layout>
 )
 
-export default Home
+export default Index

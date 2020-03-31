@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import media from 'styled-media-query'
 
 import Container, { Props as ContainerProps } from '../common/Container'
+import TitleComp from '../common/Title'
 
 import bgFooter from '../../static/images/bg_footer.jpg'
 import imgCarrierFooter from '../../static/images/carrier_footer.png'
@@ -12,14 +13,15 @@ export const FooterRoot = styled.footer`
   padding: 50px 0;
   position: relative;
   overflow: hidden;
+  min-height: 430px;
 `
 
 export const FooterContainer = styled(Container)<ContainerProps>`
   color: #fff;
-`
-
-export const FooterInner = styled.div`
-  margin-bottom: ${({ theme: { spacing } }) => `${spacing.units * 15}px`};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 `
 
 export const CarrierContainer = styled.div`
@@ -55,12 +57,8 @@ export const TadpolesContainer = styled.div`
   `}
 `
 
-export const Title = styled.h4`
-  ${({ theme: { fonts, spacing } }) => `
-    font-family: ${fonts[1]};
-    font-weight: 600;
-    font-size: 2.125em;
-    line-height: 1.2em;
+export const Title = styled(TitleComp)`
+  ${({ theme: { spacing } }) => `
     margin-bottom: ${spacing.units * 4}px;
     max-width: 84%;
     min-width: 242px;

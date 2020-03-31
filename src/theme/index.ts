@@ -1,30 +1,36 @@
-interface Colors {
-  [key: string]: string
-}
+type Colors = 'accent' | 'text' | 'lightGray' | 'accent2' | 'lines' | 'label' | 'gray' | 'grayDark'
+type ColorsMap = { [key in Colors]: string }
 
+type Fonts = 'primary' | 'secondary'
+type FontsMap = { [key in Fonts]: string }
+
+type BorderRadius = 'xSmall' | 'small' | 'regular' | 'big'
+type BorderRadiusMap = { [key in BorderRadius]: string }
+
+type CustomSizes =
+  | 'headerHeight'
+  | 'conteinerMaxWidth'
+  | 'buttonHeight'
+  | 'heroCardTopOffset'
+  | 'heroTopOffset'
+type CustomSizesMap = { [key in CustomSizes]: string }
 interface Spasing {
   units: number
 }
 
-interface CustomSizes {
-  headerHeight: string
-  conteinerMaxWidth: string
-  buttonHeight: string
-}
-
-interface Fonts {
-  fonts: string[]
-}
-
 export interface Theme {
-  colors: Colors
+  colors: ColorsMap
   spacing: Spasing
-  customSizes: CustomSizes
-  fonts: Fonts
-  borderRadius: string
+  customSizes: CustomSizesMap
+  fonts: FontsMap
+  borderRadius: BorderRadiusMap
 }
 
-export default {
+interface ThemeRoot {
+  theme: Theme
+}
+
+const themeSettings: Theme = {
   colors: {
     accent: '#C44A16',
     text: '#404040',
@@ -33,6 +39,7 @@ export default {
     lines: '#E3E3E3',
     label: '#9C6D6D',
     gray: '#C3C3C3',
+    grayDark: '#565656',
   },
   spacing: {
     units: 8,
@@ -41,11 +48,37 @@ export default {
     headerHeight: '64px',
     conteinerMaxWidth: '1184px',
     buttonHeight: '40px',
+    heroCardTopOffset: '56px',
+    heroTopOffset: '-32px',
   },
-  borderRadius: '4px',
-  fonts: ['ProximaNova', 'Podkova'],
+  borderRadius: {
+    xSmall: '4px',
+    small: '8px',
+    regular: '12px',
+    big: '20px',
+  },
+  fonts: {
+    primary: 'ProximaNova',
+    secondary: 'Podkova',
+  },
 }
 
+export const selectBorderRadius = (type: BorderRadius) => ({
+  theme: { borderRadius },
+}: ThemeRoot) => borderRadius[type]
+
+export const selectSpacingUnits = (div?: number) => ({ theme: { spacing } }: ThemeRoot) =>
+  div ? `${spacing.units * div}px` : `${spacing.units}px`
+
+export const selectColor = (color: Colors) => ({ theme: { colors } }: ThemeRoot) => colors[color]
+
+export const selectFont = (font: Fonts) => ({ theme: { fonts } }: ThemeRoot) => fonts[font]
+
+export const selectCustomSize = (customSize: CustomSizes) => ({
+  theme: { customSizes },
+}: ThemeRoot) => customSizes[customSize]
+
+export default themeSettings
 // {
 //   huge: '1440px',
 //   large: '1170px',

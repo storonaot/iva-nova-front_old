@@ -13,7 +13,7 @@ interface MenuItemType {
 }
 
 export const MenuItem = styled.a<MenuItemType>`
-  font-family: ${({ theme: { fonts } }) => fonts[1]};
+  font-family: ${({ theme: { fonts } }) => fonts.secondary};
   font-weight: 600;
   padding: ${({ theme: { spacing } }) => `0 ${spacing.units}px`};
   white-space: nowrap;
