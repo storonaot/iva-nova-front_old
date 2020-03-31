@@ -8,6 +8,12 @@ interface Props {
   isActive?: boolean
 }
 
+export const MenuWrapper = styled.div`
+  position: relative;
+  top: 1px;
+  z-index: 1;
+`
+
 export const Overlay = styled.div<Props>`
   position: absolute;
   width: 100vw;

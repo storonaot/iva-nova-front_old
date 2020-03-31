@@ -41,7 +41,7 @@ const Header = () => {
         </SocialsWrapper>
         <Lang />
       </HeaderInner>
-      <MobileMenu isActive={isMenuActive} />
+      <MobileMenu isActive={isMenuActive} setInactive={() => setMenuState(false)} />
     </HeaderRoot>
   )
 }

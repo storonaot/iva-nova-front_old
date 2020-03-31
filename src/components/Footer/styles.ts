@@ -60,14 +60,14 @@ export const Title = styled.h4`
     font-family: ${fonts[1]};
     font-weight: 600;
     font-size: 2.125em;
-    line-height: 1.5em;
-    margin-bottom: ${spacing.units * 2}px;
+    line-height: 1.2em;
+    margin-bottom: ${spacing.units * 4}px;
     max-width: 84%;
     min-width: 242px;
   `}
 `
 export const SocialsWrapper = styled.div`
-  margin-bottom: ${({ theme: { spacing } }) => `${spacing.units * 2}px`};
+  margin-bottom: ${({ theme: { spacing } }) => `${spacing.units * 3}px`};
 `
 
 export const Copyright = styled.span`
