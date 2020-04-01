@@ -1,4 +1,13 @@
-type Colors = 'accent' | 'text' | 'lightGray' | 'accent2' | 'lines' | 'label' | 'gray' | 'grayDark'
+type Colors =
+  | 'accent'
+  | 'text'
+  | 'lightGray'
+  | 'accent2'
+  | 'lines'
+  | 'label'
+  | 'gray'
+  | 'grayDark'
+  | 'light'
 type ColorsMap = { [key in Colors]: string }
 
 type Fonts = 'primary' | 'secondary'
@@ -34,6 +43,7 @@ const themeSettings: Theme = {
   colors: {
     accent: '#C44A16',
     text: '#404040',
+    light: '#F7F7F7',
     lightGray: '#E1E1E1',
     accent2: '#E88852',
     lines: '#E3E3E3',
