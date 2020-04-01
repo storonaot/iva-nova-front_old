@@ -59,8 +59,8 @@ export const Card = styled.div`
     top: ${selectCustomSize('heroCardTopOffset')};
     padding: ${selectSpacingUnits(4)};
     border: 1px solid ${selectColor('lines')};
-    margin-left: -${selectSpacingUnits(2)};
-    margin-right: -${selectSpacingUnits(2)};
+    margin-left: -${selectSpacingUnits(4)};
+    margin-right: -${selectSpacingUnits(4)};
   `}
 `
 
@@ -94,7 +94,7 @@ export const Content = styled.div`
     padding: 0;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-gap: 16px;
+    grid-gap: ${selectSpacingUnits(2)}px;
     > *:first-child {
       grid-column: span 7;
       grid-row: 1;
