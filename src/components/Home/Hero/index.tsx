@@ -11,6 +11,8 @@ import YaMusicIcon from '../../../static/svg/yaMusic.svg'
 
 import {
   Root,
+  CarrierImageContainer,
+  TreeImageContainer,
   Card,
   AspectRatioBox,
   AspectRatioInner,
@@ -27,7 +29,9 @@ import {
 
 const Hero = () => (
   <Root>
-    <Container>
+    <CarrierImageContainer />
+    <TreeImageContainer />
+    <Container padded={false}>
       <Card>
         <AspectRatioBox>
           <AspectRatioInner />
