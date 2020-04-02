@@ -2,20 +2,20 @@ import React from 'react'
 
 import { ABOUT_URL } from '../../../constants/sources'
 
-import Container from '../../common/Container'
+import { Wrapper } from '../../common/Container'
 import Button from '../../common/Button'
 import Socials from '../../common/Socials'
+import AspectRatioImage from '../../common/AspectRatioImage'
 
 import ITunesIcon from '../../../static/svg/iTunes.svg'
 import YaMusicIcon from '../../../static/svg/yaMusic.svg'
+import mainPhoto from './main_photo.jpg'
 
 import {
   Root,
   CarrierImageContainer,
   TreeImageContainer,
   Card,
-  AspectRatioBox,
-  AspectRatioInner,
   Content,
   Title,
   Description,
@@ -25,17 +25,18 @@ import {
   SubscriptionsWrapper,
   SubscriptionButton,
   SocialsRoot,
+  ImageWrapper,
 } from './styles'
 
 const Hero = () => (
   <Root>
     <CarrierImageContainer />
     <TreeImageContainer />
-    <Container padded={false}>
+    <Wrapper>
       <Card>
-        <AspectRatioBox>
-          <AspectRatioInner />
-        </AspectRatioBox>
+        <ImageWrapper>
+          <AspectRatioImage image={mainPhoto} />
+        </ImageWrapper>
         <Content>
           <Title>Ива Нова (этно-экстрим, world music)</Title>
           <Description>
@@ -63,7 +64,7 @@ const Hero = () => (
           </SubscriptionsWrapper>
         </Content>
       </Card>
-    </Container>
+    </Wrapper>
   </Root>
 )
 

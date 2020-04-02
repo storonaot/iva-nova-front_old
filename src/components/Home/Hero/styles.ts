@@ -2,9 +2,9 @@ import styled from 'styled-components'
 import media from 'styled-media-query'
 
 import TitleComp from '../../common/Title'
+import CardComponent from '../../common/Card'
 
 import bgImage from '../../../static/images/bg1.jpg'
-import mainPhoto from './main_photo.jpg'
 import carrierImage from '../../../static/images/carrier.png'
 import treeImage from '../../../static/images/tree.png'
 
@@ -14,6 +14,7 @@ import {
   selectColor,
   selectCustomSize,
   selectFont,
+  SPACE_4,
 } from '../../../theme/index'
 
 export const Root = styled.div`
@@ -47,46 +48,23 @@ export const TreeImageContainer = styled.div`
   right: 56vw;
 `
 
-export const Card = styled.div`
-  border-bottom-left-radius: ${selectBorderRadius('big')};
-  border-bottom-right-radius: ${selectBorderRadius('big')};
-  background-color: #fff;
-  padding-bottom: ${selectSpacingUnits(3)};
+export const Card = styled(CardComponent)`
+  padding: 0 0 ${selectSpacingUnits(3)} 0;
   border-bottom: 1px solid ${selectColor('lines')};
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   ${media.greaterThan('medium')`
-    border-radius: ${selectBorderRadius('regular')};
-    position: relative;
     top: ${selectCustomSize('heroCardTopOffset')};
-    padding: ${selectSpacingUnits(4)};
     border: 1px solid ${selectColor('lines')};
-    margin-left: -${selectSpacingUnits(4)};
-    margin-right: -${selectSpacingUnits(4)};
+    padding: ${SPACE_4};
   `}
 `
 
-// 16:9
-export const AspectRatioBox = styled.div`
-  height: 0;
-  overflow: hidden;
-  position: relative;
-  padding-top: 56.25%;
-  width: 100%;
+export const ImageWrapper = styled.div`
   margin-bottom: ${selectSpacingUnits(2)};
   ${media.greaterThan('medium')`
     margin-bottom: ${selectSpacingUnits(3)};
   `}
-`
-
-export const AspectRatioInner = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url(${mainPhoto});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
 `
 
 export const Content = styled.div`

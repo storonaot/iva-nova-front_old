@@ -110,15 +110,10 @@ export const City = styled.span`
   ${media.greaterThan('medium')`
     margin-bottom: 0;
     align-self: center;
-    justify-self: center;
-    text-align: center;
     white-space: initial;
     overflow: initial;
     text-overflow: initial;
-  `}
-  ${media.greaterThan('large')`
     justify-self: initial;
-    text-align: initial;
   `}
 `
 export const Title = styled.span`
@@ -179,7 +174,6 @@ export const BuyLink = styled.a`
   ${media.greaterThan('medium')`
     align-self: center;
     justify-self: end;
-    white-space: initial;
     overflow: initial;
     text-overflow: initial;
   `}
