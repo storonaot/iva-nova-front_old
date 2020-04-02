@@ -22,6 +22,7 @@ export interface ScheduleItem {
   year: string
   title: string
   place: string
+  placeHref?: string
   city: string
   buyHref: string
 }
@@ -42,6 +43,7 @@ const schedule = [
     year: '2019',
     title: 'День рождения группы',
     place: 'Клуб "Китайский Летчик"',
+    placeHref: '',
     city: 'Москва',
     buyHref: '',
   },

@@ -36,4 +36,10 @@ body {
   font-style: normal;
 }
 
-/* TODO: Add  ProximaNova Bold (600)*/
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('../fonts/ProximaNova-Bold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
