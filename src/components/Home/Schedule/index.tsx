@@ -1,20 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
-import media from 'styled-media-query'
 
 import Title from '../../common/Title'
 import Container from '../../common/Container'
 import Button from '../../common/Button'
+import ShowOn from '../../common/ShowOn'
+import Heading from '../../common/Heading'
 import { SCHEDULE_URL } from '../../../constants/sources'
 
+import schedule from './data'
 import Item from './Item'
-
-const Root = styled.div`
-  ${media.greaterThan('medium')`
-    margin-top: ${({ theme: { customSizes } }) => customSizes.heroTopOffset};
-    padding-top: 82px;
-  `}
-`
+import { Root, List } from './styles'
 
 export interface ScheduleItem {
   id: number
@@ -27,67 +22,25 @@ export interface ScheduleItem {
   buyHref: string
 }
 
-const schedule = [
-  {
-    id: 1,
-    date: '06.09',
-    year: '2019',
-    title: 'День рождения группы',
-    place: 'Клуб "Китайский Летчик"',
-    city: 'Москва',
-    buyHref: '',
-  },
-  {
-    id: 2,
-    date: '06.09',
-    year: '2019',
-    title: 'День рождения группы',
-    place: 'Клуб "Китайский Летчик"',
-    placeHref: '',
-    city: 'Москва',
-    buyHref: '',
-  },
-  {
-    id: 3,
-    date: '06.09',
-    year: '2019',
-    title: 'День рождения группы',
-    place: 'Клуб "Китайский Летчик"',
-    city: 'Москва',
-    buyHref: '',
-  },
-  {
-    id: 4,
-    date: '06.09',
-    year: '2019',
-    title: 'День рождения группы',
-    place: 'Клуб "Китайский Летчик"',
-    city: 'Санкт-Петербург',
-    buyHref: '',
-  },
-]
-
-const List = styled.div`
-  > * {
-    margin-bottom: 8px;
-  }
-  > *:last-child {
-    margin-bottom: 0;
-  }
-`
-
 const Schedule = () => (
   <Root>
     <Container>
-      <div>
+      <Heading>
         <Title>Ближайшие концерты</Title>
-        <Button href={SCHEDULE_URL}>подробнее о группе</Button>
-      </div>
+        <ShowOn tablet desktop>
+          <Button href={SCHEDULE_URL}>все концерты</Button>
+        </ShowOn>
+      </Heading>
       <List>
         {schedule.map((item: ScheduleItem) => (
           <Item key={item.id} data={item} />
         ))}
       </List>
+      <ShowOn mobile>
+        <Button href={SCHEDULE_URL} isBlock>
+          все концерты
+        </Button>
+      </ShowOn>
     </Container>
   </Root>
 )

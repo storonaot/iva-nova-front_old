@@ -20,7 +20,7 @@ export const Root = styled.div`
   position: relative;
   ${media.greaterThan('medium')`
     background-image: url(${bgImage});
-    top: ${selectCustomSize('heroTopOffset')};
+    top: ${selectCustomSize('heroTopOffsetNegative')};
   `}
 `
 
@@ -72,6 +72,9 @@ export const AspectRatioBox = styled.div`
   padding-top: 56.25%;
   width: 100%;
   margin-bottom: ${selectSpacingUnits(2)};
+  ${media.greaterThan('medium')`
+    margin-bottom: ${selectSpacingUnits(3)};
+  `}
 `
 
 export const AspectRatioInner = styled.div`
