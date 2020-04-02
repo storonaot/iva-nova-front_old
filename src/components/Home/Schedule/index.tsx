@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Title from '../../common/Title'
 import Container from '../../common/Container'
 import Button from '../../common/Button'
 import ShowOn from '../../common/ShowOn'
@@ -25,12 +24,7 @@ export interface ScheduleItem {
 const Schedule = () => (
   <Root>
     <Container>
-      <Heading>
-        <Title>Ближайшие концерты</Title>
-        <ShowOn tablet desktop>
-          <Button href={SCHEDULE_URL}>все концерты</Button>
-        </ShowOn>
-      </Heading>
+      <Heading title="Ближайшие концерты" btnTitle="все концерты" btnHref={SCHEDULE_URL} />
       <List>
         {schedule.map((item: ScheduleItem) => (
           <Item key={item.id} data={item} />
