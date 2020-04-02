@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { ScheduleItem } from '../index'
 // import media from 'styled-media-query'
 
-import { selectBorderRadius, selectColor, selectSpacingUnits } from '../../../../theme'
+import { selectBorderRadius, selectColor, selectSpacingUnits, selectFont } from '../../../../theme'
 
 interface Props {
   data: ScheduleItem
@@ -69,11 +69,28 @@ const Date = styled.span`
   font-size: 1.125em;
   line-height: 1.2em;
 `
-const Year = styled.span``
-const City = styled.span``
-const Title = styled.span``
+const Year = styled.span`
+  font-size: 1.125em;
+  line-height: 1.2em;
+`
+const City = styled.span`
+  font-size: 1.125em;
+  line-height: 1.2em;
+`
+const Title = styled.span`
+  font-family: ${selectFont('primary')};
+  font-size: 1.375em;
+  line-height: 1.2em;
+  font-weight: 600;
+`
 const Place = styled.span``
 const BuyLink = styled.a``
+
+// font-family: Podkova;
+// font-style: normal;
+// font-weight: 600;
+// font-size: 22px;
+// line-height: 24px;
 
 const Item = ({ data }: Props) => (
   <Root>
