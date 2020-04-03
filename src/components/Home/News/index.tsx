@@ -1,5 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import media from 'styled-media-query'
+
+import news from './data'
+
 import { NEWS_URL } from '../../../constants/sources'
 
 import Heading from '../../common/Heading'
@@ -7,11 +11,9 @@ import Container, { Wrapper } from '../../common/Container'
 import Card from '../../common/Card'
 import Socials from '../../common/Socials'
 import AspectRatioImage from '../../common/AspectRatioImage'
+import ShowOn from '../../common/ShowOn'
 
 import bgImage from '../../../static/images/bg1.jpg'
-import photo1 from './photo1.png'
-import photo2 from './photo2.png'
-import photo3 from './photo3.png'
 
 import { LINES_COLOR, SECONDARY_FONT } from '../../../theme'
 
@@ -24,21 +26,26 @@ const PreviewList = styled.div`
   display: flex;
   margin: 0 -16px;
   > * {
-    width: 33.33%;
+    width: 100%;
+    ${media.greaterThan('medium')`
+      width: 33.33%;
+    `}
   }
 `
 
 const Preview = styled.div`
-  padding-right: 16px;
-  padding-left: 16px;
-  margin-bottom: 38px;
-  padding-bottom: 16px;
-  &:first-child {
-    border-right: 1px solid ${LINES_COLOR};
-  }
-  &:last-child {
-    border-left: 1px solid ${LINES_COLOR};
-  }
+  ${media.greaterThan('medium')`
+    padding-right: 16px;
+    padding-left: 16px;
+    margin-bottom: 38px;
+    padding-bottom: 16px;
+    &:first-child {
+      border-right: 1px solid ${LINES_COLOR};
+    }
+    &:last-child {
+      border-left: 1px solid ${LINES_COLOR};
+    }
+  `}
 `
 
 const ImageWrapper = styled.div`
@@ -69,6 +76,14 @@ const HintText = styled.h5`
   margin-right: 32px;
 `
 
+interface NewsItem {
+  id: number
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  image: any
+  date: string
+  description: string
+}
+
 const News = () => (
   <Root>
     <Container>
@@ -77,41 +92,22 @@ const News = () => (
     <Wrapper>
       <Card>
         <PreviewList>
-          <Preview>
-            <ImageWrapper>
-              <AspectRatioImage image={photo1} aspectRatio="4:3" />
-            </ImageWrapper>
-            <Date>24 фев в 15:28</Date>
-            <Description>
-              Скоро мы наденем наши нарядные весенние платьишки и прилетим в the Place праздновать
-              Весну!
-            </Description>
-          </Preview>
-          <Preview>
-            <ImageWrapper>
-              <AspectRatioImage image={photo2} aspectRatio="4:3" />
-            </ImageWrapper>
-            <Date>24 фев в 15:28</Date>
-            <Description>
-              Радуемся солнцу и весне! Впервые за долгое время будем праздновать дома, в Петербурге.
-              8/03-ИВА НОВА ...
-            </Description>
-          </Preview>
-          <Preview>
-            <ImageWrapper>
-              <AspectRatioImage image={photo3} aspectRatio="4:3" />
-            </ImageWrapper>
-            <Date>24 фев в 15:28</Date>
-            <Description>
-              У гостей нашей программы - группы ИВА НОВА 8 марта состоится концерт. Самое время
-              вспомнить интервью, которое девушки ...
-            </Description>
-          </Preview>
+          {news.map((item: NewsItem) => (
+            <Preview key={item.id}>
+              <ImageWrapper>
+                <AspectRatioImage image={item.image} aspectRatio="4:3" />
+              </ImageWrapper>
+              <Date>{item.date}</Date>
+              <Description>{item.description}</Description>
+            </Preview>
+          ))}
         </PreviewList>
-        <BottomBlock>
-          <HintText>Чтобы быть в курсе, не забывайте подписаться на нас!</HintText>
-          <Socials padded={false} />
-        </BottomBlock>
+        <ShowOn tablet desktop>
+          <BottomBlock>
+            <HintText>Чтобы быть в курсе, не забывайте подписаться на нас!</HintText>
+            <Socials padded={false} />
+          </BottomBlock>
+        </ShowOn>
       </Card>
     </Wrapper>
   </Root>
