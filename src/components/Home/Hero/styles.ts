@@ -59,8 +59,6 @@ export const Card = styled.div`
     top: ${selectCustomSize('heroCardTopOffset')};
     padding: ${selectSpacingUnits(4)};
     border: 1px solid ${selectColor('lines')};
-    margin-left: -${selectSpacingUnits(4)};
-    margin-right: -${selectSpacingUnits(4)};
   `}
 `
 

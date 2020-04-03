@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ABOUT_URL } from '../../../constants/sources'
 
-import Container from '../../common/Container'
+import { Wrapper } from '../../common/Container'
 import Button from '../../common/Button'
 import Socials from '../../common/Socials'
 
@@ -31,7 +31,7 @@ const Hero = () => (
   <Root>
     <CarrierImageContainer />
     <TreeImageContainer />
-    <Container padded={false}>
+    <Wrapper>
       <Card>
         <AspectRatioBox>
           <AspectRatioInner />
@@ -63,7 +63,7 @@ const Hero = () => (
           </SubscriptionsWrapper>
         </Content>
       </Card>
-    </Container>
+    </Wrapper>
   </Root>
 )
 
