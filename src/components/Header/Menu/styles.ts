@@ -7,6 +7,7 @@ export const MenuRoot = styled.nav`
   display: none;
   ${media.greaterThan('medium')`
     display: flex;
+    align-items: center;
   `}
 `
 
