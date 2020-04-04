@@ -20,7 +20,8 @@
     "react-dom": "^16.13.1",
     "react-window": "^1.8.5",
     "styled-components": "^5.0.1",
-    "styled-media-query": "^2.1.2"
+    "styled-media-query": "^2.1.2",
+    "yandex-music-api": "^0.0.3"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.149",

@@ -1,8 +1,7 @@
 import React from 'react'
+import styled from 'styled-components'
 import Header from '../Header'
 import Footer from '../Footer'
-
-import styled from 'styled-components'
 
 const Root = styled.div`
   display: flex;
@@ -22,7 +21,7 @@ const Layout = (props: Props) => (
   <Root>
     <Header />
     <Content>{props.children}</Content>
-    <Footer></Footer>
+    <Footer />
   </Root>
 )
 

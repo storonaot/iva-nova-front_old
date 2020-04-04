@@ -8,6 +8,8 @@ import bgFooter from '../../static/images/bg_footer.jpg'
 import imgCarrierFooter from '../../static/images/carrier_footer.png'
 import imgTadpolesFooter from '../../static/images/tadpoles_footer.png'
 
+import { SPACE_4, SPACE_3 } from '../../theme'
+
 export const FooterRoot = styled.footer`
   background-image: url(${bgFooter});
   padding: 50px 0;
@@ -58,14 +60,12 @@ export const TadpolesContainer = styled.div`
 `
 
 export const Title = styled(TitleComp)`
-  ${({ theme: { spacing } }) => `
-    margin-bottom: ${spacing.units * 4}px;
-    max-width: 84%;
-    min-width: 242px;
-  `}
+  margin-bottom: ${SPACE_4};
+  max-width: 84%;
+  min-width: 242px;
 `
 export const SocialsWrapper = styled.div`
-  margin-bottom: ${({ theme: { spacing } }) => `${spacing.units * 3}px`};
+  margin-bottom: ${SPACE_3};
 `
 
 export const Copyright = styled.span`

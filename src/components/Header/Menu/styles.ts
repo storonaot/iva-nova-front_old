@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import media from 'styled-media-query'
 
+import { SECONDARY_FONT, SPACE_1, selectCustomSize, selectSpacing } from '../../../theme'
+
 export const MenuRoot = styled.nav`
   display: none;
   ${media.greaterThan('medium')`
@@ -13,14 +15,14 @@ interface MenuItemType {
 }
 
 export const MenuItem = styled.a<MenuItemType>`
-  font-family: ${({ theme: { fonts } }) => fonts.secondary};
+  font-family: ${SECONDARY_FONT};
   font-weight: 600;
-  padding: ${({ theme: { spacing } }) => `0 ${spacing.units}px`};
+  padding: 0 ${SPACE_1};
   white-space: nowrap;
-  line-height: ${({ theme: { customSizes } }) => customSizes.headerHeight};
+  line-height: ${selectCustomSize('headerHeight')};
   cursor: pointer;
   color: ${({ isActive, theme: { colors } }) => (isActive ? colors.accent2 : 'inherit')};
   ${media.greaterThan('large')`
-    padding: ${({ theme: { spacing } }) => `0 ${spacing.units * 1.5}px`};
+    padding:0 ${selectSpacing(1.5)};
   `}
 `

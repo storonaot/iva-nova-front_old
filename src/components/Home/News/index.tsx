@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import media from 'styled-media-query'
 
@@ -33,7 +33,8 @@ const PreviewList = styled.div`
   }
 `
 
-const Preview = styled.div`
+const Preview = styled.div<{ isShown?: boolean }>`
+  display: ${({ isShown = false }) => (isShown ? 'block' : 'none')};
   ${media.greaterThan('medium')`
     padding-right: 16px;
     padding-left: 16px;
@@ -84,33 +85,57 @@ interface NewsItem {
   description: string
 }
 
-const News = () => (
-  <Root>
-    <Container>
-      <Heading title="Свежие новости" btnTitle="все новости" btnHref={NEWS_URL} />
-    </Container>
-    <Wrapper>
-      <Card>
-        <PreviewList>
-          {news.map((item: NewsItem) => (
-            <Preview key={item.id}>
-              <ImageWrapper>
-                <AspectRatioImage image={item.image} aspectRatio="4:3" />
-              </ImageWrapper>
-              <Date>{item.date}</Date>
-              <Description>{item.description}</Description>
-            </Preview>
-          ))}
-        </PreviewList>
-        <ShowOn tablet desktop>
-          <BottomBlock>
-            <HintText>Чтобы быть в курсе, не забывайте подписаться на нас!</HintText>
-            <Socials padded={false} />
-          </BottomBlock>
-        </ShowOn>
-      </Card>
-    </Wrapper>
-  </Root>
-)
+const News = () => {
+  const [activePreview, setActivePreview] = useState(0)
+
+  return (
+    <Root>
+      <Container>
+        <Heading title="Свежие новости" btnTitle="все новости" btnHref={NEWS_URL} />
+      </Container>
+      <Wrapper>
+        <button
+          type="button"
+          onClick={() => {
+            const prewPreview = activePreview === 0 ? 2 : activePreview - 1
+            setActivePreview(prewPreview)
+          }}
+        >
+          Prew
+        </button>
+        <Card>
+          <PreviewList>
+            {news.map((item: NewsItem, index) => (
+              <Preview key={item.id} isShown={index === activePreview}>
+                <ImageWrapper>
+                  <AspectRatioImage image={item.image} aspectRatio="4:3" />
+                </ImageWrapper>
+                <Date>
+                  {item.date} {index}
+                </Date>
+                <Description>{item.description}</Description>
+              </Preview>
+            ))}
+          </PreviewList>
+          <ShowOn tablet desktop>
+            <BottomBlock>
+              <HintText>Чтобы быть в курсе, не забывайте подписаться на нас!</HintText>
+              <Socials padded={false} />
+            </BottomBlock>
+          </ShowOn>
+        </Card>
+        <button
+          type="button"
+          onClick={() => {
+            const nextPreview = activePreview === 2 ? 0 : activePreview + 1
+            setActivePreview(nextPreview)
+          }}
+        >
+          Next
+        </button>
+      </Wrapper>
+    </Root>
+  )
+}
 
 export default News

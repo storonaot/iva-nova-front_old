@@ -10,7 +10,7 @@ import {
   SPACE_3,
   SPACE_5,
   SECONDARY_FONT,
-  selectSpacingUnits,
+  selectSpacing,
 } from '../../../../theme'
 
 export const RhombusWrapper = styled.div`
@@ -134,7 +134,7 @@ export const Title = styled.span`
 `
 export const Place = styled.span`
   line-height: 1.2em;
-  margin-bottom: ${selectSpacingUnits(1.5)};
+  margin-bottom: ${selectSpacing(1.5)};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -148,7 +148,7 @@ export const Place = styled.span`
 
 export const PlaceLink = styled.a`
   line-height: 1.2em;
-  margin-bottom: ${selectSpacingUnits(1.5)};
+  margin-bottom: ${selectSpacing(1.5)};
   text-decoration-line: underline;
   white-space: nowrap;
   overflow: hidden;

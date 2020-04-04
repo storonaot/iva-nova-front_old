@@ -3,6 +3,8 @@ import media from 'styled-media-query'
 
 import { Theme } from '../../../theme'
 
+import { selectCustomSize, SPACE_1, SPACE_2, SECONDARY_FONT } from '../../../theme'
+
 interface Props {
   theme: Theme
   isActive?: boolean
@@ -17,7 +19,7 @@ export const MenuWrapper = styled.div`
 export const Overlay = styled.div<Props>`
   position: absolute;
   width: 100vw;
-  height: ${({ theme: { customSizes } }) => `calc(100vh - ${customSizes.headerHeight})`};
+  height: calc(100vh - ${selectCustomSize('headerHeight')});
   background-color: #0000006b;
   top: ${({ isActive }) => (isActive ? 0 : '-101vh')};
   left: 0;
@@ -32,7 +34,7 @@ export const MenuRoot = styled.nav<Props>`
   background-color: #fff;
   top: 0;
   width: 100%;
-  padding: ${({ theme: { spacing } }) => `${spacing.units}px 0`};
+  padding: ${SPACE_1} 0;
   transition: left 0.5s;
   left: ${({ isActive }) => (isActive ? 0 : '-100vw')};
   ${media.greaterThan('medium')`
@@ -42,9 +44,9 @@ export const MenuRoot = styled.nav<Props>`
 
 export const MenuItem = styled.a<Props>`
   display: block;
-  font-family: ${({ theme: { fonts } }) => fonts.secondary};
+  font-family: ${SECONDARY_FONT};
   font-size: 1.5em;
-  padding: ${({ theme: { spacing } }) => `${spacing.units}px ${spacing.units * 2}px`};
+  padding: ${SPACE_1} ${SPACE_2};
   color: ${({ isActive, theme: { colors } }) => (isActive ? colors.accent2 : 'inherit')};
   cursor: pointer;
 `

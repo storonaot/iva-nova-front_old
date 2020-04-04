@@ -81,7 +81,7 @@ export const selectBorderRadius = (type: BorderRadius) => ({
   theme: { borderRadius },
 }: ThemeRoot) => borderRadius[type]
 
-export const selectSpacingUnits = (div?: number) => ({ theme: { spacing } }: ThemeRoot) =>
+export const selectSpacing = (div?: number) => ({ theme: { spacing } }: ThemeRoot) =>
   div ? `${spacing.units * div}px` : `${spacing.units}px`
 
 export const selectColor = (color: Colors) => ({ theme: { colors } }: ThemeRoot) => colors[color]
@@ -92,19 +92,22 @@ export const selectCustomSize = (customSize: CustomSizes) => ({
   theme: { customSizes },
 }: ThemeRoot) => customSizes[customSize]
 
+export const X_SMALL_RADIUS = selectBorderRadius('xSmall')
 export const SMALL_RADIUS = selectBorderRadius('small')
 export const BIG_RADIUS = selectBorderRadius('big')
 export const REGULAR_RADIUS = selectBorderRadius('regular')
+export const GRAY_DARK_COLOR = selectColor('grayDark')
 export const LINES_COLOR = selectColor('lines')
 export const LIGHT_COLOR = selectColor('light')
 export const ACCENT_COLOR = selectColor('accent')
-export const SPACE_1 = selectSpacingUnits()
-export const SPACE_2 = selectSpacingUnits(2)
-export const SPACE_3 = selectSpacingUnits(3)
-export const SPACE_4 = selectSpacingUnits(4)
-export const SPACE_5 = selectSpacingUnits(5)
-export const SPACE_6 = selectSpacingUnits(6)
-export const SPACE_9 = selectSpacingUnits(9)
+export const ACCENT2_COLOR = selectColor('accent')
+export const SPACE_1 = selectSpacing()
+export const SPACE_2 = selectSpacing(2)
+export const SPACE_3 = selectSpacing(3)
+export const SPACE_4 = selectSpacing(4)
+export const SPACE_5 = selectSpacing(5)
+export const SPACE_6 = selectSpacing(6)
+export const SPACE_9 = selectSpacing(9)
 export const SECONDARY_FONT = selectFont('secondary')
 
 export default themeSettings

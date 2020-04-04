@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 import media from 'styled-media-query'
 
+import { selectCustomSize, SPACE_4 } from '../../theme'
+
 export interface Props {
   padded?: boolean
 }
 
 export const Wrapper = styled.div`
-  max-width: ${({ theme: { customSizes } }) => customSizes.conteinerMaxWidth};
+  max-width: ${selectCustomSize('conteinerMaxWidth')};
   width: 100%;
   margin: 0 auto;
 `
@@ -14,7 +16,7 @@ export const Wrapper = styled.div`
 const Container = styled(Wrapper)<Props>`
   padding: ${({ theme: { spacing }, padded = true }) => (padded ? `0 ${spacing.units * 2}px` : 0)};
   ${media.greaterThan('medium')`
-    padding: ${({ theme: { spacing } }) => `0 ${spacing.units * 4}px`};
+    padding: ${SPACE_4};
   `}
 `
 

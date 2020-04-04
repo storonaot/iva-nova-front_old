@@ -1,13 +1,15 @@
 import styled from 'styled-components'
 import media from 'styled-media-query'
 
+import { SPACE_1, SPACE_2, SECONDARY_FONT, LINES_COLOR } from '../../../theme'
+
 interface Props {
   isActive?: boolean
 }
 
 export const LangRoot = styled.div<Props>`
   display: flex;
-  font-family: ${({ theme: { fonts } }) => fonts.secondary};
+  font-family: ${SECONDARY_FONT};
   font-weight: 600;
 `
 
@@ -19,22 +21,22 @@ export const LangInner = styled.div`
 export const LangItem = styled.div<Props>`
   color: ${({ isActive, theme: { colors } }) => (isActive ? colors.accent2 : 'inherit')};
   &:first-child {
-    padding: ${({ theme: { spacing } }) => `0 ${spacing.units}px 0 ${spacing.units * 2}px`};
-    border-right: ${({ theme: { colors } }) => `1px solid ${colors.lines}`};
+    padding: 0 ${SPACE_1} 0 ${SPACE_2};
+    border-right: 1px solid ${LINES_COLOR};
     ${media.greaterThan('medium')`
-      padding: ${({ theme: { spacing } }) => `0 ${spacing.units}px`};
+      padding: ${SPACE_1};
     `}
     ${media.greaterThan('large')`
-      padding: ${({ theme: { spacing } }) => `0 ${spacing.units}px 0 ${spacing.units * 2}px`};
+      padding: 0 ${SPACE_1} 0 ${SPACE_2};
     `}
   }
   &:last-child {
-    padding: ${({ theme: { spacing } }) => `0 ${spacing.units * 2}px 0 ${spacing.units}px`};
+    padding: 0 ${SPACE_2} 0 ${SPACE_1};
     ${media.greaterThan('medium')`
-      padding: ${({ theme: { spacing } }) => `0 ${spacing.units}px`};
+      padding: 0 ${SPACE_1};
     `}
     ${media.greaterThan('large')`
-      padding: ${({ theme: { spacing } }) => `0 ${spacing.units * 2}px 0 ${spacing.units}px`};
+      padding: 0 ${SPACE_2} 0 ${SPACE_1};
     `}
   }
 `
