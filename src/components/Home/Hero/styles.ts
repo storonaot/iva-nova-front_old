@@ -12,12 +12,10 @@ import {
   selectSpacing,
   selectColor,
   selectCustomSize,
-  selectFont,
   SPACE_2,
   SPACE_4,
   SPACE_3,
   LINES_COLOR,
-  SMALL_RADIUS,
 } from '../../../theme/index'
 
 export const Root = styled.div`
@@ -145,39 +143,6 @@ export const ButtonWrapper = styled.div`
   ${media.greaterThan('medium')`
     margin-bottom: 0;
   `}
-`
-
-export const SubscribeTitle = styled.h4`
-  font-family: ${selectFont('secondary')};
-  font-size: 1.5em;
-  margin-bottom: ${SPACE_3};
-`
-
-export const SubscriptionsWrapper = styled.div`
-  ${media.greaterThan('medium')`
-    display: flex;
-    justify-content: center;
-    max-width: 497px;
-  `}
-`
-
-export const SubscriptionButton = styled.a`
-  border: 1px solid ${LINES_COLOR};
-  border-radius: ${SMALL_RADIUS};
-  background-color: #fff;
-  height: 56px;
-  width: 240px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  & + & {
-    margin-top: ${SPACE_2};
-    ${media.greaterThan('medium')`
-      margin-top: 0;
-      margin-left: ${SPACE_2};
-    `}
-  }
 `
 
 export const SocialsRoot = styled.div`

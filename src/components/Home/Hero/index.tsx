@@ -7,9 +7,14 @@ import Button from '../../common/Button'
 import Socials from '../../common/Socials'
 import AspectRatioImage from '../../common/AspectRatioImage'
 
-import ITunesIcon from '../../../static/svg/iTunes.svg'
-import YaMusicIcon from '../../../static/svg/yaMusic.svg'
 import mainPhoto from './main_photo.jpg'
+
+import {
+  ITunesButton,
+  YaMusicButton,
+  SubscribeTitle,
+  SubscriptionsWrapper,
+} from '../../common/Subscriptions'
 
 import {
   Root,
@@ -21,9 +26,6 @@ import {
   Description,
   SocialsWrapper,
   ButtonWrapper,
-  SubscribeTitle,
-  SubscriptionsWrapper,
-  SubscriptionButton,
   SocialsRoot,
   ImageWrapper,
 } from './styles'
@@ -55,12 +57,8 @@ const Hero = () => (
             </SocialsWrapper>
           </SocialsRoot>
           <SubscriptionsWrapper>
-            <SubscriptionButton>
-              <ITunesIcon />
-            </SubscriptionButton>
-            <SubscriptionButton>
-              <YaMusicIcon />
-            </SubscriptionButton>
+            <ITunesButton />
+            <YaMusicButton />
           </SubscriptionsWrapper>
         </Content>
       </Card>
