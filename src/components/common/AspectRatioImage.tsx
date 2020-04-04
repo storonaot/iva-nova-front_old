@@ -2,13 +2,13 @@ import React from 'react'
 
 import styled from 'styled-components'
 
+export type AspectRatios = '16:9' | '4:3' | '3:2' | '8:5'
+
 interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   image: any
   aspectRatio?: AspectRatios
 }
-
-type AspectRatios = '16:9' | '4:3' | '3:2' | '8:5'
 
 const lib = {
   '16:9': '56.25%',

@@ -1,25 +1,11 @@
 import styled from 'styled-components'
 import media from 'styled-media-query'
 
-import bgImage from '../../../static/images/bg1.jpg'
 import CardComp from '../../common/Card'
 import { Wrapper as WrapperComp } from '../../common/Container'
+import { PreviewItem as PreviewItemComp, PreviewItemProps } from '../../common/Preview'
 
-import {
-  LINES_COLOR,
-  SECONDARY_FONT,
-  SPACE_2,
-  SPACE_3,
-  SPACE_5,
-  SPACE_4,
-  SPACE_6,
-} from '../../../theme'
-
-export const Root = styled.div`
-  background-image: url(${bgImage});
-  padding: ${SPACE_6} 0 ${SPACE_5} 0;
-  position: relative;
-`
+import { LINES_COLOR, SECONDARY_FONT, SPACE_2, SPACE_3, SPACE_4 } from '../../../theme'
 
 export const Wrapper = styled(WrapperComp)`
   padding: 0 ${SPACE_2};
@@ -32,56 +18,11 @@ export const Wrapper = styled(WrapperComp)`
 `
 
 export const Card = styled(CardComp)`
+  padding: ${SPACE_3};
   margin-bottom: ${SPACE_3};
-`
-
-export const PreviewList = styled.div`
-  display: flex;
-  > * {
-    width: 100%;
-    ${media.greaterThan('medium')`
-      width: 33.33%;
-    `}
-  }
   ${media.greaterThan('medium')`
-    margin: 0 -${SPACE_2};
+    padding: ${SPACE_4};
   `}
-`
-
-export const Preview = styled.div<{ isShown?: boolean }>`
-  display: ${({ isShown = false }) => (isShown ? 'block' : 'none')};
-  ${media.greaterThan('medium')`
-    display: block;
-    margin-bottom: ${SPACE_4};
-    padding: 0 ${SPACE_2} ${SPACE_2} ${SPACE_2};
-    &:first-child {
-      border-right: 1px solid ${LINES_COLOR};
-    }
-    &:last-child {
-      border-left: 1px solid ${LINES_COLOR};
-    }
-  `}
-`
-
-const ArrowWrapper = styled.div`
-  opacity: 0.3;
-  top: 50%;
-  transform: translate(-50%);
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  ${media.greaterThan('medium')`
-    display: none;
-  `}
-`
-
-export const LeftArrowWrapper = styled(ArrowWrapper)`
-  left: ${SPACE_2};
-`
-export const RightArrowWrapper = styled(ArrowWrapper)`
-  transform: scale(-1);
-  right: 0;
 `
 
 export const ImageWrapper = styled.div`
@@ -110,4 +51,18 @@ export const HintText = styled.h5`
   font-size: 1.5em;
   text-align: center;
   margin-right: ${SPACE_4};
+`
+
+export const PreviewItem = styled(PreviewItemComp)`
+  ${media.greaterThan<PreviewItemProps>('medium')`
+    display: ${({ isShown = false }) => (isShown ? 'block' : 'none')};
+    margin-bottom: ${SPACE_4};
+    padding: 0 ${SPACE_2} ${SPACE_2} ${SPACE_2};
+    &:first-child {
+      border-right: 1px solid ${LINES_COLOR};
+    }
+    &:nth-child(3n) {
+      border-left: 1px solid ${LINES_COLOR};
+    }
+  `}
 `

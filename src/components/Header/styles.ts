@@ -18,11 +18,11 @@ export const HeaderInner = styled(Container)<ContainerProps>`
   height: 100%;
   position: relative;
   z-index: 1;
+  align-items: center;
 `
 
 export const LogoRoot = styled.div`
   flex: 1 0 auto;
-  align-items: center;
   display: flex;
   margin-left: ${SPACE_1};
   cursor: pointer;

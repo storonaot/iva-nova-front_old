@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import news from './data'
 
@@ -10,22 +10,21 @@ import Socials from '../../common/Socials'
 import AspectRatioImage from '../../common/AspectRatioImage'
 import ShowOn from '../../common/ShowOn'
 import Button from '../../common/Button'
+import Slider, { useSlider } from '../../common/Slider'
+import SectionRoot from '../../common/SectionRoot'
+import { PreviewList } from '../../common/Preview'
 
-import ArrowIcon from '../../../static/svg/arrow.svg'
+import bgImage from '../../../static/images/bg1.jpg'
 
 import {
-  Root,
-  PreviewList,
-  Preview,
   ImageWrapper,
   Date,
   Description,
   BottomBlock,
   HintText,
-  LeftArrowWrapper,
-  RightArrowWrapper,
   Card,
   Wrapper,
+  PreviewItem,
 } from './styles'
 
 interface NewsItem {
@@ -37,27 +36,24 @@ interface NewsItem {
 }
 
 const News = () => {
-  const [activePreview, setActivePreview] = useState(0)
+  const perPage = 3
+  const length = news.length
+  const { goNext, goPrev, isShown } = useSlider({
+    length,
+    perPage,
+  })
 
   return (
-    <Root>
+    <SectionRoot bgImage={bgImage}>
       <Container>
         <Heading title="Свежие новости" btnTitle="все новости" btnHref={NEWS_URL} />
       </Container>
       <Wrapper>
         <Card>
-          <div>
-            <LeftArrowWrapper
-              onClick={() => {
-                const previousPreview = activePreview === 0 ? 2 : activePreview - 1
-                setActivePreview(previousPreview)
-              }}
-            >
-              <ArrowIcon />
-            </LeftArrowWrapper>
+          <Slider goNext={goNext} goPrev={goPrev} showArrows={perPage < length}>
             <PreviewList>
               {news.map((item: NewsItem, index) => (
-                <Preview key={item.id} isShown={index === activePreview}>
+                <PreviewItem key={item.id} isShown={isShown(index)}>
                   <ImageWrapper>
                     <AspectRatioImage image={item.image} aspectRatio="4:3" />
                   </ImageWrapper>
@@ -65,18 +61,10 @@ const News = () => {
                     {item.date} {index}
                   </Date>
                   <Description>{item.description}</Description>
-                </Preview>
+                </PreviewItem>
               ))}
             </PreviewList>
-            <RightArrowWrapper
-              onClick={() => {
-                const nextPreview = activePreview === 2 ? 0 : activePreview + 1
-                setActivePreview(nextPreview)
-              }}
-            >
-              <ArrowIcon />
-            </RightArrowWrapper>
-          </div>
+          </Slider>
           <ShowOn tablet desktop>
             <BottomBlock>
               <HintText>Чтобы быть в курсе, не забывайте подписаться на нас!</HintText>
@@ -90,7 +78,7 @@ const News = () => {
           </Button>
         </ShowOn>
       </Wrapper>
-    </Root>
+    </SectionRoot>
   )
 }
 
