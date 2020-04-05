@@ -3,9 +3,10 @@ export default [
     id: 1,
     title: 'Молода (студийная версия, 2012)',
     timeline: '03:21',
-    downloaded: '80%',
-    played: '30%',
+    downloaded: 80,
+    played: 30,
     isActive: true,
+    paused: false,
   },
   {
     id: 2,
@@ -16,13 +17,13 @@ export default [
     id: 3,
     title: 'Хрустальная электричка (Альбом КРУТИЛА ПИЛА 2014)',
     timeline: '03:21',
-    downloaded: '80%',
+    downloaded: 80,
   },
   {
     id: 4,
     title: 'Сон (Live in Moscow, 05/02/2016)',
     timeline: '03:21',
-    played: '80%',
+    played: 80,
   },
   {
     id: 5,

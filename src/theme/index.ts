@@ -42,7 +42,7 @@ interface ThemeRoot {
 
 const HERO_TOP_OFFSET = 32
 
-const themeSettings: Theme = {
+export const themeSettings: Theme = {
   colors: {
     accent: '#C44A16',
     text: '#404040',
