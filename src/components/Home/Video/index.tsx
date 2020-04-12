@@ -7,11 +7,11 @@ import ShowOn from '../../common/ShowOn'
 import Button from '../../common/Button'
 import SectionRoot from '../../common/SectionRoot'
 import bgImage from '../../../static/images/bg1.jpg'
-import Slider, { useSlider } from '../../common/Slider'
+import Slider from '../../common/Slider'
 import { PreviewItem } from '../../common/Preview'
 import VideoPreview from '../../common/VideoPreview'
 
-import { ImageWrapper, Description, Card, PreviewList } from './styles'
+import { ImageWrapper, Description, Card } from './styles'
 
 import videos from './data'
 
@@ -23,29 +23,23 @@ interface VideoItem {
 }
 
 const Video = () => {
-  const perPage = 3
   const length = videos.length
-  const { goNext, goPrev, isShown } = useSlider({
-    length,
-    perPage,
-  })
+
   return (
     <SectionRoot bgImage={bgImage}>
       <Container>
         <Heading title="Последние видео" btnTitle="все видео" btnHref={VIDEOS_URL} />
-        <Slider goNext={goNext} goPrev={goPrev} showArrows={perPage < length}>
-          <PreviewList>
-            {videos.map((item: VideoItem, index) => (
-              <PreviewItem key={item.id} isShown={isShown(index)}>
-                <Card padding="small">
-                  <ImageWrapper>
-                    <VideoPreview image={item.image} aspectRatio="16:9" />
-                  </ImageWrapper>
-                  <Description>{item.description}</Description>
-                </Card>
-              </PreviewItem>
-            ))}
-          </PreviewList>
+        <Slider length={length}>
+          {videos.map((item: VideoItem) => (
+            <PreviewItem key={item.id}>
+              <Card padding="small">
+                <ImageWrapper>
+                  <VideoPreview image={item.image} aspectRatio="16:9" />
+                </ImageWrapper>
+                <Description>{item.description}</Description>
+              </Card>
+            </PreviewItem>
+          ))}
         </Slider>
         <ShowOn mobile>
           <Button href={VIDEOS_URL} isBlock>

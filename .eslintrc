@@ -32,9 +32,8 @@
     "implicit-arrow-linebreak": "off",
     "operator-linebreak": "off",
     "no-negated-condition": "off",
-    "arrow-parens": ["error", "as-needed"],
     "no-console": [
-      "error",
+      "warn",
       {
         "allow": ["warn", "error"]
       }
@@ -62,7 +61,7 @@
         "extensions": [".tsx", ".ts", ".js"]
       }
     ],
-    "react-hooks/exhaustive-deps": "error",
+    "react-hooks/exhaustive-deps": "off",
     "class-methods-use-this": "off",
     "no-plusplus": "off",
     "prefer-destructuring": [

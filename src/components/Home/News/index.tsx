@@ -10,9 +10,8 @@ import Socials from '../../common/Socials'
 import AspectRatioImage from '../../common/AspectRatioImage'
 import ShowOn from '../../common/ShowOn'
 import Button from '../../common/Button'
-import Slider, { useSlider } from '../../common/Slider'
+import Slider from '../../common/Slider'
 import SectionRoot from '../../common/SectionRoot'
-import { PreviewList } from '../../common/Preview'
 
 import bgImage from '../../../static/images/bg1.jpg'
 
@@ -36,12 +35,7 @@ interface NewsItem {
 }
 
 const News = () => {
-  const perPage = 3
   const length = news.length
-  const { goNext, goPrev, isShown } = useSlider({
-    length,
-    perPage,
-  })
 
   return (
     <SectionRoot bgImage={bgImage}>
@@ -50,20 +44,18 @@ const News = () => {
       </Container>
       <Wrapper>
         <Card>
-          <Slider goNext={goNext} goPrev={goPrev} showArrows={perPage < length}>
-            <PreviewList>
-              {news.map((item: NewsItem, index) => (
-                <PreviewItem key={item.id} isShown={isShown(index)}>
-                  <ImageWrapper>
-                    <AspectRatioImage image={item.image} aspectRatio="4:3" />
-                  </ImageWrapper>
-                  <Date>
-                    {item.date} {index}
-                  </Date>
-                  <Description>{item.description}</Description>
-                </PreviewItem>
-              ))}
-            </PreviewList>
+          <Slider length={length}>
+            {news.map((item: NewsItem, index) => (
+              <PreviewItem key={item.id}>
+                <ImageWrapper>
+                  <AspectRatioImage image={item.image} aspectRatio="4:3" />
+                </ImageWrapper>
+                <Date>
+                  {item.date} {index}
+                </Date>
+                <Description>{item.description}</Description>
+              </PreviewItem>
+            ))}
           </Slider>
           <ShowOn tablet desktop>
             <BottomBlock>

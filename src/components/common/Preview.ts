@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import media from 'styled-media-query'
 
-import { SPACE_2, SPACE_4 } from '../../theme'
+import { SPACE_2 } from '../../theme'
 
 export const PreviewList = styled.div`
   display: flex;
@@ -16,18 +16,16 @@ export const PreviewList = styled.div`
   `}
 `
 
-export interface PreviewItemProps {
-  isShown?: boolean
-}
+// export const PreviewItem = styled.div<PreviewItemProps>`
+//   display: none;
+//   &:first-child {
+//     display: block;
+//   }
+//   ${media.greaterThan<PreviewItemProps>('medium')`
+//     display: ${({ isShown = false }) => (isShown ? 'block' : 'none')};
+//     margin-bottom: ${SPACE_4};
+//     padding: 0 ${SPACE_2} ${SPACE_2} ${SPACE_2};
+//   `}
+// `
 
-export const PreviewItem = styled.div<PreviewItemProps>`
-  display: none;
-  &:first-child {
-    display: block;
-  }
-  ${media.greaterThan<PreviewItemProps>('medium')`
-    display: ${({ isShown = false }) => (isShown ? 'block' : 'none')};
-    margin-bottom: ${SPACE_4};
-    padding: 0 ${SPACE_2} ${SPACE_2} ${SPACE_2};
-  `}
-`
+export const PreviewItem = styled.div``
