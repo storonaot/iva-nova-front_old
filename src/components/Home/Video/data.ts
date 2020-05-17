@@ -20,9 +20,4 @@ export default [
     date: '24 фев в 15:28',
     description: 'Группа ИВА НОВА в гостях у Полезного утра ИВА НОВА (этно-экстрим, world music)',
   },
-  {
-    id: 4,
-    image: photo1,
-    description: '#НАШЕТВLIVE - ИВА НОВА (этно-экстрим) НАШЕ ТВ',
-  },
 ]

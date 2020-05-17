@@ -5,9 +5,10 @@ import media from 'styled-media-query'
 import ITunesIcon from '../../static/svg/iTunes.svg'
 import YaMusicIcon from '../../static/svg/yaMusic.svg'
 
-import { LINES_COLOR, SMALL_RADIUS, SPACE_3, SECONDARY_FONT } from '../../theme'
+import { LINES_COLOR, SMALL_RADIUS, SPACE_3, SECONDARY_FONT, SPACE_2 } from '../../theme'
 
 export const SubscriptionButton = styled.a`
+  margin: 0 auto;
   border: 1px solid ${LINES_COLOR};
   border-radius: ${SMALL_RADIUS};
   background-color: #fff;
@@ -16,6 +17,12 @@ export const SubscriptionButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
+  &:first-child {
+    margin-bottom: ${SPACE_2};
+  }
+  ${media.greaterThan('medium')`
+    margin: auto;
+  `}
 `
 
 export const SubscribeTitle = styled.h4`
@@ -38,7 +45,9 @@ export const SubscriptionsWrapper = styled.div<SubscriptionsWrapperProps>`
     max-width: 497px;
     > *:first-child {
       margin-bottom: ${({ orientation = 'horizontal', theme: { spacing } }) =>
-        orientation === 'horizontal' ? 0 : `${spacing.units * 2}px`}
+        orientation === 'horizontal' ? 0 : `${spacing.units * 2}px`};
+      margin-left: ${({ orientation = 'horizontal', theme: { spacing } }) =>
+        orientation === 'horizontal' ? `${spacing.units * 2}px` : 0}
     }
     > *:last-child {
       margin-left: ${({ orientation = 'horizontal', theme: { spacing } }) =>

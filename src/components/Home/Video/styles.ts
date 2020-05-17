@@ -4,7 +4,7 @@ import media from 'styled-media-query'
 import { PreviewList as PreviewListComp } from '../../common/Preview'
 import CardComp from '../../common/Card'
 
-import { SPACE_3, SECONDARY_FONT } from '../../../theme'
+import { SPACE_3, SECONDARY_FONT, SPACE_4, SPACE_2 } from '../../../theme'
 
 interface VideoItem {
   id: number
@@ -31,5 +31,22 @@ export const PreviewList = styled(PreviewListComp)`
   margin-bottom: ${SPACE_3};
   ${media.greaterThan('medium')`
     margin-bottom: 0;
+  `}
+`
+
+export const PreviewItem = styled.div`
+  margin-bottom: ${SPACE_4};
+  &:not(:first-child) {
+    display: none;
+  }
+  ${media.greaterThan('medium')`
+    margin-bottom: 0;
+    padding: 0 ${SPACE_2} ${SPACE_2} ${SPACE_2};
+    &:not(:first-child) {
+      display: block;
+    }
+    &+&: {
+      margin-left: ${SPACE_2}
+    }
   `}
 `

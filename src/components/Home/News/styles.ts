@@ -3,7 +3,6 @@ import media from 'styled-media-query'
 
 import CardComp from '../../common/Card'
 import { Wrapper as WrapperComp } from '../../common/Container'
-import { PreviewItem as PreviewItemComp } from '../../common/Preview'
 
 import { LINES_COLOR, SECONDARY_FONT, SPACE_2, SPACE_3, SPACE_4 } from '../../../theme'
 
@@ -53,10 +52,16 @@ export const HintText = styled.h5`
   margin-right: ${SPACE_4};
 `
 
-export const PreviewItem = styled(PreviewItemComp)`
+export const PreviewItem = styled.div`
+  &:not(:first-child) {
+    display: none;
+  }
   ${media.greaterThan('medium')`
     margin-bottom: ${SPACE_4};
     padding: 0 ${SPACE_2} ${SPACE_2} ${SPACE_2};
+    &:not(:first-child) {
+      display: block;
+    }
     &:first-child {
       border-right: 1px solid ${LINES_COLOR};
     }

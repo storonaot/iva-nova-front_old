@@ -8,10 +8,9 @@ import Button from '../../common/Button'
 import SectionRoot from '../../common/SectionRoot'
 import bgImage from '../../../static/images/bg1.jpg'
 import Slider from '../../common/Slider'
-import { PreviewItem } from '../../common/Preview'
 import VideoPreview from '../../common/VideoPreview'
 
-import { ImageWrapper, Description, Card } from './styles'
+import { ImageWrapper, Description, Card, PreviewItem } from './styles'
 
 import videos from './data'
 
@@ -23,13 +22,11 @@ interface VideoItem {
 }
 
 const Video = () => {
-  const length = videos.length
-
   return (
     <SectionRoot bgImage={bgImage}>
       <Container>
         <Heading title="Последние видео" btnTitle="все видео" btnHref={VIDEOS_URL} />
-        <Slider length={length}>
+        <Slider>
           {videos.map((item: VideoItem) => (
             <PreviewItem key={item.id}>
               <Card padding="small">

@@ -35,8 +35,6 @@ interface NewsItem {
 }
 
 const News = () => {
-  const length = news.length
-
   return (
     <SectionRoot bgImage={bgImage}>
       <Container>
@@ -44,7 +42,7 @@ const News = () => {
       </Container>
       <Wrapper>
         <Card>
-          <Slider length={length}>
+          <Slider>
             {news.map((item: NewsItem, index) => (
               <PreviewItem key={item.id}>
                 <ImageWrapper>

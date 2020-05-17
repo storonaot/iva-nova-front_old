@@ -16,5 +16,5 @@ export const Root = styled.div`
 `
 
 export const List = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: ${SPACE_3};
 `
