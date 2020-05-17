@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import media from 'styled-media-query'
 
-import Block from '../../../common/Block'
+import Block from '../Block'
 
 import {
   ACCENT_COLOR,
@@ -11,7 +11,7 @@ import {
   SPACE_5,
   SECONDARY_FONT,
   selectSpacing,
-} from '../../../../theme'
+} from '../../../theme'
 
 export const RhombusWrapper = styled.div`
   position: absolute;

@@ -7,7 +7,7 @@ import News from '../src/components/Home/News'
 import Music from '../src/components/Home/Music'
 import Video from '../src/components/Home/Video'
 
-const Index = () => (
+const IndexPage = () => (
   <Layout>
     <Hero />
     <Schedule />
@@ -17,4 +17,4 @@ const Index = () => (
   </Layout>
 )
 
-export default Index
+export default IndexPage

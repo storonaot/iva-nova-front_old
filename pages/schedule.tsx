@@ -2,6 +2,12 @@ import React from 'react'
 
 import Layout from '../src/components/Layout'
 
-const Schedule = () => <Layout>schedule</Layout>
+import Schedule from '../src/components/Schedule'
 
-export default Schedule
+const SchedulePage = () => (
+  <Layout>
+    <Schedule />
+  </Layout>
+)
+
+export default SchedulePage
