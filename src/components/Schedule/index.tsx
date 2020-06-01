@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Title from '../common/Title'
+import Pagination from '../common/Pagination'
 import ScheduleFilters from './Filters'
 import ScheduleList from './List'
 
@@ -18,6 +19,7 @@ const Schedule = () => (
       <Title>Афиша</Title>
       <ScheduleFilters />
       <ScheduleList />
+      <Pagination />
     </Container>
   </Root>
 )
