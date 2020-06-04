@@ -4,21 +4,25 @@ import news from './data'
 
 import { NEWS_URL } from '../../../constants/sources'
 
-import Heading from '../../common/Heading'
-import Container from '../../common/Container'
-import Socials from '../../common/Socials'
-import ShowOn from '../../common/ShowOn'
-import Button from '../../common/Button'
-import Slider from '../../common/Slider'
-import NewsRoot from '../../common/NewsRoot'
-import NewsItem, { NewsItemType } from '../../common/NewsItem'
+import Heading from '../Heading'
+import Container from '../Container'
+import Socials from '../Socials'
+import ShowOn from '../ShowOn'
+import Button from '../Button'
+import Slider from '../Slider'
+import NewsRoot from '../NewsRoot'
+import NewsItem, { NewsItemType } from '../NewsItem'
 
 import { BottomBlock, HintText, Card, Wrapper } from './styles'
 
-const News = () => (
+interface Props {
+  title?: string
+}
+
+const NewsSliderBlock = ({ title = 'Свежие новости' }: Props) => (
   <NewsRoot>
     <Container>
-      <Heading title="Свежие новости" btnTitle="все новости" btnHref={NEWS_URL} />
+      <Heading title={title} btnTitle="все новости" btnHref={NEWS_URL} />
     </Container>
     <Wrapper>
       <Card>
@@ -49,4 +53,4 @@ const News = () => (
   </NewsRoot>
 )
 
-export default News
+export default NewsSliderBlock

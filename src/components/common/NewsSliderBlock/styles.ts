@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import media from 'styled-media-query'
 
-import CardComp from '../../common/Card'
-import { Wrapper as WrapperComp } from '../../common/Container'
+import CardComp from '../Card'
+import { Wrapper as WrapperComp } from '../Container'
 
 import { SECONDARY_FONT, SPACE_2, SPACE_3, SPACE_4 } from '../../../theme'
 

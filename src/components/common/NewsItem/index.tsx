@@ -1,8 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-
+import Link from 'next/link'
 import AspectRatioImage from '../AspectRatioImage'
 
 import { PreviewItem, ImageWrapper, Date, Description } from './styles'
+
+import { NEWS_URL } from '../../../constants/sources'
 
 export interface NewsItemType {
   id: number
@@ -10,16 +13,33 @@ export interface NewsItemType {
   image: any
   date: string
   description: string
+  isLink?: boolean
 }
 
-const NewsItem = ({ image, date, description }: NewsItemType) => (
-  <PreviewItem>
-    <ImageWrapper>
-      <AspectRatioImage image={image} aspectRatio="4:3" />
-    </ImageWrapper>
-    <Date>{date}</Date>
-    <Description>{description}</Description>
-  </PreviewItem>
-)
+const NewsItem = ({ id, image, date, description, isLink = false }: NewsItemType) => {
+  const Content = () => (
+    <>
+      <ImageWrapper>
+        <AspectRatioImage image={image} aspectRatio="4:3" />
+      </ImageWrapper>
+      <Date>{date}</Date>
+      <Description>{description}</Description>
+    </>
+  )
+
+  return isLink ? (
+    <PreviewItem>
+      <Link href={`${NEWS_URL}/${id}`}>
+        <a>
+          <Content />
+        </a>
+      </Link>
+    </PreviewItem>
+  ) : (
+    <PreviewItem>
+      <Content />
+    </PreviewItem>
+  )
+}
 
 export default NewsItem

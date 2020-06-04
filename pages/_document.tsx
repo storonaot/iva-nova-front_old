@@ -70,7 +70,6 @@ export default class MyDocument extends Document {
         <Head />
         <body>
           <Main />
-          <div id="123" />
           <NextScript />
         </body>
       </Html>
