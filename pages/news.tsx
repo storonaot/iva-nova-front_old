@@ -1,7 +1,12 @@
 import React from 'react'
 
 import Layout from '../src/components/Layout'
+import News from '../src/components/News'
 
-const News = () => <Layout>News</Layout>
+const NewsPage = () => (
+  <Layout>
+    <News />
+  </Layout>
+)
 
-export default News
+export default NewsPage

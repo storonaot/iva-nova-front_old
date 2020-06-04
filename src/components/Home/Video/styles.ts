@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import media from 'styled-media-query'
 
-import { PreviewList as PreviewListComp } from '../../common/Preview'
 import CardComp from '../../common/Card'
 
 import { SPACE_3, SECONDARY_FONT, SPACE_4, SPACE_2 } from '../../../theme'
@@ -25,13 +24,6 @@ export const Description = styled.p`
 
 export const Card = styled(CardComp)`
   height: 100%;
-`
-
-export const PreviewList = styled(PreviewListComp)`
-  margin-bottom: ${SPACE_3};
-  ${media.greaterThan('medium')`
-    margin-bottom: 0;
-  `}
 `
 
 export const PreviewItem = styled.div`
