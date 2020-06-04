@@ -1,13 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
 import AutocompleteMUI from '@material-ui/lab/Autocomplete'
 import { InputLabel, TextField } from '@material-ui/core'
-import { withStyles } from '@material-ui/core/styles'
 import styled from 'styled-components'
-
-interface Classes {
-  [key: string]: string
-}
+import { SPACE_2 } from '../../../theme'
 
 interface Option {
   label: string
@@ -18,39 +13,29 @@ interface Props {
   options: Option[]
   label: string
   id: string
-  classes: Classes
 }
 
 const Root = styled.div`
   display: flex;
   align-items: center;
+  width: 100%;
+`
+const FieldWrapper = styled.div`
+  margin-left: ${SPACE_2};
+  align-items: center;
+  width: 100%;
 `
 
-const styles = () => ({
-  root: {
-    width: 300,
-  },
-  rootLabel: {
-    marginRight: 16,
-  },
-})
-
-const Autocomplete = ({ options, label, id, classes }: Props) => {
+const Autocomplete = ({ options, label, id }: Props) => {
   return (
     <Root>
-      <InputLabel classes={{ root: classes.rootLabel }}>{label}</InputLabel>
-      <div>
+      <InputLabel>{label}</InputLabel>
+      <FieldWrapper>
         <AutocompleteMUI
           id={id}
           options={options}
           getOptionLabel={option => option.label}
-          classes={{
-            root: classes.root,
-            focused: classes.focused,
-            inputRoot: classes.inputRoot,
-            input: classes.input,
-            inputFocused: classes.inputFocused,
-          }}
+          fullWidth
           renderInput={params => {
             return (
               <TextField
@@ -66,17 +51,14 @@ const Autocomplete = ({ options, label, id, classes }: Props) => {
                 id={params.id}
                 size={params.size}
                 color="secondary"
-                // classes={{
-                //   root: classes.inputRoot,
-                // }}
               />
             )
           }}
           disablePortal
         />
-      </div>
+      </FieldWrapper>
     </Root>
   )
 }
 
-export default withStyles(styles)(Autocomplete)
+export default Autocomplete

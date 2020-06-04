@@ -49,5 +49,5 @@ export const TimeLine = styled.div<{ lineColor?: string; width: number }>`
   height: 100%;
   position: absolute;
   background-color: ${({ lineColor, theme: { colors } }) =>
-    lineColor === 'accent' ? colors.accent2 : colors.lightGray};
+    lineColor === 'secondary' ? colors.secondary : colors.lightGray};
 `

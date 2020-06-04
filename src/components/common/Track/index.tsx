@@ -20,13 +20,13 @@ interface Props {
 const Track = ({ track }: Props) => (
   <Block key={track.id}>
     <IconWrapper>
-      <PlayIcon fill={themeSettings.colors.accent2} opacity="1" />
+      <PlayIcon fill={themeSettings.colors.secondary} opacity="1" />
     </IconWrapper>
     <div>{track.title}</div>
     <div>{track.timeline}</div>
     <TimeLineWrapper>
       <TimeLine width={30} />
-      <TimeLine width={20} lineColor="accent" />
+      <TimeLine width={20} lineColor="secondary" />
     </TimeLineWrapper>
   </Block>
 )

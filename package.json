@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.10.0",
+    "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.54",
     "@types/react-dom": "^16.9.8",
     "css-wipe": "^4.3.0",

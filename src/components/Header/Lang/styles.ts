@@ -19,7 +19,7 @@ export const LangInner = styled.div`
 `
 
 export const LangItem = styled.div<Props>`
-  color: ${({ isActive, theme: { colors } }) => (isActive ? colors.accent2 : 'inherit')};
+  color: ${({ isActive, theme: { colors } }) => (isActive ? colors.secondary : 'inherit')};
   &:first-child {
     padding: 0 ${SPACE_1} 0 ${SPACE_2};
     border-right: 1px solid ${LINES_COLOR};

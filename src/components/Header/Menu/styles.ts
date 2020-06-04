@@ -22,7 +22,7 @@ export const MenuItem = styled.a<MenuItemType>`
   white-space: nowrap;
   line-height: ${selectCustomSize('headerHeight')};
   cursor: pointer;
-  color: ${({ isActive, theme: { colors } }) => (isActive ? colors.accent2 : 'inherit')};
+  color: ${({ isActive, theme: { colors } }) => (isActive ? colors.secondary : 'inherit')};
   ${media.greaterThan('large')`
     padding:0 ${selectSpacing(1.5)};
   `}

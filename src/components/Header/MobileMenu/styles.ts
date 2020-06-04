@@ -47,6 +47,6 @@ export const MenuItem = styled.a<Props>`
   font-family: ${SECONDARY_FONT};
   font-size: 1.5em;
   padding: ${SPACE_1} ${SPACE_2};
-  color: ${({ isActive, theme: { colors } }) => (isActive ? colors.accent2 : 'inherit')};
+  color: ${({ isActive, theme: { colors } }) => (isActive ? colors.secondary : 'inherit')};
   cursor: pointer;
 `
