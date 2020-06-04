@@ -4,7 +4,7 @@ import media from 'styled-media-query'
 import Block from '../Block'
 
 import {
-  ACCENT_COLOR,
+  PRIMARY_COLOR,
   SPACE_1,
   SPACE_2,
   SPACE_3,
@@ -167,7 +167,7 @@ export const BuyLink = styled.a`
   font-size: 1.25em;
   line-height: 1.2em;
   text-decoration-line: underline;
-  color: ${ACCENT_COLOR};
+  color: ${PRIMARY_COLOR};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

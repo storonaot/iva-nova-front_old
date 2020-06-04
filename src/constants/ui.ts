@@ -22,3 +22,15 @@ export const MENU_ITEMS: MenuItem[] = [
   { source: VIDEOS_URL, title: 'Видео' },
   { source: CONTACTS_URL, title: 'Контакты' },
 ]
+
+export const COLORS = {
+  primary: '#C44A16',
+  text: '#404040',
+  light: '#F7F7F7',
+  lightGray: '#E1E1E1',
+  secondary: '#E88852',
+  lines: '#E3E3E3',
+  label: '#9C6D6D',
+  gray: '#C3C3C3',
+  grayDark: '#565656',
+}

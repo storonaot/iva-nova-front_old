@@ -1,8 +1,10 @@
+import { COLORS } from '../constants/ui'
+
 type Colors =
-  | 'accent'
+  | 'primary'
   | 'text'
   | 'lightGray'
-  | 'accent2'
+  | 'secondary'
   | 'lines'
   | 'label'
   | 'gray'
@@ -44,15 +46,15 @@ const HERO_TOP_OFFSET = 32
 
 export const themeSettings: Theme = {
   colors: {
-    accent: '#C44A16',
-    text: '#404040',
-    light: '#F7F7F7',
-    lightGray: '#E1E1E1',
-    accent2: '#E88852',
-    lines: '#E3E3E3',
-    label: '#9C6D6D',
-    gray: '#C3C3C3',
-    grayDark: '#565656',
+    primary: COLORS.primary,
+    secondary: COLORS.secondary,
+    text: COLORS.text,
+    light: COLORS.light,
+    lightGray: COLORS.lightGray,
+    lines: COLORS.lines,
+    label: COLORS.label,
+    gray: COLORS.gray,
+    grayDark: COLORS.grayDark,
   },
   spacing: {
     units: 8,
@@ -99,8 +101,8 @@ export const REGULAR_RADIUS = selectBorderRadius('regular')
 export const GRAY_DARK_COLOR = selectColor('grayDark')
 export const LINES_COLOR = selectColor('lines')
 export const LIGHT_COLOR = selectColor('light')
-export const ACCENT_COLOR = selectColor('accent')
-export const ACCENT2_COLOR = selectColor('accent')
+export const PRIMARY_COLOR = selectColor('primary')
+export const SECONDARY_COLOR = selectColor('secondary')
 export const SPACE_1 = selectSpacing()
 export const SPACE_2 = selectSpacing(2)
 export const SPACE_3 = selectSpacing(3)
@@ -111,28 +113,3 @@ export const SPACE_9 = selectSpacing(9)
 export const SECONDARY_FONT = selectFont('secondary')
 
 export default themeSettings
-// {
-//   huge: '1440px',
-//   large: '1170px',
-//   medium: '768px',
-//   small: '450px',
-// }
-
-// const Box = styled.div`
-//   background: black;
-
-//   ${media.lessThan('medium')`
-//     /* screen width is less than 768px (medium) */
-//     background: red;
-//   `}
-
-//   ${media.between('medium', 'large')`
-//     /* screen width is between 768px (medium) and 1170px (large) */
-//     background: green;
-//   `}
-
-//   ${media.greaterThan('large')`
-//     /* screen width is greater than 1170px (large) */
-//     background: blue;
-//   `}
-// `;

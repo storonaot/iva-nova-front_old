@@ -1,48 +1,33 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // @ts-nocheck
 
-// import NextApp from 'next/app';
-// import React from 'react';
-// import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-// import 'css-wipe';
-// import '../global-styles.css';
-
-// const theme = {
-//   primary: '#f2f2f2',
-// };
-
-// export default class App extends NextApp {
-//   componentDidMount() {
-//     const jssStyles = document.querySelector('#jss-server-side');
-//     if (jssStyles && jssStyles.parentNode) jssStyles.parentNode.removeChild(jssStyles);
-//   }
-
-//   render() {
-//     const { Component, pageProps } = this.props;
-
-//     return (
-//       <StyledThemeProvider theme={theme}>
-//         <Component {...pageProps} />
-//       </StyledThemeProvider>
-//     );
-//   }
-// }
-
-import App from 'next/app'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
+import { ThemeProvider as ThemeProviderMUI } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import 'css-wipe'
 import '../src/static/stylesheets/global.css'
 
 import theme from '../src/theme'
+import muiTheme from '../src/theme/muiTheme'
 
-export default class MyApp extends App {
-  render() {
-    const { Component, pageProps } = this.props
-    return (
+// eslint-disable-next-line react/prop-types
+const MyApp = ({ Component, pageProps }) => {
+  useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side')
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles)
+    }
+  }, [])
+  return (
+    <ThemeProviderMUI theme={muiTheme}>
+      <CssBaseline />
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
       </ThemeProvider>
-    )
-  }
+    </ThemeProviderMUI>
+  )
 }
+
+export default MyApp
