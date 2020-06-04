@@ -4,9 +4,8 @@ import { SECONDARY_FONT, SPACE_2, SPACE_3, LINES_COLOR } from '../../../theme'
 
 export const PreviewItem = styled.div`
   position: relative;
-  &:nth-child(2),
-  &:nth-child(3n),
-  &:nth-child(2n + 3) {
+  &:nth-child(3n + 2),
+  &:nth-child(3n) {
     &::before {
       background-color: ${LINES_COLOR};
       content: '';
