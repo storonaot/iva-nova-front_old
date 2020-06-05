@@ -13,7 +13,7 @@ import Slider from '../Slider'
 import NewsRoot from '../NewsRoot'
 import NewsItem, { NewsItemType } from '../NewsItem'
 
-import { BottomBlock, HintText, Card, Wrapper } from './styles'
+import { BottomBlock, HintText, Card, Wrapper, SliderWrapper } from './styles'
 
 interface Props {
   title?: string
@@ -22,21 +22,23 @@ interface Props {
 const NewsSliderBlock = ({ title = 'Свежие новости' }: Props) => (
   <NewsRoot>
     <Container>
-      <Heading title={title} btnTitle="все новости" btnHref={NEWS_URL} />
+      <Heading title={title} btnTitle="все новости" btnHref={NEWS_URL} withMargin={false} />
     </Container>
     <Wrapper>
       <Card>
-        <Slider>
-          {news.map((item: NewsItemType) => (
-            <NewsItem
-              key={item.id}
-              id={item.id}
-              image={item.image}
-              date={item.date}
-              description={item.description}
-            />
-          ))}
-        </Slider>
+        <SliderWrapper>
+          <Slider>
+            {news.map((item: NewsItemType) => (
+              <NewsItem
+                key={item.id}
+                id={item.id}
+                image={item.image}
+                date={item.date}
+                description={item.description}
+              />
+            ))}
+          </Slider>
+        </SliderWrapper>
         <ShowOn tablet desktop>
           <BottomBlock>
             <HintText>Чтобы быть в курсе, не забывайте подписаться на нас!</HintText>

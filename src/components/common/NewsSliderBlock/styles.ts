@@ -4,7 +4,7 @@ import media from 'styled-media-query'
 import CardComp from '../Card'
 import { Wrapper as WrapperComp } from '../Container'
 
-import { SECONDARY_FONT, SPACE_2, SPACE_3, SPACE_4 } from '../../../theme'
+import { SECONDARY_FONT, SPACE_2, SPACE_3, SPACE_4, SPACE_5 } from '../../../theme'
 
 export const Wrapper = styled(WrapperComp)`
   padding: 0 ${SPACE_2};
@@ -35,4 +35,8 @@ export const HintText = styled.h5`
   font-size: 1.5em;
   text-align: center;
   margin-right: ${SPACE_4};
+`
+
+export const SliderWrapper = styled.div`
+  margin-bottom: ${SPACE_5};
 `

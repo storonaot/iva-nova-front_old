@@ -33,7 +33,7 @@ export const PreviewItem = styled.div`
   }
   ${media.greaterThan('medium')`
     margin-bottom: 0;
-    padding: 0 ${SPACE_2} ${SPACE_2} ${SPACE_2};
+    padding: 0;
     &:not(:first-child) {
       display: block;
     }

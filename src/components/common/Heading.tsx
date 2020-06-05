@@ -5,10 +5,9 @@ import Title from './Title'
 import Button from './Button'
 import ShowOn from './ShowOn'
 
-import { SPACE_5 } from '../../theme'
-
-export const Root = styled.div`
-  margin-bottom: ${SPACE_5};
+export const Root = styled.div<{ withMargin?: boolean }>`
+  margin-bottom: ${({ withMargin = true, theme: { spacing } }) =>
+    withMargin ? `${spacing.units * 4}px` : 0};
   display: flex;
   justify-content: space-between;
 `
@@ -17,10 +16,11 @@ interface Props {
   title: string
   btnTitle: string
   btnHref: string
+  withMargin?: boolean
 }
 
-const Heading = ({ title, btnTitle, btnHref }: Props) => (
-  <Root>
+const Heading = ({ title, btnTitle, btnHref, withMargin }: Props) => (
+  <Root withMargin={withMargin}>
     <Title>{title}</Title>
     <ShowOn tablet desktop>
       <Button href={btnHref}>{btnTitle}</Button>
