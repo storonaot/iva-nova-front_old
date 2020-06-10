@@ -5,16 +5,16 @@ import NewsList from './List'
 
 import Container from '../common/Container'
 import Pagination from '../common/Pagination'
-import NewsRoot from '../common/NewsRoot'
+import NewsSectionRoot from '../common/NewsRoot'
 
 const Schedule = () => (
-  <NewsRoot>
+  <NewsSectionRoot>
     <Container>
       <Title withMargin>Новости</Title>
       <NewsList />
       <Pagination />
     </Container>
-  </NewsRoot>
+  </NewsSectionRoot>
 )
 
 export default Schedule
