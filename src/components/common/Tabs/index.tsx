@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { TabItem, TabList } from './styles'
 
 interface Tab {
   id: string | number
@@ -9,12 +10,18 @@ interface Props {
   tabs: Tab[]
 }
 
-const Tabs = ({ tabs }: Props) => (
-  <div style={{ display: 'flex', marginBottom: 40 }}>
-    {tabs.map(tab => (
-      <div key={tab.id}>{tab.label}</div>
-    ))}
-  </div>
-)
+const Tabs = ({ tabs }: Props) => {
+  const [activeTab] = useState(tabs[0].id)
+
+  return (
+    <TabList>
+      {tabs.map(tab => (
+        <TabItem isActive={activeTab === tab.id} key={tab.id}>
+          {tab.label}
+        </TabItem>
+      ))}
+    </TabList>
+  )
+}
 
 export default Tabs

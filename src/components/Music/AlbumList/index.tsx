@@ -15,6 +15,7 @@ const AlbumList = () => (
         date={album.date}
         name={album.name}
         description={album.description}
+        title={album.title}
       />
     ))}
   </Grid>

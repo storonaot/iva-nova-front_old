@@ -2,10 +2,17 @@ import React from 'react'
 import Link from 'next/link'
 
 import { MUSIC_URL } from '../../../../constants/sources'
-
-import { ImageRoot, DescriptionRoot, Year, Title, Content } from './styles'
-
 import AspectRatioImage from '../../../common/AspectRatioImage'
+import {
+  ImageRoot,
+  DescriptionRoot,
+  Year,
+  Title,
+  Content,
+  Wrapper,
+  Overlay,
+  Paragrarh,
+} from './styles'
 
 interface Props {
   id: number | string
@@ -14,21 +21,28 @@ interface Props {
   date: number | string
   name: string
   description: string
+  title: string
 }
 
-const AlbumItem = ({ id, image, date, name, description }: Props) => (
+const AlbumItem = ({ id, image, date, name, description, title }: Props) => (
   <Link href={`${MUSIC_URL}/${id}`}>
-    <div>
+    <Wrapper>
       <ImageRoot>
         <AspectRatioImage image={image} aspectRatio="1:1">
           <DescriptionRoot>{description}</DescriptionRoot>
         </AspectRatioImage>
+        <Overlay>
+          <div>
+            <Paragrarh isBold>{title}</Paragrarh>
+            <Paragrarh>{description}</Paragrarh>
+          </div>
+        </Overlay>
       </ImageRoot>
       <Content>
         <Title>{name}</Title>
         <Year>{date}</Year>
       </Content>
-    </div>
+    </Wrapper>
   </Link>
 )
 
