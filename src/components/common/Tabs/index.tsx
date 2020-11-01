@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface Tab {
-  value: string | number
+  id: string | number
   label: string
 }
 
@@ -10,9 +10,9 @@ interface Props {
 }
 
 const Tabs = ({ tabs }: Props) => (
-  <div style={{ display: 'flex' }}>
+  <div style={{ display: 'flex', marginBottom: 40 }}>
     {tabs.map(tab => (
-      <div key={tab.value}>{tab.label}</div>
+      <div key={tab.id}>{tab.label}</div>
     ))}
   </div>
 )

@@ -1,20 +1,12 @@
 import React from 'react'
 
 import Layout from '../../src/components/Layout'
+import Music from '../../src/components/Music'
 
-const MucicPage = () => <Layout>Mucic</Layout>
+const MusicPage = () => (
+  <Layout>
+    <Music />
+  </Layout>
+)
 
-export default MucicPage
-
-// import React from 'react'
-
-// import Layout from '../../src/components/Layout'
-// import News from '../../src/components/News'
-
-// const NewsPage = () => (
-//   <Layout>
-//     <News />
-//   </Layout>
-// )
-
-// export default NewsPage
+export default MusicPage
