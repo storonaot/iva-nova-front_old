@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { SECONDARY_COLOR, SPACE_4 } from '../../theme'
+import { SECONDARY_COLOR, SPACE_4, SPACE_1 } from '../../theme'
 
 interface Props {
   htmlString: string
@@ -13,8 +13,16 @@ const Root = styled.div`
     color: ${SECONDARY_COLOR};
     display: inline-block;
   }
+  p {
+    white-space: pre;
+    line-height: 0.8em;
+    margin-bottom: ${SPACE_1};
+  }
   p + *:not(p) {
     margin-top: ${SPACE_4};
+  }
+  b {
+    font-weight: 600;
   }
 `
 

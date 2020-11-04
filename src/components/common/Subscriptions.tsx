@@ -25,10 +25,10 @@ export const SubscriptionButton = styled.a`
   `}
 `
 
-export const SubscribeTitle = styled.h4`
+export const SubscribeTitle = styled.h4<{ withMargin?: boolean }>`
   font-family: ${SECONDARY_FONT};
   font-size: 1.5em;
-  margin-bottom: ${SPACE_3};
+  margin-bottom: ${({ withMargin = true }) => (withMargin ? SPACE_3 : 0)};
 `
 
 export interface SubscriptionsWrapperProps {

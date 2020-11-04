@@ -2,8 +2,7 @@
 import React from 'react'
 import Container from '../common/Container'
 import Title from '../common/Title'
-
-import HTMLContent from './HTMLContent'
+import HTMLContent from '../common/HTMLContent'
 import Controls from './Controls'
 
 const content = `
@@ -38,6 +37,7 @@ const NewsItem = () => {
       <Title withMargin>March 21 at 3:29 PM </Title>
       <Controls />
       <HTMLContent htmlString={content} />
+      <div>Другие новости</div>
     </Container>
   )
 }
