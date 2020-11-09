@@ -1,7 +1,7 @@
 import React from 'react'
 import { Play as PlayIcon } from '../Icons'
 import { themeSettings } from '../../../theme'
-import { Block, IconWrapper, TimeLineWrapper, TimeLine } from './styles'
+import { Block2, IconWrapper, TimeLineWrapper, TimeLine } from './styles'
 
 export interface TrackProps {
   id: number
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const Track = ({ track }: Props) => (
-  <Block key={track.id}>
+  <Block2 key={track.id}>
     <IconWrapper>
       <PlayIcon fill={themeSettings.colors.secondary} opacity="1" />
     </IconWrapper>
@@ -28,7 +28,7 @@ const Track = ({ track }: Props) => (
       <TimeLine width={30} />
       <TimeLine width={20} lineColor="secondary" />
     </TimeLineWrapper>
-  </Block>
+  </Block2>
 )
 
 export default Track

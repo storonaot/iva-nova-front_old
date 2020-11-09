@@ -8,21 +8,17 @@ import Controls from './Controls'
 const content = `
 <div>
 <p>Dear all!</p>
-<p>
-  We were hoping till the last moment that our European tour will take place in May. Sadly need to admit - it won't happen. We are rescheduling the gigs for May 2021. And we are still praying that with all efforts that the world is doing now to stop pandemia, we will all meet at some summer festivals and celebrate the life!
+<p>We were hoping till the last moment that our European tour will take place in May. Sadly need to admit - it won't happen. We are rescheduling the gigs for May 2021. And we are still praying that with all efforts that the world is doing now to stop pandemia, we will all meet at some summer festivals and celebrate the life!
   Nowadays we should stay concious and <a href="#">#stayhome</a>.
 </p>
-<p>
-  It is not easy time for everyone now. For us as musicians cancellation of the big tour means no money income.
+<p>It is not easy time for everyone now. For us as musicians cancellation of the big tour means no money income.
   No... at all. So we would like to propose to all who wish to support us these days:
 </p>
-<p>
-  - visite our bandcamp page and buy some music! To listen music, dance and sing with us is a good way to boost your mood and immune system! 💃🕺
+<p>- visite our bandcamp page and buy some music! To listen music, dance and sing with us is a good way to boost your mood and immune system! 💃🕺
   Why bandcamp? Because this friendly platform temporary stop the comission for their services. So the bands can recieve all that you pay. Generous gesture!
   UPDATE!
 </p>
-<p>
-  Finally we found out that it was free of charge only one day on March 20... We still need to pay 15% charge from each thing that you buy on our bandcamp page but it is already much better then itunes etc...
+<p>Finally we found out that it was free of charge only one day on March 20... We still need to pay 15% charge from each thing that you buy on our bandcamp page but it is already much better then itunes etc...
   For now we have only 2 last albums available to buy but our 3d album Chemodan is on it's way! We'll upload it today.
   Stay tuned! Stay healthy!
 </p>

@@ -3,7 +3,7 @@ import BlockComp from '../Block'
 
 import { SPACE_1, SPACE_3, SECONDARY_FONT } from '../../../theme'
 
-export const Block = styled(BlockComp)`
+export const Block2 = styled(BlockComp)`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-gap: ${SPACE_1};

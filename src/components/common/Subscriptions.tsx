@@ -5,7 +5,7 @@ import media from 'styled-media-query'
 import ITunesIcon from '../../static/svg/iTunes.svg'
 import YaMusicIcon from '../../static/svg/yaMusic.svg'
 
-import { LINES_COLOR, SMALL_RADIUS, SPACE_3, SECONDARY_FONT, SPACE_2 } from '../../theme'
+import { LINES_COLOR, SMALL_RADIUS, SECONDARY_FONT, SPACE_2 } from '../../theme'
 
 export const SubscriptionButton = styled.a`
   margin: 0 auto;
@@ -28,7 +28,7 @@ export const SubscriptionButton = styled.a`
 export const SubscribeTitle = styled.h4<{ withMargin?: boolean }>`
   font-family: ${SECONDARY_FONT};
   font-size: 1.5em;
-  margin-bottom: ${({ withMargin = true }) => (withMargin ? SPACE_3 : 0)};
+  margin-bottom: ${({ withMargin = true }) => (withMargin ? SPACE_2 : 0)};
 `
 
 export interface SubscriptionsWrapperProps {

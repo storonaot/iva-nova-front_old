@@ -4,9 +4,11 @@ import { SECONDARY_COLOR, SPACE_4, SPACE_1 } from '../../theme'
 
 interface Props {
   htmlString: string
+  style?: { [key: string]: string | number }
 }
 
 const Root = styled.div`
+  font-size: 0.9em;
   line-height: 1.5em;
   margin-bottom: ${SPACE_4};
   a {
@@ -14,8 +16,7 @@ const Root = styled.div`
     display: inline-block;
   }
   p {
-    white-space: pre;
-    line-height: 0.8em;
+    // white-space: pre-line;
     margin-bottom: ${SPACE_1};
   }
   p + *:not(p) {
@@ -26,9 +27,9 @@ const Root = styled.div`
   }
 `
 
-const HTMLContent = ({ htmlString }: Props) => (
+const HTMLContent = ({ htmlString, style }: Props) => (
   // eslint-disable-next-line react/no-danger
-  <Root dangerouslySetInnerHTML={{ __html: htmlString }} />
+  <Root dangerouslySetInnerHTML={{ __html: htmlString }} style={style} />
 )
 
 export default HTMLContent
