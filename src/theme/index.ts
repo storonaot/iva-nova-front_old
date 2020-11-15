@@ -110,6 +110,7 @@ export const SPACE_4 = selectSpacing(4)
 export const SPACE_5 = selectSpacing(5)
 export const SPACE_6 = selectSpacing(6)
 export const SPACE_9 = selectSpacing(9)
+export const SPACE_10 = selectSpacing(10)
 export const SECONDARY_FONT = selectFont('secondary')
 
 export default themeSettings

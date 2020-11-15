@@ -1,5 +1,5 @@
 import React from 'react'
-import AlbumItem from './AlbumItem'
+import AlbumItem from '../../common/AlbumItem'
 
 import { Grid } from './styles'
 

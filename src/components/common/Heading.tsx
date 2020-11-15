@@ -14,17 +14,19 @@ export const Root = styled.div<{ withMargin?: boolean }>`
 
 interface Props {
   title: string
-  btnTitle: string
-  btnHref: string
+  btnTitle?: string
+  btnHref?: string
   withMargin?: boolean
 }
 
 const Heading = ({ title, btnTitle, btnHref, withMargin }: Props) => (
   <Root withMargin={withMargin}>
     <Title>{title}</Title>
-    <ShowOn tablet desktop>
-      <Button href={btnHref}>{btnTitle}</Button>
-    </ShowOn>
+    {btnTitle && btnHref && (
+      <ShowOn tablet desktop>
+        <Button href={btnHref}>{btnTitle}</Button>
+      </ShowOn>
+    )}
   </Root>
 )
 

@@ -1,10 +1,11 @@
 import styled from 'styled-components'
-import { LINES_COLOR, SPACE_3, SPACE_4, SPACE_2 } from '../../theme'
+import { LINES_COLOR, SPACE_3, SPACE_4, SPACE_2, SPACE_10 } from '../../theme'
 
-export const Heading = styled.div`
+export const MainHeading = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: ${SPACE_4};
 `
 
 export const ImageWrapper = styled.div`
@@ -38,4 +39,19 @@ export const TrackList = styled.div`
   & > *:nth-child(even) {
     margin-left: ${SPACE_2};
   }
+`
+
+export const AlbumInfoWrapper = styled.div`
+  display: flex;
+  margin-bottom: ${SPACE_4};
+`
+
+export const SubscribtionsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: ${SPACE_4};
+`
+
+export const ContentWrapper = styled.div`
+  margin-bottom: ${SPACE_10};
 `

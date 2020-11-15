@@ -8,7 +8,7 @@ import {
   LINES_COLOR,
   SECONDARY_FONT,
   SECONDARY_COLOR,
-} from '../../../../theme'
+} from '../../../theme'
 
 export const ImageRoot = styled.div`
   width: 100%;

@@ -17,12 +17,15 @@ import {
 } from '../common/Subscriptions'
 
 import {
-  Heading,
+  MainHeading,
   ImageWrapper,
   NumericList,
   NumericListItem,
   TrackListWrapper,
   TrackList,
+  AlbumInfoWrapper,
+  SubscribtionsWrapper,
+  ContentWrapper,
 } from './styles'
 import photo4 from './photo4.jpeg'
 
@@ -149,24 +152,19 @@ const data = {
       title: 'Безнадежный я (Live in Moscow, 05/02/2016)',
       timeline: '03:21',
     },
-    {
-      id: 16,
-      title: 'Сон (Live in Moscow, 05/02/2016)',
-      timeline: '03:21',
-    },
   ],
 }
 
 const AlbumItem = () => {
   return (
     <Container>
-      <Heading>
+      <MainHeading>
         <Title isUpCase>
           {data.name} / {data.date}
         </Title>
         <Link href={`${MUSIC_URL}`}>Все альбомы</Link>
-      </Heading>
-      <div style={{ display: 'flex' }}>
+      </MainHeading>
+      <AlbumInfoWrapper>
         <ImageWrapper>
           <AspectRatioImage image={data.image} aspectRatio="1:1" />
         </ImageWrapper>
@@ -178,34 +176,28 @@ const AlbumItem = () => {
             })}
           </NumericList>
         </TrackListWrapper>
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
+      </AlbumInfoWrapper>
+      <SubscribtionsWrapper>
         <SubscribeTitle withMargin={false}>Послушать и скачать альбом:</SubscribeTitle>
         <SubscriptionsWrapper>
           <YaMusicButton />
           <ITunesButton />
         </SubscriptionsWrapper>
-      </div>
-      <HTMLContent
-        htmlString={data.content}
-        style={{
-          fontSize: '0.9em',
-        }}
-      />
+      </SubscribtionsWrapper>
+      <ContentWrapper>
+        <HTMLContent
+          htmlString={data.content}
+          style={{
+            fontSize: '0.9em',
+          }}
+        />
+      </ContentWrapper>
+
       <TrackList>
         {data.trackList.map((track: TrackProps) => (
           <Track key={track.id} track={track} />
         ))}
       </TrackList>
-      <div>
-        <div>Другие альбомы</div>
-        <div>Слайдер</div>
-      </div>
     </Container>
   )
 }
