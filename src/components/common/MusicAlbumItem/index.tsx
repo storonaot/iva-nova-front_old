@@ -24,7 +24,7 @@ interface Props {
   title: string
 }
 
-const AlbumItem = ({ id, image, date, name, description, title }: Props) => (
+const MusicAlbumItem = ({ id, image, date, name, description, title }: Props) => (
   <Link href={`${MUSIC_URL}/${id}`}>
     <Wrapper>
       <ImageRoot>
@@ -46,4 +46,4 @@ const AlbumItem = ({ id, image, date, name, description, title }: Props) => (
   </Link>
 )
 
-export default AlbumItem
+export default MusicAlbumItem

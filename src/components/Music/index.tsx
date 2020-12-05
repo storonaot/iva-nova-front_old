@@ -5,7 +5,7 @@ import Container from '../common/Container'
 import Title from '../common/Title'
 import Tabs from '../common/Tabs'
 
-import AlbumList from './AlbumList'
+import AlbumList from './MusicAlbumList'
 
 import bgImage from '../../static/images/bg2.jpg'
 

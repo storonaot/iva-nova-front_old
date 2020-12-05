@@ -155,7 +155,7 @@ const data = {
   ],
 }
 
-const AlbumItem = () => {
+const MusicAlbumItem = () => {
   return (
     <Container>
       <MainHeading>
@@ -193,7 +193,6 @@ const AlbumItem = () => {
         />
       </ContentWrapper>
       <TrackList>
-        <div>123</div>
         {data.trackList.map((track: TrackProps) => (
           <Track key={track.id} track={track} />
         ))}
@@ -202,4 +201,4 @@ const AlbumItem = () => {
   )
 }
 
-export default AlbumItem
+export default MusicAlbumItem

@@ -1,14 +1,14 @@
 import React from 'react'
-import AlbumItem from '../../common/AlbumItem'
+import MusicAlbumItem from '../../common/MusicAlbumItem'
 
 import { Grid } from './styles'
 
 import albums from './data'
 
-const AlbumList = () => (
+const MusicAlbumList = () => (
   <Grid>
     {albums.map(album => (
-      <AlbumItem
+      <MusicAlbumItem
         key={album.id}
         id={album.id}
         image={album.image}
@@ -21,4 +21,4 @@ const AlbumList = () => (
   </Grid>
 )
 
-export default AlbumList
+export default MusicAlbumList

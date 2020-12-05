@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 import albums from './data'
 
@@ -6,7 +6,7 @@ import Heading from '../Heading'
 import Container, { Wrapper } from '../Container'
 
 import Slider from '../Slider'
-import AlbumItem from '../AlbumItem'
+import AlbumItem from '../MusicAlbumItem'
 
 import { SliderWrapper } from './styles'
 
@@ -14,7 +14,7 @@ interface Props {
   title?: string
 }
 
-const AlbumsSliderBlock = ({ title = 'Другие альбомы' }: Props) => (
+const MusicAlbumsSliderBlock: FC<Props> = ({ title = 'Другие альбомы' }) => (
   <Container>
     <Wrapper>
       <Heading title={title} withMargin />
@@ -37,4 +37,4 @@ const AlbumsSliderBlock = ({ title = 'Другие альбомы' }: Props) => 
   </Container>
 )
 
-export default AlbumsSliderBlock
+export default MusicAlbumsSliderBlock

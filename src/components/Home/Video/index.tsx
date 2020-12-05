@@ -8,11 +8,9 @@ import Button from '../../common/Button'
 import SectionRoot from '../../common/SectionRoot'
 import bgImage from '../../../static/images/bg1.jpg'
 import Slider from '../../common/Slider'
-import VideoPreview from '../../common/VideoPreview'
-
-import { ImageWrapper, Description, Card, PreviewItem } from './styles'
 
 import videos from './data'
+import MediaFullPreview from '../../common/MediaFullPreview'
 
 interface VideoItem {
   id: number
@@ -28,14 +26,13 @@ const Video = () => {
         <Heading title="Последние видео" btnTitle="все видео" btnHref={VIDEOS_URL} />
         <Slider>
           {videos.map((item: VideoItem) => (
-            <PreviewItem key={item.id}>
-              <Card padding="small">
-                <ImageWrapper>
-                  <VideoPreview image={item.image} aspectRatio="16:9" />
-                </ImageWrapper>
-                <Description>{item.description}</Description>
-              </Card>
-            </PreviewItem>
+            <MediaFullPreview
+              key={item.id}
+              mode="video"
+              aspectRatio="16:9"
+              text={item.description}
+              image={item.image}
+            />
           ))}
         </Slider>
         <ShowOn mobile>

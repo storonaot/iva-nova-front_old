@@ -1,15 +1,15 @@
 import React from 'react'
 import Layout from '../../src/components/Layout'
-import AlbumItem from '../../src/components/AlbumItem'
-import AlbumsSliderBlock from '../../src/components/common/AlbumsSliderBlock'
+import MusicAlbumItem from '../../src/components/MusicAlbumItem'
+import MusicAlbumsSliderBlock from '../../src/components/common/MusicAlbumsSliderBlock'
 
-const AlbumItemPage = () => {
+const MusicAlbumItemPage = () => {
   return (
     <Layout>
-      <AlbumItem />
-      <AlbumsSliderBlock />
+      <MusicAlbumItem />
+      <MusicAlbumsSliderBlock />
     </Layout>
   )
 }
 
-export default AlbumItemPage
+export default MusicAlbumItemPage
