@@ -6,7 +6,15 @@ const List = () => {
   return (
     <div>
       {albums.map(album => (
-        <AlbumItem key={album.id} />
+        <AlbumItem
+          key={album.id}
+          id={album.id}
+          image={album.image}
+          date={album.year}
+          name={album.name}
+          description={album.description}
+          title={album.name}
+        />
       ))}
     </div>
   )
