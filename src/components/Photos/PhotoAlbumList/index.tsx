@@ -1,4 +1,5 @@
 import React from 'react'
+import { PHOTOS_URL } from '../../../constants/sources'
 import MediaFullPreview from '../../common/MediaFullPreview'
 
 import photoAlbums from './data'
@@ -14,7 +15,8 @@ const PhotoAlbumList = () => {
             text={photoAlbum.title}
             image={photoAlbum.image}
             aspectRatio="4:3"
-            to="/"
+            to={`${PHOTOS_URL}/${photoAlbum.id}`}
+            mode="photo"
           />
         )
       })}
