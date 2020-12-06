@@ -1,9 +1,9 @@
 import React from 'react'
 import { PHOTOS_URL } from '../../../constants/sources'
+import Grid from '../../common/Grid'
 import MediaFullPreview from '../../common/MediaFullPreview'
 
 import photoAlbums from './data'
-import { Grid } from './styles'
 
 const PhotoAlbumList = () => {
   return (

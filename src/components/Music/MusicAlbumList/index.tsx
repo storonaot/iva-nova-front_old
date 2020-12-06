@@ -1,7 +1,6 @@
 import React from 'react'
+import Grid from '../../common/Grid'
 import MusicAlbumItem from '../../common/MusicAlbumItem'
-
-import { Grid } from './styles'
 
 import albums from './data'
 

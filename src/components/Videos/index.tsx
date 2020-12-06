@@ -3,14 +3,14 @@ import MediaFullPreview from '../common/MediaFullPreview'
 import { VIDEOS_URL } from '../../constants/sources'
 
 import videos from './data'
-import { Grid } from './styles'
 
 import SectionRoot from '../common/SectionRoot'
 
-import bgImage from '../../static/images/bg4.png'
+import bgImage from '../../static/images/bg3.png'
 import Title from '../common/Title'
 import Container from '../common/Container'
 import Tabs from '../common/Tabs'
+import Grid from '../common/Grid'
 
 const tabs = [
   { id: 1, label: 'Все видео' },
@@ -26,7 +26,6 @@ const PhotoAlbumList = () => {
       <Container>
         <Title withMargin>Фото</Title>
         <Tabs tabs={tabs} />
-
         <Grid>
           {videos.map(video => {
             return (

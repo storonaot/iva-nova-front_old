@@ -5,9 +5,8 @@ import ContentWrapper from '../../common/ContentWrapper'
 import CardComp from '../../common/Card'
 import NewsItem, { NewsItemType } from '../../common/NewsItem'
 
-import { Grid } from './styles'
-
 import news from './data'
+import Grid from '../../common/Grid'
 
 const NewsList = () => (
   <ContentWrapper>
