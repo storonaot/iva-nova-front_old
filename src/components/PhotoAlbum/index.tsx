@@ -27,7 +27,11 @@ const PhotoAlbum = () => {
         </Description>
         <Grid gridSize={4}>
           {photos.map(photo => {
-            return <AspectRatioImage key={photo.id} image={photo.image} aspectRatio="1:1" />
+            return (
+              <div key={photo.id} style={{ cursor: 'pointer' }}>
+                <AspectRatioImage image={photo.image} aspectRatio="1:1" />
+              </div>
+            )
           })}
         </Grid>
       </Container>

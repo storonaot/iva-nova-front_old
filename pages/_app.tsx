@@ -3,6 +3,7 @@
 
 import React, { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
+import { Provider } from 'react-redux'
 import { ThemeProvider as ThemeProviderMUI } from '@material-ui/core/styles'
 // import CssBaseline from '@material-ui/core/CssBaseline'
 import 'css-wipe'
@@ -10,6 +11,8 @@ import '../src/static/stylesheets/global.css'
 
 import theme from '../src/theme'
 import muiTheme from '../src/theme/muiTheme'
+
+import store from '../src/data-access/store'
 
 // eslint-disable-next-line react/prop-types
 const MyApp = ({ Component, pageProps }) => {
@@ -21,12 +24,14 @@ const MyApp = ({ Component, pageProps }) => {
     }
   }, [])
   return (
-    <ThemeProviderMUI theme={muiTheme}>
-      {/* <CssBaseline /> */}
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </ThemeProviderMUI>
+    <Provider store={store}>
+      <ThemeProviderMUI theme={muiTheme}>
+        {/* <CssBaseline /> */}
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </ThemeProviderMUI>
+    </Provider>
   )
 }
 
