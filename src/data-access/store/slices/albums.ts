@@ -1,4 +1,4 @@
-// import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 // interface CurrentDisplay {
 //   displayType: 'issues' | 'comments'
@@ -50,4 +50,12 @@
 
 // export const { displayRepo, setCurrentDisplayType, setCurrentPage } = issuesDisplaySlice.actions
 
-// export default issuesDisplaySlice.reducer
+const initialState = {}
+
+const albumsSlice = createSlice({
+  name: 'album',
+  initialState,
+  reducers: {},
+})
+
+export default albumsSlice.reducer

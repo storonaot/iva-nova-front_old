@@ -12,7 +12,7 @@ import '../src/static/stylesheets/global.css'
 import theme from '../src/theme'
 import muiTheme from '../src/theme/muiTheme'
 
-import store from '../src/data-access/store'
+import { useStore } from '../src/data-access/store'
 
 // eslint-disable-next-line react/prop-types
 const MyApp = ({ Component, pageProps }) => {
@@ -23,6 +23,9 @@ const MyApp = ({ Component, pageProps }) => {
       jssStyles.parentElement.removeChild(jssStyles)
     }
   }, [])
+
+  const store = useStore(pageProps.initialReduxState)
+
   return (
     <Provider store={store}>
       <ThemeProviderMUI theme={muiTheme}>

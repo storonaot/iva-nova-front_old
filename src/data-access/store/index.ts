@@ -1,61 +1,102 @@
-/* eslint-disable global-require */
+// /* eslint-disable global-require */
+// // @ts-nocheck
+import createSagaMiddleware from 'redux-saga'
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
+import { useMemo } from 'react'
+import rootReducer from './rootReducer'
+// import rootSaga from './sagas'
+
+// const sagaMiddleware = createSagaMiddleware()
+// const middleware = [...getDefaultMiddleware({ thunk: false }), sagaMiddleware]
+
+// const store = configureStore({
+//   reducer: {
+//     todo: rootReducer,
+//   },
+//   middleware,
+// })
+
+// sagaMiddleware.run(rootSaga)
+
+// export type AppDispatch = typeof store.dispatch
+
+// export default store
+
 // @ts-nocheck
 
-import createSagaMiddleware, { END } from 'redux-saga'
+let store
 
-import { configureStore } from '@reduxjs/toolkit'
+const initialState = {
+  lastUpdate: 0,
+  light: false,
+  count: 0,
+}
 
-import rootReducer from './rootReducer'
-import rootSaga from './sagas'
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'TICK':
+      return {
+        ...state,
+        lastUpdate: action.lastUpdate,
+        light: !!action.light,
+      }
+    case 'INCREMENT':
+      return {
+        ...state,
+        count: state.count + 1,
+      }
+    case 'DECREMENT':
+      return {
+        ...state,
+        count: state.count - 1,
+      }
+    case 'RESET':
+      return {
+        ...state,
+        count: initialState.count,
+      }
+    default:
+      return state
+  }
+}
 
 const sagaMiddleware = createSagaMiddleware()
+const middleware = [...getDefaultMiddleware({ thunk: false }), sagaMiddleware]
 
-const store = configureStore({
-  reducer: rootReducer,
-  middleware: [sagaMiddleware],
-})
+function initStore(preloadedState = initialState) {
+  return configureStore({
+    reducer: rootReducer,
+    middleware,
+  })
 
-// const makeStore = () => {
-//   const store = configureStore({
-//     reducer: rootReducer,
-//     middleware: [sagaMiddleware],
-//   })
+  // return createStore(reducer, preloadedState, composeWithDevTools(applyMiddleware()))
+}
 
-//   store.runSaga = () => {
-//     // Avoid running twice
-//     if (store.saga) return
-//     store.saga = sagaMiddleware.run(rootSaga)
-//   }
+export const initializeStore = preloadedState => {
+  let _store = store ?? initStore(preloadedState)
 
-//   store.stopSaga = async () => {
-//     // Avoid running twice
-//     if (!store.saga) return
-//     store.dispatch(END)
-//     await store.saga.done
-//     store.saga = null
-//   }
+  // After navigating to a page with an initial Redux state, merge that state
+  // with the current state in the store, and create a new store
+  if (preloadedState && store) {
+    _store = initStore({
+      ...store.getState(),
+      ...preloadedState,
+    })
+    // Reset the current store
+    store = undefined
+  }
 
-//   store.execSagaTasks = async (isServer, tasks) => {
-//     // run saga
-//     store.runSaga()
-//     // dispatch saga tasks
-//     tasks(store.dispatch)
-//     // Stop running and wait for the tasks to be done
-//     await store.stopSaga()
-//     // Re-run on client side
-//     if (!isServer) {
-//       store.runSaga()
-//     }
-//   }
+  // For SSG and SSR always create a new store
+  if (typeof window === 'undefined') return _store
+  // Create the store once in the client
+  if (!store) store = _store
 
-//   // Initial run
-//   store.runSaga()
+  return _store
+}
 
-//   console.log('store', store)
+export function useStore(initialState) {
+  console.log('initialState', initialState)
 
-//   return store
-// }
-
-export type AppDispatch = typeof store.dispatch
-
-export default store
+  const store = useMemo(() => initializeStore(initialState), [initialState])
+  return store
+}
