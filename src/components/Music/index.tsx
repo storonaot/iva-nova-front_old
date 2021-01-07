@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-import { useDispatch, useSelector } from 'react-redux'
 import SectionRoot from '../common/SectionRoot'
 import Container from '../common/Container'
 import Title from '../common/Title'
@@ -31,29 +30,3 @@ const Music = () => {
 }
 
 export default Music
-
-// import React from 'react'
-// import Layout from '../../src/components/Layout'
-// import Music from '../../src/components/Music'
-// import { getAlbums } from '../../src/data-access/store/slices/albums'
-// import { wrapper } from '../../src/data-access/store'
-
-// const MusicPage = () => {
-//   // const dispatch = useDispatch()
-
-//   // useEffect(() => {
-//   //   dispatch(getAlbums())
-//   // }, [dispatch])
-
-//   return (
-//     <Layout>
-//       <Music />
-//     </Layout>
-//   )
-// }
-
-// export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
-//   store.dispatch(getAlbums())
-// })
-
-// export default MusicPage
