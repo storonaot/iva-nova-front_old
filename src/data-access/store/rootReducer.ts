@@ -1,7 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import albums from './slices/albums'
+import albumsSlice from './slices/albums'
 
-const rootReducer = combineReducers({ albums })
+const rootReducer = combineReducers({ [albumsSlice.name]: albumsSlice.reducer })
 
 export type RootState = ReturnType<typeof rootReducer>
 

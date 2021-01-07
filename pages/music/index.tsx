@@ -1,10 +1,16 @@
 import React from 'react'
-
 import Layout from '../../src/components/Layout'
 import Music from '../../src/components/Music'
-import axios from '../../src/data-access/axios'
+import { getAlbums } from '../../src/data-access/store/slices/albums'
+import { wrapper } from '../../src/data-access/store'
 
 const MusicPage = () => {
+  // const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   dispatch(getAlbums())
+  // }, [dispatch])
+
   return (
     <Layout>
       <Music />
@@ -12,15 +18,8 @@ const MusicPage = () => {
   )
 }
 
-MusicPage.getInitialProps = async () => {
-  try {
-    const res = await axios.get('/albums')
-
-    const albums = res.data
-    return { albums }
-  } catch (error) {
-    return { error }
-  }
-}
+// export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
+//   store.dispatch(getAlbums())
+// })
 
 export default MusicPage

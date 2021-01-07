@@ -1,4 +1,4 @@
-import axios from '../axios'
+import axios from './axios'
 
 const fetchAlbums = () => axios.get('/albums').then(({ data }) => data)
 

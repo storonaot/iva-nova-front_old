@@ -3,7 +3,6 @@
 
 import React, { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
-import { Provider } from 'react-redux'
 import { ThemeProvider as ThemeProviderMUI } from '@material-ui/core/styles'
 // import CssBaseline from '@material-ui/core/CssBaseline'
 import 'css-wipe'
@@ -12,9 +11,8 @@ import '../src/static/stylesheets/global.css'
 import theme from '../src/theme'
 import muiTheme from '../src/theme/muiTheme'
 
-import { useStore } from '../src/data-access/store'
+import { wrapper } from '../src/data-access/store'
 
-// eslint-disable-next-line react/prop-types
 const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -24,18 +22,14 @@ const MyApp = ({ Component, pageProps }) => {
     }
   }, [])
 
-  const store = useStore(pageProps.initialReduxState)
-
   return (
-    <Provider store={store}>
-      <ThemeProviderMUI theme={muiTheme}>
-        {/* <CssBaseline /> */}
-        <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </ThemeProviderMUI>
-    </Provider>
+    <ThemeProviderMUI theme={muiTheme}>
+      {/* <CssBaseline /> */}
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </ThemeProviderMUI>
   )
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp)
