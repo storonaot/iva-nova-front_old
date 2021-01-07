@@ -1,5 +1,8 @@
 import React from 'react'
 
+import { getAlbums } from '../src/data-access/store/slices/albums'
+import { wrapper } from '../src/data-access/store'
+
 import Layout from '../src/components/Layout'
 import Hero from '../src/components/Home/Hero'
 import Schedule from '../src/components/Home/Schedule'
@@ -16,5 +19,9 @@ const IndexPage = () => (
     <Video />
   </Layout>
 )
+
+export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
+  store.dispatch(getAlbums())
+})
 
 export default IndexPage
