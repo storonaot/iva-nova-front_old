@@ -13,7 +13,8 @@ export const initializeStore = () => {
     middleware,
   })
 
-  sagaMiddleware.run(rootSaga)
+  store.sagaTask = sagaMiddleware.run(rootSaga)
+  // sagaMiddleware.run(rootSaga)
 
   return store
 }

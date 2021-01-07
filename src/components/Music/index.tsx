@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import SectionRoot from '../common/SectionRoot'
 import Container from '../common/Container'
 import Title from '../common/Title'
@@ -9,7 +9,6 @@ import Tabs from '../common/Tabs'
 import AlbumList from './MusicAlbumList'
 
 import bgImage from '../../static/images/bg2.jpg'
-import { getAlbums } from '../../data-access/store/slices/albums'
 
 const tabs = [
   { id: 1, label: 'Все' },
@@ -20,14 +19,6 @@ const tabs = [
 ]
 
 const Music = () => {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    console.log('qwqwe')
-
-    dispatch(getAlbums())
-  }, [dispatch])
-
   return (
     <SectionRoot bgImage={bgImage}>
       <Container>

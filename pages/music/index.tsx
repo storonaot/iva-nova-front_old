@@ -11,8 +11,9 @@ const MusicPage = () => (
   </Layout>
 )
 
-export const getStaticProps = wrapper.getStaticProps(({ store }) => {
+export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
   store.dispatch(getAlbums())
+  // await store.sagaTask.toPromise()
 })
 
 export default MusicPage

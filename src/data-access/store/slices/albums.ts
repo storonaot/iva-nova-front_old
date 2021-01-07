@@ -8,6 +8,7 @@ import {
 import { LOADING_STATUS, AlbumEntity } from '../../types'
 
 export const FEATURE_KEY = 'albums'
+export const albumsAdapter = createEntityAdapter()
 
 interface AlbumsState extends EntityState<AlbumEntity> {
   loadingStatus: LOADING_STATUS
@@ -40,7 +41,6 @@ const albumsSlice = createSlice({
 
 const selectAlbumsSlice = (state: { [FEATURE_KEY]: AlbumsState & EntityState<AlbumEntity> }) =>
   state[FEATURE_KEY]
-export const albumsAdapter = createEntityAdapter()
 const selectors = albumsAdapter.getSelectors(selectAlbumsSlice)
 
 export const albumsSelectors = {
@@ -52,6 +52,6 @@ export const albumsSelectors = {
   list: createSelector(selectAlbumsSlice, slice => slice.list),
 }
 
-export const { getAlbumsDone, getAlbumsFailure } = albumsSlice.actions
+export const { getAlbumsFailure, getAlbumsDone } = albumsSlice.actions
 
 export default albumsSlice

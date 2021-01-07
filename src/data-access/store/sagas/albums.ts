@@ -5,12 +5,12 @@ import { getAlbums, getAlbumsDone, getAlbumsFailure } from '../slices/albums'
 
 // **fetch all
 function* fetchAlbums() {
-  const { response, error } = yield call(() => Api.fetchAlbums())
+  const { response } = yield call(() => Api.fetchAlbums())
 
   if (response) {
     yield put(getAlbumsDone(response.data))
   } else {
-    yield put(getAlbumsFailure(error))
+    yield put(getAlbumsFailure())
   }
 }
 // fetch all**
