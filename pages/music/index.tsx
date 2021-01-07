@@ -1,25 +1,34 @@
-import React from 'react'
+import React, { FC } from 'react'
+import { GetServerSideProps } from 'next'
+import { fetchAlbums } from '../../src/api'
+import { Album } from '../../src/api/types'
 import Layout from '../../src/components/Layout'
 import Music from '../../src/components/Music'
-import { getAlbums } from '../../src/data-access/store/slices/albums'
-import { wrapper } from '../../src/data-access/store'
 
-const MusicPage = () => {
-  // const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   dispatch(getAlbums())
-  // }, [dispatch])
-
-  return (
-    <Layout>
-      <Music />
-    </Layout>
-  )
+interface Props {
+  list: Album[]
 }
 
-// export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
-//   store.dispatch(getAlbums())
-// })
+const MusicPage: FC<Props> = ({ list }) => (
+  <Layout>
+    <Music list={list} />
+  </Layout>
+)
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  try {
+    const data = await fetchAlbums()
+
+    return {
+      props: { list: data },
+    }
+  } catch (err) {
+    console.error('error', err.message)
+
+    return {
+      props: { list: [] },
+    }
+  }
+}
 
 export default MusicPage

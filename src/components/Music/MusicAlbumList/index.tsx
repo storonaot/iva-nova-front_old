@@ -1,23 +1,20 @@
-import React from 'react'
+import React, { FC } from 'react'
+import { Album } from '../../../api/types'
 import Grid from '../../common/Grid'
 import MusicAlbumItem from '../../common/MusicAlbumItem'
 
-import albums from './data'
+interface Props {
+  list: Album[]
+}
 
-const MusicAlbumList = () => (
-  <Grid>
-    {albums.map(album => (
-      <MusicAlbumItem
-        key={album.id}
-        id={album.id}
-        image={album.image}
-        date={album.date}
-        name={album.name}
-        description={album.description}
-        title={album.title}
-      />
-    ))}
-  </Grid>
-)
+const MusicAlbumList: FC<Props> = ({ list }) => {
+  return (
+    <Grid>
+      {list.map(album => (
+        <MusicAlbumItem key={album.id} album={album} />
+      ))}
+    </Grid>
+  )
+}
 
 export default MusicAlbumList

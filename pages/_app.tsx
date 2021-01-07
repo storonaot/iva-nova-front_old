@@ -11,8 +11,6 @@ import '../src/static/stylesheets/global.css'
 import theme from '../src/theme'
 import muiTheme from '../src/theme/muiTheme'
 
-import { wrapper } from '../src/data-access/store'
-
 const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -32,4 +30,4 @@ const MyApp = ({ Component, pageProps }) => {
   )
 }
 
-export default wrapper.withRedux(MyApp)
+export default MyApp

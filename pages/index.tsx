@@ -1,5 +1,4 @@
 import React from 'react'
-
 import Layout from '../src/components/Layout'
 import Hero from '../src/components/Home/Hero'
 import Schedule from '../src/components/Home/Schedule'

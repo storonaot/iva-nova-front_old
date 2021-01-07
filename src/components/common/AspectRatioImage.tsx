@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 import styled from 'styled-components'
 
-export type AspectRatios = '16:9' | '4:3' | '3:2' | '8:5' | '1:1'
+enum AspectRatio {
+  '16:9' = '16:9',
+  '4:3' = '4:3',
+  '3:2' = '3:2',
+  '8:5' = '8:5',
+  '1:1' = '1:1',
+}
 
 interface Props {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  image: any
-  aspectRatio?: AspectRatios
+  imageUrl: string
+  aspectRatio?: AspectRatio
   children?: React.ReactNode
 }
 
@@ -19,11 +24,11 @@ const lib = {
   '1:1': '100%',
 }
 
-export const AspectRatioBox = styled.div<{ aspectRatio?: AspectRatios }>`
+export const AspectRatioBox = styled.div<{ aspectRatio?: AspectRatio }>`
   height: 0;
   overflow: hidden;
   position: relative;
-  padding-top: ${({ aspectRatio = '16:9' }) => lib[aspectRatio]};
+  padding-top: ${({ aspectRatio = AspectRatio['16:9'] }) => lib[aspectRatio as AspectRatio]};
   width: 100%;
 `
 
@@ -33,15 +38,15 @@ export const AspectRatioInner = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(${({ image }: Props) => image});
+  background-image: url(${({ imageUrl }: Props) => imageUrl});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 `
 
-const AspectRatioImage = ({ aspectRatio, image, children }: Props) => (
+const AspectRatioImage: FC<Props> = ({ aspectRatio = AspectRatio['16:9'], imageUrl, children }) => (
   <AspectRatioBox aspectRatio={aspectRatio}>
-    <AspectRatioInner image={image} />
+    <AspectRatioInner imageUrl={imageUrl} />
     {children}
   </AspectRatioBox>
 )

@@ -20,10 +20,6 @@ export const ImageRoot = styled.div`
   margin-bottom: ${SPACE_2};
 `
 
-export const DescriptionRoot = styled.div`
-  display: none;
-`
-
 export const Title = styled.p`
   text-transform: uppercase;
   font-weight: 700;
@@ -51,11 +47,19 @@ export const Overlay = styled.div`
   color: #fff;
   font-size: 0.9em;
   padding: ${SPACE_4};
+
+  transition: top 0.5s ease-in;
+`
+
+export const OverlayText = styled.div`
+  display: flex;
   text-align: center;
   display: flex;
-  align-items: center;
   white-space: pre-wrap;
-  transition: top 0.5s ease-in;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 `
 
 export const Paragrarh = styled.p<{ isBold?: boolean }>`
