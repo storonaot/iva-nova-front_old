@@ -8,10 +8,11 @@ import { ThemeProvider as ThemeProviderMUI } from '@material-ui/core/styles'
 import 'css-wipe'
 import '../src/static/stylesheets/global.css'
 
+import { Provider } from 'react-redux'
 import theme from '../src/theme'
 import muiTheme from '../src/theme/muiTheme'
 
-import { wrapper } from '../src/data-access/store'
+import store from '../src/data-access/store'
 
 const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
@@ -23,13 +24,15 @@ const MyApp = ({ Component, pageProps }) => {
   }, [])
 
   return (
-    <ThemeProviderMUI theme={muiTheme}>
-      {/* <CssBaseline /> */}
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </ThemeProviderMUI>
+    <Provider store={store}>
+      <ThemeProviderMUI theme={muiTheme}>
+        {/* <CssBaseline /> */}
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </ThemeProviderMUI>
+    </Provider>
   )
 }
 
-export default wrapper.withRedux(MyApp)
+export default MyApp

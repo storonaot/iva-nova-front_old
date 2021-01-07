@@ -15,7 +15,7 @@ interface AlbumsState extends EntityState<AlbumEntity> {
   list: AlbumEntity[]
 }
 
-export const getAlbums = createAction(`${FEATURE_KEY}/getMusicAlbumsStatus`)
+export const getAlbumList = createAction(`${FEATURE_KEY}/getAlbumListStatus`)
 
 const initialState = {
   loadingStatus: LOADING_STATUS.notLoaded,
@@ -25,18 +25,7 @@ const initialState = {
 const albumsSlice = createSlice({
   name: FEATURE_KEY,
   initialState,
-  reducers: {
-    getAlbumsStart: state => {
-      state.loadingStatus = LOADING_STATUS.loading
-    },
-    getAlbumsDone: (state, action) => {
-      state.loadingStatus = LOADING_STATUS.loaded
-      state.list = action.payload
-    },
-    getAlbumsFailure: state => {
-      state.loadingStatus = LOADING_STATUS.error
-    },
-  },
+  reducers: {},
 })
 
 const selectAlbumsSlice = (state: { [FEATURE_KEY]: AlbumsState & EntityState<AlbumEntity> }) =>
@@ -51,7 +40,5 @@ export const albumsSelectors = {
   ),
   list: createSelector(selectAlbumsSlice, slice => slice.list),
 }
-
-export const { getAlbumsFailure, getAlbumsDone } = albumsSlice.actions
 
 export default albumsSlice
