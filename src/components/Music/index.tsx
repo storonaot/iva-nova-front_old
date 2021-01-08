@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 
 import SectionRoot from '../common/SectionRoot'
 import Container from '../common/Container'
@@ -21,12 +21,21 @@ interface Props {
 }
 
 const Music: FC<Props> = ({ list }) => {
+  const sortedList = useMemo(() => {
+    return list.sort((a, b) => {
+      const aYear = new Date(a.date).getFullYear()
+      const bYear = new Date(b.date).getFullYear()
+
+      return aYear > bYear ? -1 : 1
+    })
+  }, [])
+
   return (
     <SectionRoot bgImage={bgImage}>
       <Container>
         <Title withMargin>Музыка</Title>
         <Tabs tabs={tabs} />
-        <AlbumList list={list} />
+        <AlbumList list={sortedList} />
       </Container>
     </SectionRoot>
   )
