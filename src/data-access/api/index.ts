@@ -1,9 +1,7 @@
 import axios from './axios'
 
-const fetchAlbums = () =>
+export const fetchAlbums = () =>
   axios.get('/albums').then(
-    response => ({ response }),
-    error => ({ error }),
+    ({ data }) => data,
+    error => error,
   )
-
-export default { fetchAlbums }

@@ -4,8 +4,10 @@ import {
   createEntityAdapter,
   createSelector,
   EntityState,
+  createAsyncThunk,
 } from '@reduxjs/toolkit'
 import { LOADING_STATUS, AlbumEntity } from '../../types'
+import * as Api from '../../api'
 
 export const FEATURE_KEY = 'albums'
 export const albumsAdapter = createEntityAdapter()
@@ -15,7 +17,7 @@ interface AlbumsState extends EntityState<AlbumEntity> {
   list: AlbumEntity[]
 }
 
-export const getAlbumList = createAction(`${FEATURE_KEY}/getAlbumListStatus`)
+export const getAlbumList = createAsyncThunk(`${FEATURE_KEY}/getAlbumListStatus`, Api.fetchAlbums)
 
 const initialState = {
   loadingStatus: LOADING_STATUS.notLoaded,
@@ -26,6 +28,16 @@ const albumsSlice = createSlice({
   name: FEATURE_KEY,
   initialState,
   reducers: {},
+  extraReducers: builder => {
+    builder
+      .addCase(getAlbumList.pending, state => {
+        state.loadingStatus = LOADING_STATUS.loading
+      })
+      .addCase(getAlbumList.fulfilled, (state, action) => {
+        state.loadingStatus = LOADING_STATUS.loaded
+        state.list = action.payload
+      })
+  },
 })
 
 const selectAlbumsSlice = (state: { [FEATURE_KEY]: AlbumsState & EntityState<AlbumEntity> }) =>
