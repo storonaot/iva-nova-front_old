@@ -1,5 +1,6 @@
 import React from 'react'
 import { PHOTOS_URL } from '../../../constants/sources'
+import { AspectRatio } from '../../common/AspectRatioImage'
 import Grid from '../../common/Grid'
 import MediaFullPreview from '../../common/MediaFullPreview'
 
@@ -14,7 +15,7 @@ const PhotoAlbumList = () => {
             key={photoAlbum.id}
             text={photoAlbum.title}
             image={photoAlbum.image}
-            aspectRatio="4:3"
+            aspectRatio={AspectRatio['4:3']}
             to={`${PHOTOS_URL}/${photoAlbum.id}`}
             mode="photo"
           />

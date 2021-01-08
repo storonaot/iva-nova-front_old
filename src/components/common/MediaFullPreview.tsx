@@ -61,7 +61,13 @@ interface Props {
   to?: string
 }
 
-const MediaFullPreview: FC<Props> = ({ text, image, mode, aspectRatio = '16:9', to }) => {
+const MediaFullPreview: FC<Props> = ({
+  text,
+  image,
+  mode,
+  aspectRatio = AspectRatio['16:9'],
+  to,
+}) => {
   const renderPreview = () => {
     return (
       <PreviewItem>

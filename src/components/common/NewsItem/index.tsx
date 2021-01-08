@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import Link from 'next/link'
-import AspectRatioImage from '../AspectRatioImage'
+import AspectRatioImage, { AspectRatio } from '../AspectRatioImage'
 
 import { PreviewItem, ImageWrapper, Date, Description } from './styles'
 
@@ -20,7 +20,7 @@ const NewsItem = ({ id, image, date, description, isLink = false }: NewsItemType
   const Content = () => (
     <>
       <ImageWrapper>
-        <AspectRatioImage imageUrl={image} aspectRatio="4:3" />
+        <AspectRatioImage imageUrl={image} aspectRatio={AspectRatio['4:3']} />
       </ImageWrapper>
       <Date>{date}</Date>
       <Description>{description}</Description>

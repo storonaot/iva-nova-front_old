@@ -4,7 +4,7 @@ import Container from '../common/Container'
 import Title from '../common/Title'
 import Link from '../common/Link'
 import HTMLContent from '../common/HTMLContent'
-import AspectRatioImage from '../common/AspectRatioImage'
+import AspectRatioImage, { AspectRatio } from '../common/AspectRatioImage'
 import Track, { TrackProps } from '../common/Track'
 
 import { MUSIC_URL } from '../../constants/sources'
@@ -166,7 +166,7 @@ const MusicAlbumItem = () => {
       </MainHeading>
       <AlbumInfoWrapper>
         <ImageWrapper>
-          <AspectRatioImage imageUrl={data.image} aspectRatio="1:1" />
+          <AspectRatioImage imageUrl={data.image} aspectRatio={AspectRatio['1:1']} />
         </ImageWrapper>
         <TrackListWrapper>
           <SubscribeTitle>Треклист</SubscribeTitle>

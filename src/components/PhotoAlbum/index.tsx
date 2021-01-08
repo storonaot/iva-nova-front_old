@@ -11,7 +11,7 @@ import { MainHeading, Description } from './styles'
 import Grid from '../common/Grid'
 
 import photos from './data'
-import AspectRatioImage from '../common/AspectRatioImage'
+import AspectRatioImage, { AspectRatio } from '../common/AspectRatioImage'
 
 const PhotoAlbum = () => {
   return (
@@ -29,7 +29,7 @@ const PhotoAlbum = () => {
           {photos.map(photo => {
             return (
               <div key={photo.id} style={{ cursor: 'pointer' }}>
-                <AspectRatioImage imageUrl={photo.image} aspectRatio="1:1" />
+                <AspectRatioImage imageUrl={photo.image} aspectRatio={AspectRatio['1:1']} />
               </div>
             )
           })}

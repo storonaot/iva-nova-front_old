@@ -11,6 +11,7 @@ import Slider from '../../common/Slider'
 
 import videos from './data'
 import MediaFullPreview from '../../common/MediaFullPreview'
+import { AspectRatio } from '../../common/AspectRatioImage'
 
 interface VideoItem {
   id: number
@@ -29,7 +30,7 @@ const Video = () => {
             <MediaFullPreview
               key={item.id}
               mode="video"
-              aspectRatio="16:9"
+              aspectRatio={AspectRatio['16:9']}
               text={item.description}
               image={item.image}
             />

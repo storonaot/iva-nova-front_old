@@ -11,6 +11,7 @@ import Title from '../common/Title'
 import Container from '../common/Container'
 import Tabs from '../common/Tabs'
 import Grid from '../common/Grid'
+import { AspectRatio } from '../common/AspectRatioImage'
 
 const tabs = [
   { id: 1, label: 'Все видео' },
@@ -33,7 +34,7 @@ const PhotoAlbumList = () => {
                 key={video.id}
                 text={video.title}
                 image={video.image}
-                aspectRatio="16:9"
+                aspectRatio={AspectRatio['16:9']}
                 to={`${VIDEOS_URL}/${video.id}`}
                 mode="video"
               />
