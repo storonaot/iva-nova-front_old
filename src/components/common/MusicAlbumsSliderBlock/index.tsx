@@ -6,7 +6,7 @@ import Heading from '../Heading'
 import Container, { Wrapper } from '../Container'
 
 import Slider from '../Slider'
-import AlbumItem from '../MusicAlbumItem'
+// import AlbumItem from '../MusicAlbumItem'
 
 import { SliderWrapper } from './styles'
 
@@ -20,16 +20,11 @@ const MusicAlbumsSliderBlock: FC<Props> = ({ title = 'Другие альбом�
       <Heading title={title} withMargin />
       <SliderWrapper>
         <Slider>
+          {/* {albums.map(item => (
+            <AlbumItem key={item.id} album={{}} />
+          ))} */}
           {albums.map(item => (
-            <AlbumItem
-              key={item.id}
-              id={item.id}
-              image={item.image}
-              date={item.date}
-              description={item.description}
-              name={item.name}
-              title={item.title}
-            />
+            <div key={item.id}>album</div>
           ))}
         </Slider>
       </SliderWrapper>
