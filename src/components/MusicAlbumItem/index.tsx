@@ -166,7 +166,7 @@ const MusicAlbumItem = () => {
       </MainHeading>
       <AlbumInfoWrapper>
         <ImageWrapper>
-          <AspectRatioImage image={data.image} aspectRatio="1:1" />
+          <AspectRatioImage imageUrl={data.image} aspectRatio="1:1" />
         </ImageWrapper>
         <TrackListWrapper>
           <SubscribeTitle>Треклист</SubscribeTitle>

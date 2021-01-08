@@ -7,7 +7,7 @@ import Link from 'next/link'
 import CardComp from './Card'
 
 import { SPACE_3, SECONDARY_FONT, SPACE_4, SPACE_2, GRAY_COLOR } from '../../theme'
-import AspectRatioImage, { AspectRatios } from './AspectRatioImage'
+import AspectRatioImage, { AspectRatio } from './AspectRatioImage'
 import VideoPreview from './VideoPreview'
 
 export const ImageWrapper = styled.div`
@@ -57,7 +57,7 @@ interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   image: any
   mode?: 'video' | 'photo'
-  aspectRatio?: AspectRatios
+  aspectRatio?: AspectRatio
   to?: string
 }
 
@@ -70,7 +70,7 @@ const MediaFullPreview: FC<Props> = ({ text, image, mode, aspectRatio = '16:9', 
             {mode === 'video' ? (
               <VideoPreview image={image} aspectRatio={aspectRatio} />
             ) : (
-              <AspectRatioImage image={image} aspectRatio={aspectRatio} />
+              <AspectRatioImage imageUrl={image} aspectRatio={aspectRatio} />
             )}
           </ImageWrapper>
           <Text>{text}</Text>

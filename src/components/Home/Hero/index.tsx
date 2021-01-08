@@ -37,7 +37,7 @@ const Hero = () => (
     <Wrapper>
       <Card>
         <ImageWrapper>
-          <AspectRatioImage image={mainPhoto} />
+          <AspectRatioImage imageUrl={mainPhoto} />
         </ImageWrapper>
         <Content>
           <Title>Ива Нова (этно-экстрим, world music)</Title>

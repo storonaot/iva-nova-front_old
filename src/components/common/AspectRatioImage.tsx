@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import styled from 'styled-components'
 
-enum AspectRatio {
+export enum AspectRatio {
   '16:9' = '16:9',
   '4:3' = '4:3',
   '3:2' = '3:2',

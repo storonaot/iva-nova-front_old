@@ -1,7 +1,7 @@
 import React from 'react'
 
 import styled from 'styled-components'
-import AspectRatioImage, { AspectRatios } from './AspectRatioImage'
+import AspectRatioImage, { AspectRatio } from './AspectRatioImage'
 import PlayIcon from '../../static/svg/play.svg'
 
 const Root = styled.div`
@@ -21,7 +21,7 @@ const IconWrapper = styled.div`
 interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   image: any
-  aspectRatio: AspectRatios
+  aspectRatio: AspectRatio
 }
 
 const VideoPreview = ({ image, aspectRatio }: Props) => (
@@ -29,7 +29,7 @@ const VideoPreview = ({ image, aspectRatio }: Props) => (
     <IconWrapper>
       <PlayIcon />
     </IconWrapper>
-    <AspectRatioImage image={image} aspectRatio={aspectRatio} />
+    <AspectRatioImage imageUrl={image} aspectRatio={aspectRatio} />
   </Root>
 )
 

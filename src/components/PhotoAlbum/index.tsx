@@ -29,7 +29,7 @@ const PhotoAlbum = () => {
           {photos.map(photo => {
             return (
               <div key={photo.id} style={{ cursor: 'pointer' }}>
-                <AspectRatioImage image={photo.image} aspectRatio="1:1" />
+                <AspectRatioImage imageUrl={photo.image} aspectRatio="1:1" />
               </div>
             )
           })}

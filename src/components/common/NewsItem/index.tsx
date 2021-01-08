@@ -20,7 +20,7 @@ const NewsItem = ({ id, image, date, description, isLink = false }: NewsItemType
   const Content = () => (
     <>
       <ImageWrapper>
-        <AspectRatioImage image={image} aspectRatio="4:3" />
+        <AspectRatioImage imageUrl={image} aspectRatio="4:3" />
       </ImageWrapper>
       <Date>{date}</Date>
       <Description>{description}</Description>
