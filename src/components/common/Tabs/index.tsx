@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { TabItem, TabList } from './styles'
 
 interface Tab {
@@ -8,15 +8,21 @@ interface Tab {
 
 interface Props {
   tabs: Tab[]
+  activeTab: string | number
+  onChange: (tabId: string | number) => void
 }
 
-const Tabs = ({ tabs }: Props) => {
-  const [activeTab] = useState(tabs[0].id)
-
+const Tabs = ({ tabs, activeTab, onChange }: Props) => {
   return (
     <TabList>
       {tabs.map(tab => (
-        <TabItem isActive={activeTab === tab.id} key={tab.id}>
+        <TabItem
+          isActive={activeTab === tab.id}
+          key={tab.id}
+          onClick={() => {
+            onChange(tab.id)
+          }}
+        >
           {tab.label}
         </TabItem>
       ))}
