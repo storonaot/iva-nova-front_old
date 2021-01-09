@@ -26,7 +26,13 @@ const PhotoAlbumList = () => {
     <SectionRoot bgImage={bgImage} opacity={0.5}>
       <Container>
         <Title withMargin>Фото</Title>
-        <Tabs tabs={tabs} />
+        <Tabs
+          tabs={tabs}
+          activeTab={1}
+          onChange={tabId => {
+            console.log(tabId)
+          }}
+        />
         <Grid>
           {videos.map(video => {
             return (

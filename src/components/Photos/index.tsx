@@ -32,7 +32,13 @@ const Photos = () => (
   <SectionRoot bgImage={bgImage} opacity={0.5}>
     <Container>
       <Title withMargin>Фото</Title>
-      <Tabs tabs={tabs} />
+      <Tabs
+        tabs={tabs}
+        activeTab={1}
+        onChange={tabId => {
+          console.log(tabId)
+        }}
+      />
       <PhotoAlbumList />
     </Container>
   </SectionRoot>
