@@ -17,12 +17,13 @@ import {
   SubscriptionsWrapper,
 } from '../../common/Subscriptions'
 
-import Track, { TrackProps } from '../../common/Track'
+// import Track from '../../common/Track'
 
 import bgImage from '../../../static/images/bg2.jpg'
 import carrierImage from '../../../static/images/huba.png'
 
 import tracks from './data'
+import { TrackItem } from '../../../api/types'
 
 const HubaImageContainer = styled.div`
   width: 100%;
@@ -74,8 +75,11 @@ const Music = () => (
       <LeftBlock>
         <Heading title="Музыка" btnTitle="вся музыка" btnHref={MUSIC_URL} />
         <TracksWrapper>
-          {tracks.map((track: TrackProps) => (
+          {/* {tracks.map((track: TrackItem) => (
             <Track key={track.id} track={track} />
+          ))} */}
+          {tracks.map((track: TrackItem) => (
+            <div key={track.id}>track</div>
           ))}
         </TracksWrapper>
         <ShowOn mobile>
@@ -87,8 +91,8 @@ const Music = () => (
       <RightBlock>
         <SubscribeTitle>Слушайте и скачивайте!</SubscribeTitle>
         <SubscriptionsWrapper orientation="vertical">
-          <ITunesButton />
-          <YaMusicButton />
+          <ITunesButton href="" />
+          <YaMusicButton href="" />
         </SubscriptionsWrapper>
       </RightBlock>
     </Container>

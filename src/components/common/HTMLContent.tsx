@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
+import ReactMarkdown from 'react-markdown'
 import { SECONDARY_COLOR, SPACE_4, SPACE_1 } from '../../theme'
 
 interface Props {
-  htmlString: string
+  inputString: string
   style?: { [key: string]: string | number }
 }
 
@@ -11,6 +12,7 @@ const Root = styled.div`
   font-size: 0.9em;
   line-height: 1.5em;
   margin-bottom: ${SPACE_4};
+  white-space: break-spaces;
   a {
     color: ${SECONDARY_COLOR};
     display: inline-block;
@@ -22,14 +24,20 @@ const Root = styled.div`
   p + *:not(p) {
     margin-top: ${SPACE_4};
   }
-  b {
+  strong {
     font-weight: 600;
   }
 `
 
-const HTMLContent = ({ htmlString, style }: Props) => (
-  // eslint-disable-next-line react/no-danger
-  <Root dangerouslySetInnerHTML={{ __html: htmlString }} style={style} />
+const HTMLContent: FC<Props> = ({
+  inputString,
+  style = {
+    fontSize: '0.9em',
+  },
+}) => (
+  <Root style={style}>
+    <ReactMarkdown source={inputString} />
+  </Root>
 )
 
 export default HTMLContent

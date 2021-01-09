@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import media from 'styled-media-query'
 
@@ -56,14 +56,20 @@ export const SubscriptionsWrapper = styled.div<SubscriptionsWrapperProps>`
   `}
 `
 
-export const ITunesButton = () => (
-  <SubscriptionButton>
-    <ITunesIcon />
-  </SubscriptionButton>
-)
+interface Props {
+  href: string | null
+}
 
-export const YaMusicButton = () => (
-  <SubscriptionButton>
-    <YaMusicIcon />
-  </SubscriptionButton>
-)
+export const ITunesButton: FC<Props> = ({ href }) =>
+  href ? (
+    <SubscriptionButton href={href} target="_blank">
+      <ITunesIcon />
+    </SubscriptionButton>
+  ) : null
+
+export const YaMusicButton: FC<Props> = ({ href }) =>
+  href ? (
+    <SubscriptionButton href={href} target="_blank">
+      <YaMusicIcon />
+    </SubscriptionButton>
+  ) : null

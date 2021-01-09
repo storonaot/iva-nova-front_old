@@ -1,30 +1,27 @@
 import React, { FC } from 'react'
 
-import albums from './data'
-
 import Heading from '../Heading'
 import Container, { Wrapper } from '../Container'
 
 import Slider from '../Slider'
-// import AlbumItem from '../MusicAlbumItem'
+import AlbumItem from '../MusicAlbumItem'
 
 import { SliderWrapper } from './styles'
+import { Album } from '../../../api/types'
 
 interface Props {
   title?: string
+  list: Album[]
 }
 
-const MusicAlbumsSliderBlock: FC<Props> = ({ title = 'Другие альбомы' }) => (
+const MusicAlbumsSliderBlock: FC<Props> = ({ title = 'Другие альбомы', list }) => (
   <Container>
     <Wrapper>
       <Heading title={title} withMargin />
       <SliderWrapper>
         <Slider>
-          {/* {albums.map(item => (
-            <AlbumItem key={item.id} album={{}} />
-          ))} */}
-          {albums.map(item => (
-            <div key={item.id}>album</div>
+          {list.map(album => (
+            <AlbumItem key={album.id} album={album} />
           ))}
         </Slider>
       </SliderWrapper>

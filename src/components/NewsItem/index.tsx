@@ -32,7 +32,7 @@ const NewsItem = () => {
     <Container>
       <Title withMargin>March 21 at 3:29 PM </Title>
       <Controls />
-      <HTMLContent htmlString={content} />
+      <HTMLContent inputString={content} />
       <div>Другие новости</div>
     </Container>
   )

@@ -1,5 +1,9 @@
-export interface Track {
+export interface TrackItem {
   id: number
+  name: string
+  name_eng: string
+  timing: string
+  audio_link: string
 }
 
 export interface Cover {
@@ -16,7 +20,7 @@ export interface Album {
   description: string
   date: Date
   cover: Cover
-  tracks: Track[]
+  tracks: TrackItem[]
   short_description: string
   short_description_eng: string
   type: 'CD' | 'DVD'
