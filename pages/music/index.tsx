@@ -17,7 +17,7 @@ const MusicPage: FC<Props> = ({ list }) => (
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const data = await fetchAlbumList()
+    const data = await fetchAlbumList('_sort=date:DESC')
 
     return {
       props: { list: data },

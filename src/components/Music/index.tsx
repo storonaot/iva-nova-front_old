@@ -23,16 +23,8 @@ interface Props {
 const Music: FC<Props> = ({ list }) => {
   const [currentTab, setTab] = useState('all')
 
-  const sortedList = useMemo(
-    () =>
-      list.sort((a, b) =>
-        new Date(a.date).getFullYear() > new Date(b.date).getFullYear() ? -1 : 1,
-      ),
-    [list],
-  )
-
   const filteredList = useMemo(
-    () => (currentTab === 'all' ? sortedList : sortedList.filter(item => item.type === currentTab)),
+    () => (currentTab === 'all' ? list : list.filter(item => item.type === currentTab)),
     [currentTab],
   )
 

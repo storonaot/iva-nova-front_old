@@ -2,7 +2,6 @@ export interface TrackItem {
   id: number
   name: string
   name_eng: string
-  timing: string
   audio_link: string
 }
 

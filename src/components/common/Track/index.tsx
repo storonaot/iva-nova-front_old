@@ -9,8 +9,8 @@ interface Props {
 }
 
 const Track = ({ track }: Props) => {
-  const seconds = (Number(track.timing) / 1000) % 60
-  const minutes = parseInt(((Number(track.timing) / (1000 * 60)) % 60).toString(), 0)
+  // const seconds = (Number(track.timing) / 1000) % 60
+  // const minutes = parseInt(((Number(track.timing) / (1000 * 60)) % 60).toString(), 0)
 
   return (
     <Block2 key={track.id}>
@@ -18,9 +18,7 @@ const Track = ({ track }: Props) => {
         <PlayIcon fill={themeSettings.colors.secondary} opacity="1" />
       </IconWrapper>
       <div>{track.name}</div>
-      <div>
-        {minutes}:{seconds}
-      </div>
+      <div>3:21</div>
       <TimeLineWrapper>
         <TimeLine width={30} />
         <TimeLine width={20} lineColor="secondary" />
