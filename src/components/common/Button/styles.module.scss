@@ -1,0 +1,28 @@
+.button {
+  --grayDark:  #565656;
+  --secondaryFont: 'Podkova';
+  --buttonHeight: 40px;
+  --xSmallRadius: 4px;
+
+  background-color: var(--grayDark);
+  padding: 0 24px;
+  display: inline-block;
+  font-size: 1.375em;
+  font-family: var(--secondaryFont);
+  font-weight: 400;
+  line-height: calc(var(--buttonHeight) - 5px);
+  height: var(--buttonHeight);
+  border-radius: var(--xSmallRadius);
+  border: 1px solid var(--grayDark);
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+  width: auto;
+  &.isGhost {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid #fff;
+  }
+  &.isBlock {
+    width: 100%;
+  }
+}
