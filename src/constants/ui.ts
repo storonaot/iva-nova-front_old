@@ -33,4 +33,5 @@ export const COLORS = {
   label: '#9C6D6D',
   gray: '#C3C3C3',
   grayDark: '#565656',
+  primaryActive: '#904949',
 }
