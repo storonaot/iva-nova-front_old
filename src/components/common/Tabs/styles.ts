@@ -1,5 +1,12 @@
 import styled from 'styled-components'
-import { SECONDARY_FONT, SPACE_2, SPACE_5, SECONDARY_COLOR, SPACE_1 } from '../../../theme'
+import {
+  SECONDARY_FONT,
+  SPACE_2,
+  SPACE_5,
+  SECONDARY_COLOR,
+  PRIMARY_ACTIVE_COLOR,
+  SPACE_1,
+} from '../../../theme'
 
 export const TabList = styled.div`
   display: flex;
@@ -17,5 +24,9 @@ export const TabItem = styled.div<{ isActive?: boolean }>`
   margin-top: ${SPACE_1};
   &:lastchild {
     margin-right: 0;
+  }
+  &:hover {
+    color: ${PRIMARY_ACTIVE_COLOR};
+    transition: color 0.5s ease;
   }
 `
