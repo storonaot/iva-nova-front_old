@@ -1,7 +1,13 @@
 import styled from 'styled-components'
 import media from 'styled-media-query'
 
-import { SECONDARY_FONT, SPACE_1, selectCustomSize, selectSpacing } from '../../../theme'
+import {
+  SECONDARY_FONT,
+  PRIMARY_ACTIVE_COLOR,
+  SPACE_1,
+  selectCustomSize,
+  selectSpacing,
+} from '../../../theme'
 
 export const MenuRoot = styled.nav`
   display: none;
@@ -23,6 +29,10 @@ export const MenuItem = styled.a<MenuItemType>`
   line-height: ${selectCustomSize('headerHeight')};
   cursor: pointer;
   color: ${({ isActive, theme: { colors } }) => (isActive ? colors.secondary : 'inherit')};
+  &:hover {
+    color: ${PRIMARY_ACTIVE_COLOR};
+    transition: color 0.5s ease;
+  }
   ${media.greaterThan('large')`
     padding:0 ${selectSpacing(1.5)};
   `}
