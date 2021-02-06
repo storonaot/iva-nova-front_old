@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 
-import { SPACE_3, SECONDARY_FONT, selectCustomSize, X_SMALL_RADIUS } from '../../../theme'
+import { SPACE_3, SECONDARY_FONT, selectCustomSize, TEXT_COLOR, X_SMALL_RADIUS } from '../../../theme'
 
 interface Props {
   href: string
@@ -27,6 +27,10 @@ const Btn = styled.a<{ isGhost?: boolean; isBlock?: boolean }>`
   color: #fff;
   width: ${({ isBlock }) => (isBlock ? '100%' : 'auto')};
   text-align: center;
+  &:hover {
+    background-color: ${TEXT_COLOR};
+    transition: background-color 0.5s ease;
+  }
 `
 
 const Button = ({ href, children, isGhost = false, isBlock = false }: Props) => (
