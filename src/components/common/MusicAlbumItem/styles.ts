@@ -47,7 +47,6 @@ export const Overlay = styled.div`
   color: #fff;
   font-size: 0.9em;
   padding: ${SPACE_4};
-
   transition: top 0.5s ease-in;
 `
 

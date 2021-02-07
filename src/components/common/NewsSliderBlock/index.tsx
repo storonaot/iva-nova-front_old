@@ -19,7 +19,7 @@ interface Props {
   title?: string
 }
 
-const NewsSliderBlock = ({ title = 'Свежие новости' }: Props) => (
+const NewsSliderBlock: FC<Props> = ({ title = 'Свежие новости' }) => (
   <NewsRoot>
     <Container>
       <Heading title={title} btnTitle="все новости" btnHref={NEWS_URL} withMargin={false} />

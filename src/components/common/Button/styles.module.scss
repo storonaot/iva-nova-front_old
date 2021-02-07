@@ -1,0 +1,28 @@
+@import '../../../lib/sass-helpers.scss';
+
+.button {
+  background-color: $grayDarkColor;
+  padding: 0 getOffset(3);
+  display: inline-block;
+  font-size: 1.375em;
+  font-family: $secondaryFont;
+  font-weight: 400;
+  line-height: 35px;
+  height: $buttonHeight;
+  border-radius: $xSmallRadius;
+  border: 1px solid $grayDarkColor;
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+  &.isGhost {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #fff;
+  }
+  &.isBlock {
+    width:100%;
+  }
+  &:hover {
+    background-color: $textColor;
+    transition: background-color 0.5s ease;
+  }
+}
