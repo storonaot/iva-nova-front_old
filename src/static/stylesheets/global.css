@@ -36,7 +36,7 @@ body > div {
 }
 
 body {
-  font-family: var(--primaryFont), sans-serif;
+  font-family: 'ProximaNova', sans-serif;
   font-weight: 400;
   font-size: 16px;
   color: #404040;

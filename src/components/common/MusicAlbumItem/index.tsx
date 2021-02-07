@@ -1,11 +1,13 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
 
+import cn from 'classnames'
 import { MUSIC_URL } from '../../../constants/sources'
 import AspectRatioImage, { AspectRatio } from '../AspectRatioImage'
-import { ImageRoot, OverlayText, Year, Title, Content, Wrapper, Overlay, Paragrarh } from './styles'
 import { Album } from '../../../api/types'
 import { getFullImageUrl } from '../../../helpers'
+
+import s from './styles.module.scss'
 
 interface Props {
   album: Album
@@ -13,24 +15,24 @@ interface Props {
 
 const MusicAlbumItem: FC<Props> = ({ album }) => (
   <Link href={`${MUSIC_URL}/${album.id}`}>
-    <Wrapper>
-      <ImageRoot>
+    <div className={s.wrapper}>
+      <div className={s.imageRoot}>
         <AspectRatioImage
           imageUrl={getFullImageUrl(album.cover.url)}
           aspectRatio={AspectRatio['1:1']}
         />
-        <Overlay>
-          <OverlayText>
-            <Paragrarh isBold>{album.name}</Paragrarh>
-            <Paragrarh>{album.short_description}</Paragrarh>
-          </OverlayText>
-        </Overlay>
-      </ImageRoot>
-      <Content>
-        <Title>{album.name}</Title>
-        <Year>{new Date(album.date).getFullYear()}</Year>
-      </Content>
-    </Wrapper>
+        <div className={s.overlay}>
+          <div className={s.overlayText}>
+            <p className={cn(s.paragrarh, s.isBold)}>{album.name}</p>
+            <p className={s.paragrarh}>{album.short_description}</p>
+          </div>
+        </div>
+      </div>
+      <div className={s.content}>
+        <p className={s.title}>{album.name}</p>
+        <p className={s.year}>{new Date(album.date).getFullYear()}</p>
+      </div>
+    </div>
   </Link>
 )
 
