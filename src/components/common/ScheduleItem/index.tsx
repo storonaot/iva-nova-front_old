@@ -25,12 +25,12 @@ const zeroPadded = (num: number) => {
 const ScheduleItem: FC<{ item: EventItem }> = ({ item }) => {
   const renderEventInfoLink = useCallback(() => {
     const currentTimestamp = Date.now()
-    const event = new Date(item.date).getTime()
+    const eventTimestamp = new Date(item.date).getTime()
 
-    const isPastEvent = currentTimestamp > event
-    const isFutureEvent = currentTimestamp < event
+    const isPastEvent = currentTimestamp > eventTimestamp
+    const isFutureEvent = currentTimestamp < eventTimestamp
 
-    if (isPastEvent && item.report_link != null) {
+    if (isPastEvent && item.report_link) {
       return (
         <a className={s.eventInfoLink} href={item.report_link} rel="noreferrer" target="_blank">
           Отчет
@@ -38,7 +38,7 @@ const ScheduleItem: FC<{ item: EventItem }> = ({ item }) => {
       )
     }
 
-    if (isFutureEvent && item.ticket_link != null) {
+    if (isFutureEvent && item.ticket_link) {
       return (
         <a className={s.eventInfoLink} rel="noreferrer" target="_blank" href={item.ticket_link}>
           Купить билет

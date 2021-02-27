@@ -13,6 +13,7 @@ interface Props {
   options: Option[]
   label: string
   id: string
+  type?: 'number' | 'text'
 }
 
 const Root = styled.div`
@@ -26,7 +27,7 @@ const FieldWrapper = styled.div`
   width: 100%;
 `
 
-const Autocomplete = ({ options, label, id }: Props) => {
+const Autocomplete = ({ options, label, id, type = 'text' }: Props) => {
   return (
     <Root>
       <InputLabel>{label}</InputLabel>
@@ -51,6 +52,7 @@ const Autocomplete = ({ options, label, id }: Props) => {
                 id={params.id}
                 size={params.size}
                 color="secondary"
+                type={type}
               />
             )
           }}

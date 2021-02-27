@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 import Search from './Search'
 import Autocomplete from './Autocomplete'
 
-import { yaers, cities } from './data'
+import { yaers } from './data'
 
 import {
   Root,
@@ -12,15 +12,20 @@ import {
   CityFieldWrapper,
   SearchFieldWrapper,
 } from './styles'
+import { City } from '../../../api/types'
 
-const Filters = () => (
+const Filters: FC<{ cityList: City[] }> = ({ cityList }) => (
   <Root>
     <SelectControls>
       <YearFieldWrapper>
         <Autocomplete options={yaers} label="Год" id="year" />
       </YearFieldWrapper>
       <CityFieldWrapper>
-        <Autocomplete options={cities} label="Город" id="cities" />
+        <Autocomplete
+          options={cityList.map(city => ({ value: city.id, label: city.name }))}
+          label="Город"
+          id="cities"
+        />
       </CityFieldWrapper>
     </SelectControls>
     <SearchFieldWrapper>

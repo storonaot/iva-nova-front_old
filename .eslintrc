@@ -76,7 +76,8 @@
       }
     ],
     "no-template-curly-in-string": "off",
-    "jsx-a11y/anchor-is-valid": "off"
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/require-default-props": "off"
   },
   "env": {
     "browser": true,

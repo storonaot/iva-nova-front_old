@@ -26,6 +26,7 @@ export interface Album {
 }
 
 export interface City {
+  id: number
   name: string
   name_eng: string
 }

@@ -18,7 +18,7 @@ export const SelectControls = styled.div`
 
 export const YearFieldWrapper = styled.div`
   width: 25%;
-  max-width: 150px;
+  max-width: 170px;
 `
 
 export const CityFieldWrapper = styled.div`

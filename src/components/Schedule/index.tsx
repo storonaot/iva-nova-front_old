@@ -9,17 +9,22 @@ import ScheduleList from './List'
 
 import Container from '../common/Container'
 import bgImage from '../../static/images/bg2.jpg'
-import { EventItem } from '../../api/types'
+import { EventItem, City } from '../../api/types'
 
 export const Root = styled.div`
   background-image: url(${bgImage});
 `
 
-const Schedule: FC<{ list: EventItem[] }> = ({ list }) => (
+interface Props {
+  list: EventItem[]
+  cityList: City[]
+}
+
+const Schedule: FC<Props> = ({ list, cityList }) => (
   <Root>
     <Container>
       <Title withMargin>Афиша</Title>
-      <ScheduleFilters />
+      <ScheduleFilters cityList={cityList} />
       <ScheduleList list={list} />
       <Pagination />
     </Container>
