@@ -75,10 +75,12 @@
         }
       }
     ],
-    "no-template-curly-in-string": "off"
+    "no-template-curly-in-string": "off",
+    "jsx-a11y/anchor-is-valid": "off"
   },
   "env": {
     "browser": true,
+    "node": true,
     "es6": true
   }
 }

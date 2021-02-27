@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 
 import Title from '../common/Title'
@@ -9,17 +9,18 @@ import ScheduleList from './List'
 
 import Container from '../common/Container'
 import bgImage from '../../static/images/bg2.jpg'
+import { EventItem } from '../../api/types'
 
 export const Root = styled.div`
   background-image: url(${bgImage});
 `
 
-const Schedule = () => (
+const Schedule: FC<{ list: EventItem[] }> = ({ list }) => (
   <Root>
     <Container>
       <Title withMargin>Афиша</Title>
       <ScheduleFilters />
-      <ScheduleList />
+      <ScheduleList list={list} />
       <Pagination />
     </Container>
   </Root>

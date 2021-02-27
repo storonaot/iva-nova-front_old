@@ -1,29 +1,10 @@
-import styled from 'styled-components'
-import media from 'styled-media-query'
+@import '../../../lib/sass-helpers.scss';
 
-import Block from '../Block'
 
-import {
-  PRIMARY_COLOR,
-  SPACE_1,
-  SPACE_2,
-  SPACE_3,
-  SPACE_5,
-  SECONDARY_FONT,
-  selectSpacing,
-} from '../../../theme'
-
-export const RhombusWrapper = styled.div`
-  position: absolute;
-  width: 11px;
-  height: 63px;
-  top: ${SPACE_2};
-  left: ${SPACE_1};
-`
-
-export const Root = styled(Block)`
-  padding-left: ${SPACE_5};
-  padding-right: ${SPACE_3};
+.root {
+  @include block;
+  padding-left: getOffset(5);
+  padding-right: getOffset(3);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   > *:first-child {
@@ -50,10 +31,10 @@ export const Root = styled(Block)`
     grid-column: span 4;
     grid-row: 4;
   }
-  ${media.greaterThan('medium')`
+  @include respondTo(tablet) {
     grid-template-columns: repeat(12, 1fr);
-    grid-gap: ${SPACE_1};
-    padding-left: ${SPACE_3};
+    grid-gap: getOffset(1);
+    padding-left: getOffset(3);
     > *:first-child {
       grid-column: 1 / span 2;
       grid-row: 1;
@@ -78,103 +59,106 @@ export const Root = styled(Block)`
       grid-column: 11 / span 3;
       grid-row: 1 / span 2;
     }
-  `}
-`
+  }
+}
 
-export const Date = styled.span`
+.date {
   font-weight: 600;
   font-size: 1.125em;
   line-height: 1.2em;
-  ${media.greaterThan('medium')`
+  @include respondTo(tablet) {
     font-size: 1.625em;
     justify-self: center;
-  `}
-`
-export const Year = styled.span`
+  }
+}
+
+.year {
   font-size: 1.125em;
   line-height: 1.2em;
-  ${media.greaterThan('medium')`
+  @include respondTo(tablet) {
     justify-self: center;
-  `}
-`
-export const City = styled.span`
+  }
+}
+
+.city {
   font-size: 1.125em;
   line-height: 1.2em;
-  margin-bottom: ${SPACE_1};
+  margin-bottom: getOffset(1);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  ${media.greaterThan('small')`
+  @include respondTo(mobile) {
     justify-self: end;
-  `}
-  ${media.greaterThan('medium')`
+  }
+  @include respondTo(tablet) {
     margin-bottom: 0;
     align-self: center;
     white-space: initial;
     overflow: initial;
     text-overflow: initial;
     justify-self: initial;
-  `}
-`
-export const Title = styled.span`
-  font-family: ${SECONDARY_FONT};
+  }
+}
+
+.title {
+  font-family: $secondaryFont;
   font-size: 1.375em;
   line-height: 1.2em;
   font-weight: 600;
-  margin-bottom: ${SPACE_1};
+  margin-bottom: getOffset(1);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  ${media.greaterThan('medium')`
+  @include respondTo(tablet) {
     margin-bottom: 0;
     white-space: initial;
     overflow: initial;
     text-overflow: initial;
-  `}
-`
-export const Place = styled.span`
-  line-height: 1.2em;
-  margin-bottom: ${selectSpacing(1.5)};
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  ${media.greaterThan('medium')`
-    margin-bottom: 0;
-    white-space: initial;
-    overflow: initial;
-    text-overflow: initial;
-  `}
-`
+  }
+}
 
-export const PlaceLink = styled.a`
+.place {
   line-height: 1.2em;
-  margin-bottom: ${selectSpacing(1.5)};
-  text-decoration-line: underline;
+  margin-bottom: getOffset(1.5);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  ${media.greaterThan('medium')`
+  @include respondTo(tablet) {
     margin-bottom: 0;
     white-space: initial;
     overflow: initial;
     text-overflow: initial;
-  `}
-`
+  }
+}
 
-export const BuyLink = styled.a`
-  font-family: ${SECONDARY_FONT};
+a.place {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.eventInfoLink {
+  font-family: $secondaryFont;
   font-weight: 600;
   font-size: 1.25em;
   line-height: 1.2em;
   text-decoration-line: underline;
-  color: ${PRIMARY_COLOR};
+  color: $primaryColor;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  ${media.greaterThan('medium')`
+  cursor: pointer;
+  @include respondTo(tablet) {
     align-self: center;
     justify-self: end;
     overflow: initial;
     text-overflow: initial;
-  `}
-`
+  }
+}
+
+.rhombusWrapper {
+  position: absolute;
+  width: 11px;
+  height: 63px;
+  top: getOffset(2);
+  left: getOffset(1);
+}

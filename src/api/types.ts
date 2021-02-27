@@ -24,3 +24,20 @@ export interface Album {
   short_description_eng: string
   type: 'CD' | 'DVD'
 }
+
+export interface City {
+  name: string
+  name_eng: string
+}
+
+export interface EventItem {
+  id: number
+  title: string
+  title_eng: string
+  date: Date
+  place: string
+  place_link?: string
+  city: City
+  ticket_link?: string
+  report_link?: string
+}

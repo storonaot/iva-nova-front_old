@@ -1,12 +1,12 @@
-import React from 'react'
-import ScheduleItem, { ScheduleItemTypes } from '../../common/ScheduleItem'
+import React, { FC } from 'react'
+import ScheduleItem from '../../common/ScheduleItem'
 import ContentWrapper from '../../common/ContentWrapper'
 
-import schedule from './data'
+import { EventItem } from '../../../api/types'
 
-const ScheduleList = () => (
+const ScheduleList: FC<{ list: EventItem[] }> = ({ list }) => (
   <ContentWrapper>
-    {schedule.map((item: ScheduleItemTypes) => (
+    {list.map((item: EventItem) => (
       <ScheduleItem key={item.id} item={item} />
     ))}
   </ContentWrapper>
