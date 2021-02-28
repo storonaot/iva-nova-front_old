@@ -4,7 +4,7 @@
 import React, { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { ThemeProvider as ThemeProviderMUI } from '@material-ui/core/styles'
-// import CssBaseline from '@material-ui/core/CssBaseline'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import 'css-wipe'
 import '../src/static/stylesheets/global.css'
 
@@ -22,7 +22,7 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
     <ThemeProviderMUI theme={muiTheme}>
-      {/* <CssBaseline /> */}
+      <CssBaseline />
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
       </ThemeProvider>

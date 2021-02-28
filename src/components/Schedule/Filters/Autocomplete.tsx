@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import AutocompleteMUI from '@material-ui/lab/Autocomplete'
 import { InputLabel, TextField } from '@material-ui/core'
 import styled from 'styled-components'
@@ -14,6 +14,7 @@ interface Props {
   label: string
   id: string
   type?: 'number' | 'text'
+  onChange: (id: number | null) => void
 }
 
 const Root = styled.div`
@@ -27,12 +28,16 @@ const FieldWrapper = styled.div`
   width: 100%;
 `
 
-const Autocomplete = ({ options, label, id, type = 'text' }: Props) => {
+const Autocomplete: FC<Props> = ({ options, label, id, type = 'text', onChange }) => {
   return (
     <Root>
       <InputLabel>{label}</InputLabel>
       <FieldWrapper>
         <AutocompleteMUI
+          onChange={(_, newValue) => {
+            if (newValue != null) onChange(Number(newValue.value))
+            else onChange(null)
+          }}
           id={id}
           options={options}
           getOptionLabel={option => option.label}
