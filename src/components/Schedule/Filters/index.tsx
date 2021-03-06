@@ -42,7 +42,7 @@ const Filters: FC<Props> = ({ cityList, onFilter }) => {
         </YearFieldWrapper>
         <CityFieldWrapper>
           <Autocomplete
-            options={cityList.map(city => ({ value: city.id, label: city.name }))}
+            options={cityList.map(city => ({ value: city.id, label: city.title }))}
             label="Город"
             id="city"
             onChange={id => {

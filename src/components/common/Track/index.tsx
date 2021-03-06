@@ -17,7 +17,7 @@ const Track = ({ track }: Props) => {
       <IconWrapper>
         <PlayIcon fill={themeSettings.colors.secondary} opacity="1" />
       </IconWrapper>
-      <div>{track.name}</div>
+      <div>{track.title}</div>
       <div>3:21</div>
       <TimeLineWrapper>
         <TimeLine width={30} />

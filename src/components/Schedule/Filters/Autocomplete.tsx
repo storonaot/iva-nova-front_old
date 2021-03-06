@@ -42,6 +42,9 @@ const Autocomplete: FC<Props> = ({ options, label, id, type = 'text', onChange }
           options={options}
           getOptionLabel={option => option.label}
           fullWidth
+          getOptionSelected={(option, value) => {
+            return !!(option && value)
+          }}
           renderInput={params => {
             return (
               <TextField

@@ -1,8 +1,9 @@
 export interface TrackItem {
   id: number
-  name: string
-  name_eng: string
-  audio_link: string
+  title: string
+  title_eng: string
+  audio_src: string
+  ordinal_number: number
 }
 
 export interface Cover {
@@ -12,23 +13,24 @@ export interface Cover {
 
 export interface Album {
   id: number
-  name: string
-  name_eng: string
-  ya_music_link: string
-  itunes_link: string
+  title: string
+  title_eng: string
   description: string
+  description_eng: string
+  short_description: string
+  short_description_eng: string
   date: Date
   cover: Cover
   tracks: TrackItem[]
-  short_description: string
-  short_description_eng: string
   type: 'CD' | 'DVD'
+  ya_music_src?: string
+  itunes_src?: string
 }
 
 export interface City {
   id: number
-  name: string
-  name_eng: string
+  title: string
+  title_eng: string
 }
 
 export interface EventItem {
@@ -37,8 +39,7 @@ export interface EventItem {
   title_eng: string
   date: Date
   place: string
-  place_link?: string
   city: City
-  ticket_link?: string
-  report_link?: string
+  ticket_src?: string
+  report_src?: string
 }

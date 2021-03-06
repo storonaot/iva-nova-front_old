@@ -23,13 +23,13 @@ const MusicAlbumItem: FC<Props> = ({ album }) => (
         />
         <div className={s.overlay}>
           <div className={s.overlayText}>
-            <p className={cn(s.paragrarh, s.isBold)}>{album.name}</p>
+            <p className={cn(s.paragrarh, s.isBold)}>{album.title}</p>
             <p className={s.paragrarh}>{album.short_description}</p>
           </div>
         </div>
       </div>
       <div className={s.content}>
-        <p className={s.title}>{album.name}</p>
+        <p className={s.title}>{album.title}</p>
         <p className={s.year}>{new Date(album.date).getFullYear()}</p>
       </div>
     </div>

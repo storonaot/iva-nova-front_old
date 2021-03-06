@@ -12,6 +12,7 @@ export enum AspectRatio {
 
 interface Props {
   imageUrl: string
+  defaultImageUrl?: string
   aspectRatio?: AspectRatio
   children?: React.ReactNode
 }
@@ -38,15 +39,21 @@ export const AspectRatioInner = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(${({ imageUrl }: Props) => imageUrl});
+  background-image: url(${({ imageUrl }: Props) => imageUrl}),
+    url(${({ defaultImageUrl }: Props) => defaultImageUrl});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 `
 
-const AspectRatioImage: FC<Props> = ({ aspectRatio = AspectRatio['16:9'], imageUrl, children }) => (
+const AspectRatioImage: FC<Props> = ({
+  aspectRatio = AspectRatio['16:9'],
+  imageUrl,
+  defaultImageUrl = 'https://upload.wikimedia.org/wikipedia/ru/2/2a/Adventure_Time_with_Finn_%26_Jake.png',
+  children,
+}) => (
   <AspectRatioBox aspectRatio={aspectRatio}>
-    <AspectRatioInner imageUrl={imageUrl} />
+    <AspectRatioInner imageUrl={imageUrl} defaultImageUrl={defaultImageUrl} />
     {children}
   </AspectRatioBox>
 )

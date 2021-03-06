@@ -30,17 +30,17 @@ const ScheduleItem: FC<{ item: EventItem }> = ({ item }) => {
     const isPastEvent = currentTimestamp > eventTimestamp
     const isFutureEvent = currentTimestamp < eventTimestamp
 
-    if (isPastEvent && item.report_link) {
+    if (isPastEvent && item.report_src) {
       return (
-        <a className={s.eventInfoLink} href={item.report_link} rel="noreferrer" target="_blank">
+        <a className={s.eventInfoLink} href={item.report_src} rel="noreferrer" target="_blank">
           Отчет
         </a>
       )
     }
 
-    if (isFutureEvent && item.ticket_link) {
+    if (isFutureEvent && item.ticket_src) {
       return (
-        <a className={s.eventInfoLink} rel="noreferrer" target="_blank" href={item.ticket_link}>
+        <a className={s.eventInfoLink} rel="noreferrer" target="_blank" href={item.ticket_src}>
           Купить билет
         </a>
       )
@@ -56,15 +56,9 @@ const ScheduleItem: FC<{ item: EventItem }> = ({ item }) => {
     <div className={s.root}>
       <div className={s.date}>{`${currentDate}.${currentMonth}`}</div>
       <div className={s.year}>{new Date(item.date).getFullYear()}</div>
-      <span className={s.city}>{item.city.name}</span>
+      <span className={s.city}>{item.city.title}</span>
       <span className={s.title}>{item.title}</span>
-      {item.place_link ? (
-        <a className={s.place} rel="noreferrer" target="_blank" href={item.place_link}>
-          {item.place}
-        </a>
-      ) : (
-        <span className={s.place}>{item.place}</span>
-      )}
+      <span className={s.place}>{item.place}</span>
       {renderEventInfoLink()}
       <div className={s.rhombusWrapper}>
         <RhombusImage />

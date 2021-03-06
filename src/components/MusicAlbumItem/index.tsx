@@ -35,13 +35,13 @@ interface Props {
 }
 
 const MusicAlbumItem: FC<Props> = ({ item }) => {
-  const shouldShowSubscriptionLinks = item.ya_music_link || item.itunes_link
+  const shouldShowSubscriptionLinks = item.ya_music_src || item.itunes_src
 
   return (
     <Container>
       <MainHeading>
         <Title isUpCase>
-          {item.name} / {new Date(item.date).getFullYear()}
+          {item.title} / {new Date(item.date).getFullYear()}
         </Title>
         <Link href={`${MUSIC_URL}`}>Все альбомы</Link>
       </MainHeading>
@@ -56,7 +56,7 @@ const MusicAlbumItem: FC<Props> = ({ item }) => {
           <SubscribeTitle>Треклист</SubscribeTitle>
           <NumericList>
             {item.tracks.map(track => (
-              <NumericListItem key={track.id}>{track.name}</NumericListItem>
+              <NumericListItem key={track.id}>{track.title}</NumericListItem>
             ))}
           </NumericList>
         </TrackListWrapper>
@@ -65,8 +65,8 @@ const MusicAlbumItem: FC<Props> = ({ item }) => {
         <SubscribtionsWrapper>
           <SubscribeTitle withMargin={false}>Послушать и скачать альбом:</SubscribeTitle>
           <SubscriptionsWrapper>
-            <YaMusicButton href={item.ya_music_link} />
-            <ITunesButton href={item.itunes_link} />
+            {item.ya_music_src && <YaMusicButton href={item.ya_music_src} />}
+            {item.itunes_src && <ITunesButton href={item.itunes_src} />}
           </SubscriptionsWrapper>
         </SubscribtionsWrapper>
       )}
