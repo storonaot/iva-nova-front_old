@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 
+import qs from 'qs'
 import Title from '../common/Title'
 import Pagination from '../common/Pagination'
 
@@ -17,35 +18,46 @@ export const Root = styled.div`
   background-image: url(${bgImage});
 `
 
-interface Filters {
-  year: number | null
-  city: number | null
-}
-
 interface Props {
   list: EventItem[]
   cityList: City[]
   listCount: number
 }
 
-// TODO сделать контекстный прелоадер?
+interface QueryParams {
+  _start: number
+  _limit: number
+  _where?: {
+    _or: {
+      title_contains?: string
+      place_contains?: string
+    }[]
+  }
+  city_eq?: number
+  date_gt?: number
+  date_lt?: number
+}
+
+const initialPaginationQueryParams = {
+  _start: 0,
+  _limit: COUNT_RECORDS_ON_PAGE,
+}
+
+const initialQueryParams = {
+  ...initialPaginationQueryParams,
+}
+
+const initialPage = 1
+
 const Schedule: FC<Props> = ({ list: _list, cityList, listCount: _listCount }) => {
   const [list, setList] = useState(_list)
   const [listCount, setListCount] = useState(_listCount)
-  const [page, setPage] = useState(1)
-  // const [start, setStart] = useState(0)
-  // const [limit, setLimit] = useState(0)
 
-  const [filters, setFilters] = useState<Filters>({ year: null, city: null })
+  const [queryParams, setQueryParams] = useState(initialQueryParams)
+  // как на основании параметров старт и лимит вычислять номер текущей страницы?
+  const [page, setPage] = useState(initialPage)
 
-  // const [hhh] = useState({
-  //   year: { gt: null, lt: null },
-  //   city: { eq: null },
-  // })
-
-  // const [ppp] = useState({ start: 0, limit: COUNT_RECORDS_ON_PAGE })
-
-  const getList = async (query?: string) => {
+  const getEventList = async (query?: string) => {
     try {
       const data = await fetchEventList(query)
       const count = await fetchEventsCount(query)
@@ -57,62 +69,85 @@ const Schedule: FC<Props> = ({ list: _list, cityList, listCount: _listCount }) =
     }
   }
 
-  // пагинацию сбрасываем а фильтрацию? сохраняем?
-  const onSearch = searchString => {
-    console.log('searchString', searchString)
-    // title or place
+  const getQueryString = (queryParams: QueryParams) => qs.stringify(queryParams)
+
+  const getUpdatedQueryParams = (newQueryParams, isPaginationParams = false) => {
+    const baseParams = {
+      ...queryParams,
+      ...newQueryParams,
+    }
+
+    // если переключаем страницы, то сохраняем фильтры и поиск, если изменяем фильтры или поиск,
+    // то сбрасываем пагинацию к initial значению
+    return isPaginationParams
+      ? baseParams
+      : {
+          ...baseParams,
+          ...initialPaginationQueryParams,
+        }
+  }
+
+  const updateComponentState = (newQueryParams, page?: number) => {
+    if (page != null) {
+      setPage(page)
+    } else {
+      setPage(initialPage)
+    }
+
+    setQueryParams(newQueryParams)
+  }
+
+  const onSearch = (searchString: string) => {
+    const searchQueryParams = {
+      _where: {
+        _or: [{ title_contains: searchString }, { place_contains: searchString }],
+      },
+    }
+
+    const updetedQueryParams = getUpdatedQueryParams(searchQueryParams)
+    const queryString = getQueryString(updetedQueryParams)
+
+    getEventList(queryString)
+    updateComponentState(updetedQueryParams)
   }
 
   const getYearFilter = (year: number | null) => {
-    if (year != null) {
-      const start = new Date(year, 0, 1).getTime()
-      const end = new Date(year, 11, 31).getTime()
+    const FIRST_MONTH_ON_YEAR = 0
+    const FIRST_DATE_ON_YEAR = 1
+    const LAST_MONTH_ON_YEAR = 11
+    const LAST_DATE_ON_YEAR = 31
 
-      return `date_gt=${start}&date_lt=${end}`
-    }
+    const startPeriod =
+      year === null ? undefined : new Date(year, FIRST_MONTH_ON_YEAR, FIRST_DATE_ON_YEAR).getTime()
 
-    return null
+    const endPeriod =
+      year === null ? undefined : new Date(year, LAST_MONTH_ON_YEAR, LAST_DATE_ON_YEAR).getTime()
+
+    return { date_gt: startPeriod, date_lt: endPeriod }
   }
 
-  const getCityFilter = (cityId: number | null) => {
-    if (cityId != null) {
-      return `city_eq=${cityId}`
-    }
+  const getCityFilter = (id: number | null) => ({
+    city_eq: id == null ? undefined : id,
+  })
 
-    return null
+  const onFilter = (reason: FilterReason, value: number | null) => {
+    const filtersQueryParams = reason === 'city' ? getCityFilter(value) : getYearFilter(value)
+
+    const updetedQueryParams = getUpdatedQueryParams(filtersQueryParams)
+
+    const queryString = getQueryString(updetedQueryParams)
+
+    getEventList(queryString)
+    updateComponentState(updetedQueryParams)
   }
 
-  const makeQueryFromFilters = (filters: Filters) => {
-    let accString = ''
+  const onPageChange = (newPage: number, start: number, limit: number) => {
+    const paginationQueryParams = { _start: start, _limit: limit }
+    const updetedQueryParams = getUpdatedQueryParams(paginationQueryParams, true)
+    const queryString = getQueryString(updetedQueryParams)
 
-    const cityFilter = getCityFilter(filters.city)
-    const yearFilter = getYearFilter(filters.year)
-
-    if (cityFilter) accString = `${accString}&${cityFilter}`
-    if (yearFilter) accString = `${accString}&${yearFilter}`
-
-    return accString
-  }
-
-  // при обновлении фильтра пагинацию сбрасываем до дефолта
-  const onFilter = (reason: FilterReason, id: number | null) => {
-    const updatedFilters = { ...filters, [reason]: id }
-
-    setFilters(updatedFilters)
-
-    const query = makeQueryFromFilters(updatedFilters)
-
-    getList(`${query}&_start=${0}&_limit=${COUNT_RECORDS_ON_PAGE}`)
-    setPage(1)
-  }
-
-  // при переключении страниц нужно учитывать текущие фильтры
-  const onPageChange = (_page: number, start: number, limit: number) => {
-    const _filters = makeQueryFromFilters(filters)
-    const paginationQuery = `_start=${start}&_limit=${limit}`
-
-    getList(_filters ? `${paginationQuery}&${_filters}` : paginationQuery)
-    setPage(_page)
+    getEventList(queryString)
+    updateComponentState(updetedQueryParams, newPage)
   }
 
   return (
@@ -121,7 +156,7 @@ const Schedule: FC<Props> = ({ list: _list, cityList, listCount: _listCount }) =
         <Title withMargin>Афиша</Title>
         <ScheduleFilters cityList={cityList} onSearch={onSearch} onFilter={onFilter} />
         <ScheduleList list={list} />
-        <Pagination totalRecordsCount={listCount} onChange={onPageChange} page={page} />
+        <Pagination totalRecords={listCount} onChange={onPageChange} page={page} />
       </Container>
     </Root>
   )

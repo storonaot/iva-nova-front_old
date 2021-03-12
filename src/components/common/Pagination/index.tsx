@@ -13,20 +13,20 @@ const styles = () => ({
 interface Props {
   classes: { [key: string]: string }
   // общее количество записей
-  totalRecordsCount: number
+  totalRecords: number
   onChange: (page: number, start: number, limit: number) => void
-  countRecordsOnPage?: number
+  recordsOnPage?: number
   page?: number
 }
 
 const Pagination: FC<Props> = ({
   classes,
-  totalRecordsCount,
+  totalRecords,
   onChange,
-  countRecordsOnPage = COUNT_RECORDS_ON_PAGE,
+  recordsOnPage = COUNT_RECORDS_ON_PAGE,
   page,
 }: Props) => {
-  const count = Math.ceil(totalRecordsCount / countRecordsOnPage)
+  const count = Math.ceil(totalRecords / recordsOnPage)
 
   return (
     <PaginationMUI
@@ -35,8 +35,8 @@ const Pagination: FC<Props> = ({
       classes={{ ul: classes.ul }}
       page={page}
       onChange={(_, page) => {
-        const start = (page - 1) * countRecordsOnPage
-        const limit = countRecordsOnPage
+        const start = (page - 1) * recordsOnPage
+        const limit = recordsOnPage
 
         onChange(page, start, limit)
       }}

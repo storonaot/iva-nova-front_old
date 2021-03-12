@@ -21,9 +21,9 @@ interface Props {
   onFilter: (reason: FilterReason, id: number | null) => void
 }
 
-const Filters: FC<Props> = ({ cityList, onFilter }) => {
+const Filters: FC<Props> = ({ cityList, onFilter, onSearch }) => {
   const yearsOptions = useMemo(
-    () => getYears().map(year => ({ label: `${year}`, value: `${year}` })),
+    () => getYears('desc').map(year => ({ label: `${year}`, value: `${year}` })),
     [],
   )
 
@@ -52,7 +52,7 @@ const Filters: FC<Props> = ({ cityList, onFilter }) => {
         </CityFieldWrapper>
       </SelectControls>
       <SearchFieldWrapper>
-        <Search placeholder="Название концерта, клуб" />
+        <Search placeholder="Название концерта, клуб" onSearch={onSearch} />
       </SearchFieldWrapper>
     </Root>
   )
