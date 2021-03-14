@@ -54,7 +54,7 @@ const Schedule: FC<Props> = ({ list: _list, cityList, listCount: _listCount }) =
   const [listCount, setListCount] = useState(_listCount)
 
   const [queryParams, setQueryParams] = useState(initialQueryParams)
-  // как на основании параметров старт и лимит вычислять номер текущей страницы?
+  // TODO? как на основании параметров старт и лимит вычислять номер текущей страницы?
   const [page, setPage] = useState(initialPage)
 
   const getEventList = async (query?: string) => {
@@ -69,25 +69,7 @@ const Schedule: FC<Props> = ({ list: _list, cityList, listCount: _listCount }) =
     }
   }
 
-  const getQueryString = (queryParams: QueryParams) => qs.stringify(queryParams)
-
-  const getUpdatedQueryParams = (newQueryParams, isPaginationParams = false) => {
-    const baseParams = {
-      ...queryParams,
-      ...newQueryParams,
-    }
-
-    // если переключаем страницы, то сохраняем фильтры и поиск, если изменяем фильтры или поиск,
-    // то сбрасываем пагинацию к initial значению
-    return isPaginationParams
-      ? baseParams
-      : {
-          ...baseParams,
-          ...initialPaginationQueryParams,
-        }
-  }
-
-  const updateComponentState = (newQueryParams, page?: number) => {
+  const updateComponentState = (newQueryParams: QueryParams, page?: number) => {
     if (page != null) {
       setPage(page)
     } else {
@@ -95,20 +77,6 @@ const Schedule: FC<Props> = ({ list: _list, cityList, listCount: _listCount }) =
     }
 
     setQueryParams(newQueryParams)
-  }
-
-  const onSearch = (searchString: string) => {
-    const searchQueryParams = {
-      _where: {
-        _or: [{ title_contains: searchString }, { place_contains: searchString }],
-      },
-    }
-
-    const updetedQueryParams = getUpdatedQueryParams(searchQueryParams)
-    const queryString = getQueryString(updetedQueryParams)
-
-    getEventList(queryString)
-    updateComponentState(updetedQueryParams)
   }
 
   const getYearFilter = (year: number | null) => {
@@ -130,11 +98,43 @@ const Schedule: FC<Props> = ({ list: _list, cityList, listCount: _listCount }) =
     city_eq: id == null ? undefined : id,
   })
 
+  const getQueryString = (queryParams: QueryParams) => qs.stringify(queryParams)
+
+  const getUpdatedQueryParams = (
+    newQueryParamsPart: Partial<QueryParams>,
+    isPaginationParams = false,
+  ) => {
+    const baseParams = {
+      ...queryParams,
+      ...newQueryParamsPart,
+    }
+
+    // если переключаем страницы, то сохраняем фильтры и поиск, если изменяем фильтры или поиск,
+    // то сбрасываем пагинацию к initial значению
+    return isPaginationParams
+      ? baseParams
+      : {
+          ...baseParams,
+          ...initialPaginationQueryParams,
+        }
+  }
+
+  const onSearch = (searchString: string) => {
+    const searchQueryParams = {
+      _where: {
+        _or: [{ title_contains: searchString }, { place_contains: searchString }],
+      },
+    }
+    const updetedQueryParams = getUpdatedQueryParams(searchQueryParams)
+    const queryString = getQueryString(updetedQueryParams)
+
+    getEventList(queryString)
+    updateComponentState(updetedQueryParams)
+  }
+
   const onFilter = (reason: FilterReason, value: number | null) => {
     const filtersQueryParams = reason === 'city' ? getCityFilter(value) : getYearFilter(value)
-
     const updetedQueryParams = getUpdatedQueryParams(filtersQueryParams)
-
     const queryString = getQueryString(updetedQueryParams)
 
     getEventList(queryString)
