@@ -1,9 +1,18 @@
 import React, { FC, useCallback, useMemo } from 'react'
 import RhombusImage from '../../../static/svg/rhombus.svg'
 
-import s from './styles.module.scss'
-
 import { EventItem } from '../../../api/types'
+
+import {
+  RhombusWrapper,
+  Root,
+  Date as DateBlock,
+  Year,
+  City,
+  Title,
+  Place,
+  BuyLink,
+} from './styles'
 
 export interface ScheduleItemTypes {
   id: number
@@ -32,17 +41,17 @@ const ScheduleItem: FC<{ item: EventItem }> = ({ item }) => {
 
     if (isPastEvent && item.report_src) {
       return (
-        <a className={s.eventInfoLink} href={item.report_src} rel="noreferrer" target="_blank">
+        <BuyLink href={item.report_src} rel="noreferrer" target="_blank">
           Отчет
-        </a>
+        </BuyLink>
       )
     }
 
     if (isFutureEvent && item.ticket_src) {
       return (
-        <a className={s.eventInfoLink} rel="noreferrer" target="_blank" href={item.ticket_src}>
+        <BuyLink rel="noreferrer" target="_blank" href={item.ticket_src}>
           Купить билет
-        </a>
+        </BuyLink>
       )
     }
 
@@ -53,17 +62,17 @@ const ScheduleItem: FC<{ item: EventItem }> = ({ item }) => {
   const currentDate = useMemo(() => zeroPadded(new Date(item.date).getDate()), [])
 
   return (
-    <div className={s.root}>
-      <div className={s.date}>{`${currentDate}.${currentMonth}`}</div>
-      <div className={s.year}>{new Date(item.date).getFullYear()}</div>
-      <span className={s.city}>{item.city.title}</span>
-      <span className={s.title}>{item.title}</span>
-      <span className={s.place}>{item.place}</span>
+    <Root>
+      <DateBlock>{`${currentDate}.${currentMonth}`}</DateBlock>
+      <Year>{new Date(item.date).getFullYear()}</Year>
+      <City>{item.city.title}</City>
+      <Title>{item.title}</Title>
+      <Place>{item.place}</Place>
       {renderEventInfoLink()}
-      <div className={s.rhombusWrapper}>
+      <RhombusWrapper>
         <RhombusImage />
-      </div>
-    </div>
+      </RhombusWrapper>
+    </Root>
   )
 }
 

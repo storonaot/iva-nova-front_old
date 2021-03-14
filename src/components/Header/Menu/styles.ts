@@ -3,7 +3,7 @@ import media from 'styled-media-query'
 
 import {
   SECONDARY_FONT,
-  PRIMARY_ACTIVE_COLOR,
+  PRIMARY_COLOR,
   SPACE_1,
   selectCustomSize,
   selectSpacing,
@@ -29,8 +29,9 @@ export const MenuItem = styled.a<MenuItemType>`
   line-height: ${selectCustomSize('headerHeight')};
   cursor: pointer;
   color: ${({ isActive, theme: { colors } }) => (isActive ? colors.secondary : 'inherit')};
+  pointer-events: ${({ isActive }) => (isActive ? 'none' : 'inherit')};
   &:hover {
-    color: ${PRIMARY_ACTIVE_COLOR};
+    color: ${PRIMARY_COLOR};
     transition: color 0.5s ease;
   }
   ${media.greaterThan('large')`

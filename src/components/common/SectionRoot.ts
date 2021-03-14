@@ -15,7 +15,7 @@ const SectionRoot = styled.div<{ bgImage?: any; bgRepeat?: boolean; opacity?: nu
     opacity: ${({ opacity = 1 }) => opacity};
     top: 0;
     background-image: url(${({ bgImage }) => bgImage || null});
-    background-repeat: ${({ bgRepeat = true }) => (bgRepeat ? 'repeat-x' : 'no-repeat')};
+    background-repeat: ${({ bgRepeat = true }) => (bgRepeat ? 'repeat' : 'no-repeat')};
   }
 `
 

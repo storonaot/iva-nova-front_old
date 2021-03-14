@@ -29,8 +29,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     return {
       props: { list: data, listCount, cityList },
     }
-  } catch (err) {
-    console.error('error', err.message)
+  } catch (error) {
+    console.error('error', error.message)
 
     return {
       props: { list: [] },

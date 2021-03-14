@@ -57,8 +57,8 @@ const Hero = () => (
             </SocialsWrapper>
           </SocialsRoot>
           <SubscriptionsWrapper>
-            <ITunesButton />
-            <YaMusicButton />
+            <ITunesButton href="/" />
+            <YaMusicButton href="/" />
           </SubscriptionsWrapper>
         </Content>
       </Card>

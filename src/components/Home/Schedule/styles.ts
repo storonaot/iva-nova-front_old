@@ -7,7 +7,6 @@ import { SPACE_3, SPACE_6, SPACE_9, selectCustomSize } from '../../../theme'
 
 export const Root = styled.div`
   padding-top: ${SPACE_6};
-  margin-bottom: ${SPACE_3};
   background-image: url(${bgImage});
   ${media.greaterThan('medium')`
     margin-top: ${selectCustomSize('heroTopOffsetNegative')};

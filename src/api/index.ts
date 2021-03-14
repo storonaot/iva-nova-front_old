@@ -1,5 +1,5 @@
 import axios from './axios'
-import { Album, City, EventItem } from './types'
+import { Album, City, EventItem, TrackItem } from './types'
 
 export const fetchAlbumList = (paramsString?: string): Promise<Album[]> =>
   axios.get(paramsString ? `/albums?${paramsString}` : '/albums').then(({ data }) => data)
@@ -17,3 +17,6 @@ export const fetchEventsCount = (paramsString?: string): Promise<number> =>
 
 export const fetchCityList = (paramsString?: string): Promise<City[]> =>
   axios.get(paramsString ? `/cities?${paramsString}` : '/cities').then(({ data }) => data)
+
+export const fetchTrackList = (paramsString?: string): Promise<TrackItem[]> =>
+  axios.get(paramsString ? `/tracks?${paramsString}` : '/tracks').then(({ data }) => data)
