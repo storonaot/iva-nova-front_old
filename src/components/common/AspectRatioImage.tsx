@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 
 import styled from 'styled-components'
+import { DEFAULT_IMAGE_URL } from '../../constants/ui'
 
 export enum AspectRatio {
   '16:9' = '16:9',
@@ -49,7 +50,7 @@ export const AspectRatioInner = styled.div`
 const AspectRatioImage: FC<Props> = ({
   aspectRatio = AspectRatio['16:9'],
   imageUrl,
-  defaultImageUrl = 'https://upload.wikimedia.org/wikipedia/ru/2/2a/Adventure_Time_with_Finn_%26_Jake.png',
+  defaultImageUrl = DEFAULT_IMAGE_URL,
   children,
 }) => (
   <AspectRatioBox aspectRatio={aspectRatio}>

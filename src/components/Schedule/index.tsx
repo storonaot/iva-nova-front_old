@@ -1,5 +1,4 @@
 import React, { FC, useState } from 'react'
-import styled from 'styled-components'
 
 import qs from 'qs'
 import Title from '../common/Title'
@@ -13,10 +12,7 @@ import bgImage from '../../static/images/bg2.jpg'
 import { EventItem, City } from '../../api/types'
 import { fetchEventList, fetchEventsCount } from '../../api'
 import { COUNT_RECORDS_ON_PAGE } from '../../constants'
-
-export const Root = styled.div`
-  background-image: url(${bgImage});
-`
+import SectionRoot from '../common/SectionRoot'
 
 interface Props {
   list: EventItem[]
@@ -151,14 +147,14 @@ const Schedule: FC<Props> = ({ list: _list, cityList, listCount: _listCount }) =
   }
 
   return (
-    <Root>
+    <SectionRoot bgImage={bgImage} bgRepeat="x">
       <Container>
         <Title withMargin>Афиша</Title>
         <ScheduleFilters cityList={cityList} onSearch={onSearch} onFilter={onFilter} />
         <ScheduleList list={list} />
         <Pagination totalRecords={listCount} onChange={onPageChange} page={page} />
       </Container>
-    </Root>
+    </SectionRoot>
   )
 }
 

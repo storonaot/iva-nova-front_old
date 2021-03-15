@@ -20,3 +20,9 @@ export const fetchCityList = (paramsString?: string): Promise<City[]> =>
 
 export const fetchTrackList = (paramsString?: string): Promise<TrackItem[]> =>
   axios.get(paramsString ? `/tracks?${paramsString}` : '/tracks').then(({ data }) => data)
+
+export const fetchDocumentList = (paramsString?: string): Promise<{}> =>
+  axios.get(paramsString ? `/documents?${paramsString}` : '/documents').then(({ data }) => data)
+
+export const fetchContactList = (paramsString?: string): Promise<{}> =>
+  axios.get(paramsString ? `/contacts?${paramsString}` : '/contacts').then(({ data }) => data)

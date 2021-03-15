@@ -1,3 +1,3 @@
 import { BASE_URL } from '../constants'
 
-export const getFullImageUrl = (url: string) => `${BASE_URL}${url}`
+export const getFullMediaUrl = (url?: string) => (url ? `${BASE_URL}${url}` : '')

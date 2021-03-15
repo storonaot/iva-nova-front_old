@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { SPACE_6, SPACE_5 } from '../../theme'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const SectionRoot = styled.div<{ bgImage?: any; bgRepeat?: boolean; opacity?: number }>`
+const SectionRoot = styled.div<{ bgImage?: any; bgRepeat?: 'x' | 'y' | 'xy'; opacity?: number }>`
   padding: ${SPACE_6} 0 ${SPACE_5} 0;
   position: relative;
   &::before {
@@ -15,7 +15,14 @@ const SectionRoot = styled.div<{ bgImage?: any; bgRepeat?: boolean; opacity?: nu
     opacity: ${({ opacity = 1 }) => opacity};
     top: 0;
     background-image: url(${({ bgImage }) => bgImage || null});
-    background-repeat: ${({ bgRepeat = true }) => (bgRepeat ? 'repeat' : 'no-repeat')};
+    background-repeat: ${({ bgRepeat = 'xy' }) => {
+      if (bgRepeat === 'xy') return 'repeat'
+
+      if (bgRepeat === 'x') return 'repeat-x'
+      if (bgRepeat === 'y') return 'repeat-y'
+
+      return 'no-repeat'
+    }};
   }
 `
 

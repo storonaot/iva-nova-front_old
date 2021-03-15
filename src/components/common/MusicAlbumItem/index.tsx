@@ -5,7 +5,7 @@ import { MUSIC_URL } from '../../../constants/sources'
 import AspectRatioImage, { AspectRatio } from '../AspectRatioImage'
 import { ImageRoot, OverlayText, Year, Title, Content, Wrapper, Overlay, Paragrarh } from './styles'
 import { Album } from '../../../api/types'
-import { getFullImageUrl } from '../../../helpers'
+import { getFullMediaUrl } from '../../../helpers'
 
 interface Props {
   album: Album
@@ -16,7 +16,7 @@ const MusicAlbumItem: FC<Props> = ({ album }) => (
     <Wrapper>
       <ImageRoot>
         <AspectRatioImage
-          imageUrl={getFullImageUrl(album.cover.url)}
+          imageUrl={getFullMediaUrl(album.cover.url)}
           aspectRatio={AspectRatio['1:1']}
         />
         <Overlay>

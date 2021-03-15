@@ -33,5 +33,7 @@ export const COLORS = {
   label: '#9C6D6D',
   gray: '#C3C3C3',
   grayDark: '#565656',
-  primaryActive: '#904949',
 }
+
+export const DEFAULT_IMAGE_URL =
+  'https://upload.wikimedia.org/wikipedia/ru/2/2a/Adventure_Time_with_Finn_%26_Jake.png'

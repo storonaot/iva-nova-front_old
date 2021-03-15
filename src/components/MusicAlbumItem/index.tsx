@@ -28,7 +28,7 @@ import {
   ContentWrapper,
 } from './styles'
 import { Album, TrackItem } from '../../api/types'
-import { getFullImageUrl } from '../../helpers'
+import { getFullMediaUrl } from '../../helpers'
 
 interface Props {
   item: Album
@@ -48,7 +48,7 @@ const MusicAlbumItem: FC<Props> = ({ item }) => {
       <AlbumInfoWrapper>
         <ImageWrapper>
           <AspectRatioImage
-            imageUrl={getFullImageUrl(item.cover.url)}
+            imageUrl={getFullMediaUrl(item.cover.url)}
             aspectRatio={AspectRatio['1:1']}
           />
         </ImageWrapper>
