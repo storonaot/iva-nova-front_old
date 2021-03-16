@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -7,13 +7,15 @@ import { MENU_ITEMS, MenuItem as MenuItemType } from '../../../constants/ui'
 import Socials from '../../common/Socials'
 
 import { MenuRoot, MenuItem, Overlay, MenuWrapper } from './styles'
+import { SocialNetworkItem } from '../../../api/types'
 
 interface Props {
   isActive?: boolean
   setInactive: () => void
+  socials: SocialNetworkItem[]
 }
 
-const MobileMenu = ({ isActive, setInactive }: Props) => {
+const MobileMenu: FC<Props> = ({ isActive, setInactive, socials }) => {
   const router = useRouter()
 
   return (
@@ -25,7 +27,7 @@ const MobileMenu = ({ isActive, setInactive }: Props) => {
             <MenuItem isActive={router.pathname === menuItem.source}>{menuItem.title}</MenuItem>
           </Link>
         ))}
-        <Socials size={45} />
+        <Socials size={45} list={socials} />
       </MenuRoot>
     </MenuWrapper>
   )

@@ -62,14 +62,14 @@ interface Props {
 
 export const ITunesButton: FC<Props> = ({ href }) =>
   href ? (
-    <SubscriptionButton href={href} target="_blank">
+    <SubscriptionButton href={href} target="_blank" rel="norefferer">
       <ITunesIcon />
     </SubscriptionButton>
   ) : null
 
 export const YaMusicButton: FC<Props> = ({ href }) =>
   href ? (
-    <SubscriptionButton href={href} target="_blank">
+    <SubscriptionButton href={href} target="_blank" rel="norefferer">
       <YaMusicIcon />
     </SubscriptionButton>
   ) : null

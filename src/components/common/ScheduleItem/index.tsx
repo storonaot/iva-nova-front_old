@@ -14,17 +14,6 @@ import {
   BuyLink,
 } from './styles'
 
-export interface ScheduleItemTypes {
-  id: number
-  date: string
-  year: string
-  title: string
-  place: string
-  placeHref?: string
-  city: string
-  buyHref?: string | null
-}
-
 const zeroPadded = (num: number) => {
   if (num < 10) return `0${num}`
 

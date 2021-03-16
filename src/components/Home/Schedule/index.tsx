@@ -1,21 +1,25 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 import Container from '../../common/Container'
 import Button from '../../common/Button'
 import ShowOn from '../../common/ShowOn'
 import Heading from '../../common/Heading'
-import ScheduleItem, { ScheduleItemTypes } from '../../common/ScheduleItem'
+import ScheduleItem from '../../common/ScheduleItem'
 import { SCHEDULE_URL } from '../../../constants/sources'
 
-import schedule from './data'
 import { Root, List } from './styles'
+import { EventItem } from '../../../api/types'
 
-const Schedule = () => (
+interface Props {
+  events: EventItem[]
+}
+
+const Schedule: FC<Props> = ({ events }) => (
   <Root>
     <Container>
       <Heading title="Ближайшие концерты" btnTitle="все концерты" btnHref={SCHEDULE_URL} />
       <List>
-        {schedule.map((item: ScheduleItemTypes) => (
+        {events.map(item => (
           <ScheduleItem key={item.id} item={item} />
         ))}
       </List>

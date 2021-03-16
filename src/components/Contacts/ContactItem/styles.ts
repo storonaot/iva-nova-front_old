@@ -8,7 +8,7 @@ export const Photo = styled.div<{ imageUrl: string }>`
   background-image: url(${({ imageUrl }) => imageUrl}), url(${DEFAULT_IMAGE_URL});
   background-size: cover;
   background-position: center center;
-  border: 15px solid #fff;
+  border: 10px solid #fff;
   box-sizing: content-box;
   border-radius: 50%;
   margin-right: ${SPACE_2};

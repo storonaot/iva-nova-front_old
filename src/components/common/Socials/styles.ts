@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { SPACE_1 } from '../../../theme'
+import { SPACE_1, PRIMARY_COLOR } from '../../../theme'
 
 export const SocialsRoot = styled.div<{ padded: boolean }>`
   align-items: center;
@@ -12,5 +12,11 @@ export const IconWrapper = styled.div<{ size: number }>`
   height: ${({ size }) => `${size}px`};
   & + & {
     margin-left: ${SPACE_1};
+  }
+  svg:hover {
+    path {
+      transition: fill 0.5s ease;
+      fill: ${PRIMARY_COLOR};
+    }
   }
 `

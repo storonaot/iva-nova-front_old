@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { GetServerSideProps } from 'next'
-import Layout from '../../src/components/Layout'
 import MusicAlbumItem from '../../src/components/MusicAlbumItem'
 import MusicAlbumsSliderBlock from '../../src/components/common/MusicAlbumsSliderBlock'
 import { fetchAlbum, fetchAlbumList } from '../../src/api'
@@ -12,10 +11,10 @@ interface Props {
 }
 
 const MusicAlbumItemPage: FC<Props> = ({ item, list }) => (
-  <Layout>
+  <>
     <MusicAlbumItem item={item} />
     <MusicAlbumsSliderBlock list={list} />
-  </Layout>
+  </>
 )
 
 export const getServerSideProps: GetServerSideProps = async context => {

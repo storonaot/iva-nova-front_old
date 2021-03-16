@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { GetServerSideProps } from 'next'
-import Layout from '../src/components/Layout'
 import Schedule from '../src/components/Schedule'
 import { fetchEventList, fetchCityList, fetchEventsCount } from '../src/api'
 import { EventItem, City } from '../src/api/types'
@@ -13,9 +12,7 @@ interface Props {
 }
 
 const SchedulePage: FC<Props> = ({ list, listCount, cityList }) => (
-  <Layout>
-    <Schedule list={list} cityList={cityList} listCount={listCount} />
-  </Layout>
+  <Schedule list={list} cityList={cityList} listCount={listCount} />
 )
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {

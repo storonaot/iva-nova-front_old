@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 import { ABOUT_URL } from '../../../constants/sources'
 
@@ -29,21 +29,30 @@ import {
   SocialsRoot,
   ImageWrapper,
 } from './styles'
+import { MediaLink, SocialNetworkItem, About } from '../../../api/types'
+import { getFullMediaUrl } from '../../../helpers'
 
-const Hero = () => (
+interface Props {
+  mediaLinkList: MediaLink[]
+  socialNetworkList: SocialNetworkItem[]
+  about: About | null
+}
+
+const Hero: FC<Props> = ({ mediaLinkList, socialNetworkList, about }) => (
   <Root>
     <CarrierImageContainer />
     <TreeImageContainer />
     <Wrapper>
       <Card>
         <ImageWrapper>
-          <AspectRatioImage imageUrl={mainPhoto} />
+          <AspectRatioImage imageUrl={about ? getFullMediaUrl(about.main_photo.url) : mainPhoto} />
         </ImageWrapper>
         <Content>
-          <Title>Ива Нова (этно-экстрим, world music)</Title>
+          <Title>{about ? about.title : 'Ива Нова (этно-экстрим, world music)'}</Title>
           <Description>
-            - это альтернативный этно-экстрим, который экспериментально сочетает в себе славянские
-            мотивы и панковский напор, танцевальные техно-ритмы и авангардные шумовые эффекты.
+            {about
+              ? about.description_short
+              : '- это альтернативный этно-экстрим, который экспериментально сочетает в себе славянские мотивы и панковский напор, танцевальные техно-ритмы и авангардные шумовые эффекты.'}
           </Description>
           <ButtonWrapper>
             <Button href={ABOUT_URL} isBlock>
@@ -53,12 +62,16 @@ const Hero = () => (
           <SocialsRoot>
             <SubscribeTitle>Подписывайтесь на нас!</SubscribeTitle>
             <SocialsWrapper>
-              <Socials size={56} padded={false} />
+              <Socials size={56} padded={false} list={socialNetworkList} />
             </SocialsWrapper>
           </SocialsRoot>
           <SubscriptionsWrapper>
-            <ITunesButton href="/" />
-            <YaMusicButton href="/" />
+            {mediaLinkList.map(mediaLink => {
+              if (mediaLink.type === 'iTunes') return <ITunesButton href={mediaLink.link} />
+              if (mediaLink.type === 'yaMusic') return <YaMusicButton href={mediaLink.link} />
+
+              return null
+            })}
           </SubscriptionsWrapper>
         </Content>
       </Card>

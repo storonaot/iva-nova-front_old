@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import Link from 'next/link'
 
 import Menu from './Menu'
@@ -18,8 +18,13 @@ import {
 import BurgerIcon from '../../static/svg/burger.svg'
 import CrossIcon from '../../static/svg/cross.svg'
 import Logo from '../../static/svg/logo.svg'
+import { SocialNetworkItem } from '../../api/types'
 
-const Header = () => {
+interface Props {
+  socials: SocialNetworkItem[]
+}
+
+const Header: FC<Props> = ({ socials }) => {
   const [isMenuActive, setMenuState] = useState(false)
 
   return (
@@ -37,11 +42,15 @@ const Header = () => {
         </Link>
         <Menu />
         <SocialsWrapper>
-          <Socials size={30} />
+          <Socials size={30} list={socials} />
         </SocialsWrapper>
         <Lang />
       </HeaderInner>
-      <MobileMenu isActive={isMenuActive} setInactive={() => setMenuState(false)} />
+      <MobileMenu
+        isActive={isMenuActive}
+        setInactive={() => setMenuState(false)}
+        socials={socials}
+      />
     </HeaderRoot>
   )
 }

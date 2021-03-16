@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 
 import { GetServerSideProps } from 'next'
-import Layout from '../src/components/Layout'
 import Contacts from '../src/components/Contacts'
 import { fetchDocumentList, fetchContactList } from '../src/api'
 import { Contact, DocumentItem } from '../src/api/types'
@@ -12,9 +11,7 @@ interface Props {
 }
 
 const ContactsPage: FC<Props> = ({ documentList, contactList }) => (
-  <Layout>
-    <Contacts documentList={documentList} contactList={contactList} />
-  </Layout>
+  <Contacts documentList={documentList} contactList={contactList} />
 )
 
 export const getServerSideProps: GetServerSideProps = async () => {

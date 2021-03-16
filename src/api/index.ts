@@ -26,3 +26,16 @@ export const fetchDocumentList = (paramsString?: string): Promise<{}> =>
 
 export const fetchContactList = (paramsString?: string): Promise<{}> =>
   axios.get(paramsString ? `/contacts?${paramsString}` : '/contacts').then(({ data }) => data)
+
+export const fetchMediaLinkList = (paramsString?: string) =>
+  axios.get(paramsString ? `/media-links?${paramsString}` : '/media-links').then(({ data }) => data)
+
+export const fetchSocialNetworkList = (paramsString?: string) =>
+  axios
+    .get(paramsString ? `/social-networks?${paramsString}` : '/social-networks')
+    .then(({ data }) => data)
+
+export const fetchAbout = (paramsString?: string) =>
+  axios
+    .get(paramsString ? `/abouts?${paramsString}` : '/abouts')
+    .then(({ data }) => (data.length ? data[0] : null))

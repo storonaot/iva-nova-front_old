@@ -2,18 +2,13 @@ import React, { FC } from 'react'
 import { GetServerSideProps } from 'next'
 import { fetchAlbumList } from '../../src/api'
 import { Album } from '../../src/api/types'
-import Layout from '../../src/components/Layout'
 import Music from '../../src/components/Music'
 
 interface Props {
   list: Album[]
 }
 
-const MusicPage: FC<Props> = ({ list }) => (
-  <Layout>
-    <Music list={list} />
-  </Layout>
-)
+const MusicPage: FC<Props> = ({ list }) => <Music list={list} />
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {

@@ -67,3 +67,52 @@ export interface Contact {
   name: string
   name_eng: string
 }
+
+export interface Member {
+  id: number
+  full_name: string
+  full_name_eng: string
+  date_of_birth: string
+  specialization: string
+  specialization_eng: string
+  description: string
+  description_eng: string
+  is_ex: boolean
+  photos: Image[]
+  main_photo: Image
+  active_periods?: string
+  city_of_birth: City
+}
+
+export interface MediaLink {
+  id: number
+  link: string
+  type: 'iTunes' | 'yaMusic'
+}
+
+export enum SocialNetworkType {
+  VK = 'vk',
+  FB = 'fb',
+  YOUTUBE = 'youtube',
+  INSTA = 'insta',
+}
+
+export interface SocialNetworkItem {
+  id: number
+  link: string
+  type: SocialNetworkType
+}
+
+export interface About {
+  id: number
+  description: string
+  description_eng: string
+  description_short: string
+  description_short_eng: string
+  history: string
+  history_eng: string
+  main_photo: Image
+  photos: Image[]
+  title: string
+  title_eng: string
+}

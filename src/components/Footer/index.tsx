@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 import { CONTACTS_URL } from '../../constants/sources'
 
@@ -14,8 +14,13 @@ import {
   SocialsWrapper,
   Copyright,
 } from './styles'
+import { SocialNetworkItem } from '../../api/types'
 
-const Footer = () => (
+interface Props {
+  socials: SocialNetworkItem[]
+}
+
+const Footer: FC<Props> = ({ socials }) => (
   <FooterRoot>
     <TadpolesContainer />
     <CarrierContainer />
@@ -23,7 +28,7 @@ const Footer = () => (
       <div>
         <Title>ИВА НОВА (этно-экстрим, world music)</Title>
         <SocialsWrapper>
-          <Socials size={40} padded={false} />
+          <Socials size={40} padded={false} list={socials} />
         </SocialsWrapper>
         <Button href={CONTACTS_URL} isGhost>
           контакты
