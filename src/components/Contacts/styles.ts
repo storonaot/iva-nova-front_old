@@ -36,3 +36,8 @@ export const Link = styled.a`
     color: ${PRIMARY_COLOR};
   }
 `
+
+export const Root = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+`

@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import media from 'styled-media-query'
 
 import Link from 'next/link'
-import CardComp from './Card'
+import Card from './Card'
 
-import { SPACE_3, SECONDARY_FONT, SPACE_4, SPACE_2, GRAY_COLOR } from '../../theme'
+import { SPACE_3, SECONDARY_FONT, SPACE_4, SPACE_2 } from '../../theme'
 import AspectRatioImage, { AspectRatio } from './AspectRatioImage'
 import VideoPreview from './VideoPreview'
 
@@ -18,14 +18,6 @@ export const Description = styled.p`
   text-align: center;
   font-family: ${SECONDARY_FONT};
   line-height: 1.25em;
-`
-
-export const Card = styled(CardComp)<{ interactive: boolean }>`
-  height: 100%;
-  &:hover {
-    border-color: ${GRAY_COLOR};
-    cursor: pointer;
-  }
 `
 
 export const PreviewItem = styled.div`

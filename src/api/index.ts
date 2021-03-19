@@ -39,3 +39,6 @@ export const fetchAbout = (paramsString?: string) =>
   axios
     .get(paramsString ? `/abouts?${paramsString}` : '/abouts')
     .then(({ data }) => (data.length ? data[0] : null))
+
+export const fetchMembers = (paramsString?: string) =>
+  axios.get(paramsString ? `/members?${paramsString}` : '/members').then(({ data }) => data)

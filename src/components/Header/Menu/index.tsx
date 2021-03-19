@@ -8,11 +8,12 @@ import { MenuRoot, MenuItem } from './styles'
 
 const Menu = () => {
   const router = useRouter()
+
   return (
     <MenuRoot>
       {MENU_ITEMS.map((menuItem: MenuItemType) => (
         <Link key={menuItem.source} href={menuItem.source}>
-          <MenuItem isActive={router.pathname === menuItem.source}>{menuItem.title}</MenuItem>
+          <MenuItem isActive={router.pathname.includes(menuItem.source)}>{menuItem.title}</MenuItem>
         </Link>
       ))}
     </MenuRoot>

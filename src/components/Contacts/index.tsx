@@ -8,7 +8,7 @@ import cuttlefish from '../../static/images/cuttlefish.png'
 import { DocumentItem, Contact } from '../../api/types'
 
 import Title from '../common/Title'
-import { Subtitle, ContactsBlock, DocumentTitle, DocumentWrapper, Link } from './styles'
+import { Subtitle, Root, ContactsBlock, DocumentTitle, DocumentWrapper, Link } from './styles'
 import ContactItem from './ContactItem'
 import { getFullMediaUrl } from '../../helpers'
 
@@ -21,12 +21,7 @@ const Contacts: FC<Props> = ({ documentList, contactList }) => {
   return (
     <SectionRoot bgImage={bgImage} bgRepeat="x">
       <Container>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-          }}
-        >
+        <Root>
           <img src={cuttlefish} alt="cuttlefish" />
           <div>
             <ContactsBlock>
@@ -45,7 +40,6 @@ const Contacts: FC<Props> = ({ documentList, contactList }) => {
                 )
               })}
             </ContactsBlock>
-
             <div>
               <Title withMargin>Медиа</Title>
               {documentList.map(document => {
@@ -64,7 +58,7 @@ const Contacts: FC<Props> = ({ documentList, contactList }) => {
               })}
             </div>
           </div>
-        </div>
+        </Root>
       </Container>
     </SectionRoot>
   )

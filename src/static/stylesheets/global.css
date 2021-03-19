@@ -38,7 +38,7 @@ body > div {
 body {
   font-family: 'ProximaNova', sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 16px !important;
   color: #404040;
   line-height: initial;
 }

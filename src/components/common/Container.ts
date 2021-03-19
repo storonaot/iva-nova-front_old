@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 const Container = styled(Wrapper)<Props>`
   padding: ${({ theme: { spacing }, padded = true }) => (padded ? `0 ${spacing.units * 2}px` : 0)};
   ${media.greaterThan('medium')`
-    padding: ${SPACE_4};
+    padding: 0 ${SPACE_4};
   `}
 `
 
