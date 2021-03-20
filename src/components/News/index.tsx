@@ -12,7 +12,7 @@ const Schedule = () => (
     <Container>
       <Title withMargin>Новости</Title>
       <NewsList />
-      <Pagination />
+      <Pagination totalRecords={10} onChange={() => {}} recordsOnPage={10} />
     </Container>
   </NewsSectionRoot>
 )

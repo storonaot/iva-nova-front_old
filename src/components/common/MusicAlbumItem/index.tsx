@@ -21,13 +21,13 @@ const MusicAlbumItem: FC<Props> = ({ album }) => (
         />
         <Overlay>
           <OverlayText>
-            <Paragrarh isBold>{album.name}</Paragrarh>
+            <Paragrarh isBold>{album.title}</Paragrarh>
             <Paragrarh>{album.short_description}</Paragrarh>
           </OverlayText>
         </Overlay>
       </ImageRoot>
       <Content>
-        <Title>{album.name}</Title>
+        <Title>{album.title}</Title>
         <Year>{new Date(album.date).getFullYear()}</Year>
       </Content>
     </Wrapper>

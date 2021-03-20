@@ -10,7 +10,6 @@ type Colors =
   | 'gray'
   | 'grayDark'
   | 'light'
-  | 'primaryActive'
 type ColorsMap = { [key in Colors]: string }
 
 type Fonts = 'primary' | 'secondary'
@@ -56,7 +55,6 @@ export const themeSettings: Theme = {
     label: COLORS.label,
     gray: COLORS.gray,
     grayDark: COLORS.grayDark,
-    primaryActive: COLORS.primaryActive,
   },
   spacing: {
     units: 8,
