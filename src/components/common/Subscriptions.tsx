@@ -5,7 +5,7 @@ import media from 'styled-media-query'
 import ITunesIcon from '../../static/svg/iTunes.svg'
 import YaMusicIcon from '../../static/svg/yaMusic.svg'
 
-import { LINES_COLOR, SMALL_RADIUS, SECONDARY_FONT, SPACE_2 } from '../../theme'
+import { LINES_COLOR, GRAY_COLOR, SMALL_RADIUS, SECONDARY_FONT, SPACE_2 } from '../../theme'
 
 export const SubscriptionButton = styled.a`
   margin: 0 auto;
@@ -17,6 +17,11 @@ export const SubscriptionButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: border 0.5s ease;
+  &:hover {
+    border-color: ${GRAY_COLOR};
+    transition: border-color 0.5s ease;
+  }
   &:first-child {
     margin-bottom: ${SPACE_2};
   }

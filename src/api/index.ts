@@ -42,3 +42,8 @@ export const fetchAbout = (paramsString?: string) =>
 
 export const fetchMembers = (paramsString?: string) =>
   axios.get(paramsString ? `/members?${paramsString}` : '/members').then(({ data }) => data)
+
+export const fetchMember = (id: string, paramsString?: string) =>
+  axios
+    .get(paramsString ? `/members/${id}?${paramsString}` : `/members/${id}`)
+    .then(({ data }) => data)

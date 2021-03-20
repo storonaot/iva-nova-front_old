@@ -14,6 +14,7 @@ const SectionRoot = styled.div<{ bgImage?: any; bgRepeat?: 'x' | 'y' | 'xy'; opa
     z-index: -1;
     opacity: ${({ opacity = 1 }) => opacity};
     top: 0;
+    background-color: #fff;
     background-image: url(${({ bgImage }) => bgImage || null});
     background-repeat: ${({ bgRepeat = 'xy' }) => {
       if (bgRepeat === 'xy') return 'repeat'
