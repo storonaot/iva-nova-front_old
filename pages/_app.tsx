@@ -49,21 +49,28 @@ const MyApp = ({ Component, pageProps }) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  try {
-    const socialNetworkList = await fetchSocialNetworkList()
-    return {
-      props: {
-        socialNetworkList,
-      },
-    }
-  } catch (error) {
-    console.error('error', error.message)
-    return {
-      props: {
-        socialNetworkList: null,
-      },
-    }
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   try {
+//     const socialNetworkList = await fetchSocialNetworkList()
+//     return {
+//       props: {
+//         socialNetworkList,
+//       },
+//     }
+//   } catch (error) {
+//     console.error('error', error.message)
+//     return {
+//       props: {
+//         socialNetworkList: null,
+//       },
+//     }
+//   }
+// }
+
+export const getStatisProps = async () => {
+  const socialNetworkList = await fetchSocialNetworkList()
+  return {
+    props: socialNetworkList,
   }
 }
 
