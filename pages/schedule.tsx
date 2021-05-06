@@ -1,24 +1,7 @@
-// @ts-nocheck
-
 import React from 'react'
-
-import { fetchEventList, fetchCityList, fetchEventsCount } from '../src/api'
-import { COUNT_RECORDS_ON_PAGE } from '../src/constants'
 
 const SchedulePage = () => {
   return <div>SchedulePage</div>
-}
-
-export const getStatisProps = async ({ query }) => {
-  const { start, limit } = { start: 0, limit: COUNT_RECORDS_ON_PAGE, ...query }
-
-  const data = await fetchEventList(`_start=${start}&_limit=${limit}`)
-  const listCount = await fetchEventsCount()
-  const cityList = await fetchCityList()
-
-  return {
-    props: { list: data, listCount, cityList },
-  }
 }
 
 export default SchedulePage
