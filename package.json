@@ -4,9 +4,6 @@
   "main": "index.js",
   "author": "storonaot",
   "license": "MIT",
-  "engines": {
-    "node": "10.16.0"
-  },
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",
