@@ -22,7 +22,7 @@ interface Props {
 const NewsSliderBlock: FC<Props> = ({ title = 'Свежие новости' }) => (
   <NewsRoot>
     <Container>
-      <Heading title={title} btnTitle="все новости" btnHref={NEWS_URL} withMargin={false} />
+      <Heading title={title} btnTitle="все новости" btnHref={NEWS_URL} withMargin />
     </Container>
     <Wrapper>
       <Card>

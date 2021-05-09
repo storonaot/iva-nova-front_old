@@ -9,6 +9,7 @@ import AlbumList from './MusicAlbumList'
 
 import bgImage from '../../static/images/bg2.jpg'
 import { Album } from '../../api/types'
+import Placeholder from '../common/Placeholder'
 
 const tabs = [
   { id: 'all', label: 'Все' },
@@ -17,10 +18,10 @@ const tabs = [
 ]
 
 interface Props {
-  list: Album[]
+  list?: Album[]
 }
 
-const Music: FC<Props> = ({ list }) => {
+const Music: FC<Props> = ({ list = [] }) => {
   const [currentTab, setTab] = useState('all')
 
   const filteredList = useMemo(
@@ -34,11 +35,18 @@ const Music: FC<Props> = ({ list }) => {
 
   return (
     <SectionRoot bgImage={bgImage}>
-      <Container>
-        <Title withMargin>Музыка</Title>
-        <Tabs tabs={tabs} activeTab={currentTab} onChange={onChangeTab} />
-        <AlbumList list={filteredList} />
-      </Container>
+      {list?.length ? (
+        <Container>
+          <Title withMargin>Музыка</Title>
+          <Tabs tabs={tabs} activeTab={currentTab} onChange={onChangeTab} />
+          <AlbumList list={filteredList} />
+        </Container>
+      ) : (
+        <Container>
+          <Title withMargin>Музыка</Title>
+          <Placeholder sectionName="Музыка" />
+        </Container>
+      )}
     </SectionRoot>
   )
 }

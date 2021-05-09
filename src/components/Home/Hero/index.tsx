@@ -33,9 +33,9 @@ import { MediaLink, SocialNetworkItem, About } from '../../../api/types'
 import { getFullMediaUrl } from '../../../helpers'
 
 interface Props {
-  mediaLinkList: MediaLink[]
-  socialNetworkList: SocialNetworkItem[]
-  about: About | null
+  mediaLinkList?: MediaLink[]
+  socialNetworkList?: SocialNetworkItem[]
+  about?: About | null
 }
 
 const Hero: FC<Props> = ({ mediaLinkList, socialNetworkList, about }) => (
@@ -59,20 +59,24 @@ const Hero: FC<Props> = ({ mediaLinkList, socialNetworkList, about }) => (
               подробнее о группе
             </Button>
           </ButtonWrapper>
-          <SocialsRoot>
-            <SubscribeTitle>Подписывайтесь на нас!</SubscribeTitle>
-            <SocialsWrapper>
-              <Socials size={56} padded={false} list={socialNetworkList} />
-            </SocialsWrapper>
-          </SocialsRoot>
-          <SubscriptionsWrapper>
-            {mediaLinkList.map(mediaLink => {
-              if (mediaLink.type === 'iTunes') return <ITunesButton href={mediaLink.link} />
-              if (mediaLink.type === 'yaMusic') return <YaMusicButton href={mediaLink.link} />
+          {socialNetworkList?.length ? (
+            <SocialsRoot>
+              <SubscribeTitle>Подписывайтесь на нас!</SubscribeTitle>
+              <SocialsWrapper>
+                <Socials size={56} padded={false} list={socialNetworkList} />
+              </SocialsWrapper>
+            </SocialsRoot>
+          ) : null}
+          {mediaLinkList?.length ? (
+            <SubscriptionsWrapper>
+              {mediaLinkList.map(mediaLink => {
+                if (mediaLink.type === 'iTunes') return <ITunesButton href={mediaLink.link} />
+                if (mediaLink.type === 'yaMusic') return <YaMusicButton href={mediaLink.link} />
 
-              return null
-            })}
-          </SubscriptionsWrapper>
+                return null
+              })}
+            </SubscriptionsWrapper>
+          ) : null}
         </Content>
       </Card>
     </Wrapper>

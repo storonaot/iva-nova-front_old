@@ -13,11 +13,12 @@ import { EventItem, City } from '../../api/types'
 import { fetchEventList, fetchEventsCount } from '../../api'
 import { COUNT_RECORDS_ON_PAGE } from '../../constants'
 import SectionRoot from '../common/SectionRoot'
+import Placeholder from '../common/Placeholder'
 
 interface Props {
-  list: EventItem[]
-  cityList: City[]
-  listCount: number
+  list?: EventItem[]
+  cityList?: City[]
+  listCount?: number
 }
 
 interface QueryParams {
@@ -150,9 +151,13 @@ const Schedule: FC<Props> = ({ list: _list, cityList, listCount: _listCount }) =
     <SectionRoot bgImage={bgImage} bgRepeat="x">
       <Container>
         <Title withMargin>Афиша</Title>
-        <ScheduleFilters cityList={cityList} onSearch={onSearch} onFilter={onFilter} />
-        <ScheduleList list={list} />
-        <Pagination totalRecords={listCount} onChange={onPageChange} page={page} />
+        {cityList?.length ? (
+          <ScheduleFilters cityList={cityList} onSearch={onSearch} onFilter={onFilter} />
+        ) : null}
+        {list?.length ? <ScheduleList list={list} /> : <Placeholder sectionName="Афиша" />}
+        {listCount != null && list?.length ? (
+          <Pagination totalRecords={listCount} onChange={onPageChange} page={page} />
+        ) : null}
       </Container>
     </SectionRoot>
   )

@@ -8,10 +8,11 @@ import HTMLContent from '../common/HTMLContent'
 import { About, Member } from '../../api/types'
 import MembersBlock from '../common/MembersBlock'
 import ImageGallery from './ImageGalery'
+import Placeholder from '../common/Placeholder'
 
 interface Props {
-  about: About
-  memberList: Member[]
+  about?: About | null
+  memberList?: Member[]
 }
 
 interface MembersGroups {
@@ -19,7 +20,7 @@ interface MembersGroups {
   exMembers: Member[]
 }
 
-const AboutComponent: FC<Props> = ({ about, memberList }) => {
+const AboutComponent: FC<Props> = ({ about, memberList = [] }) => {
   const { activeMembers, exMembers }: MembersGroups = memberList.reduce(
     (acc: MembersGroups, currentMember: Member) => {
       if (currentMember.is_ex) {
@@ -34,7 +35,7 @@ const AboutComponent: FC<Props> = ({ about, memberList }) => {
     },
   )
 
-  return (
+  return about ? (
     <>
       <SectionRoot bgImage={bgImage} bgRepeat="x">
         <Container>
@@ -62,6 +63,13 @@ const AboutComponent: FC<Props> = ({ about, memberList }) => {
         </Container>
       </SectionRoot>
     </>
+  ) : (
+    <SectionRoot bgImage={bgImage} bgRepeat="x">
+      <Container>
+        <Title withMargin>О группе</Title>
+        <Placeholder />
+      </Container>
+    </SectionRoot>
   )
 }
 

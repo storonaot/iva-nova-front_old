@@ -14,6 +14,7 @@ import {
 } from '../../common/Subscriptions'
 
 import Track from '../../common/Track'
+import Placeholder from '../../common/Placeholder'
 
 import bgImage from '../../../static/images/bg2.jpg'
 
@@ -22,13 +23,13 @@ import { TrackItem, MediaLink } from '../../../api/types'
 import { HubaImageContainer, Container, LeftBlock, RightBlock, TracksWrapper } from './styles'
 
 interface Props {
-  trackList: TrackItem[] | null
-  mediaLinkList: MediaLink[]
+  trackList?: TrackItem[]
+  mediaLinkList?: MediaLink[]
 }
 
-const Music: FC<Props> = ({ trackList, mediaLinkList }) =>
-  trackList ? (
-    <SectionRoot bgImage={bgImage}>
+const Music: FC<Props> = ({ trackList, mediaLinkList }) => (
+  <SectionRoot bgImage={bgImage}>
+    {trackList?.length ? (
       <Container>
         <LeftBlock>
           <Heading title="Музыка" btnTitle="вся музыка" btnHref={MUSIC_URL} />
@@ -43,20 +44,27 @@ const Music: FC<Props> = ({ trackList, mediaLinkList }) =>
             </Button>
           </ShowOn>
         </LeftBlock>
-        <RightBlock>
-          <SubscribeTitle>Слушайте и скачивайте!</SubscribeTitle>
-          <SubscriptionsWrapper orientation="vertical">
-            {mediaLinkList.map(mediaLink => {
-              if (mediaLink.type === 'iTunes') return <ITunesButton href={mediaLink.link} />
-              if (mediaLink.type === 'yaMusic') return <YaMusicButton href={mediaLink.link} />
+        {mediaLinkList?.length ? (
+          <RightBlock>
+            <SubscribeTitle>Слушайте и скачивайте!</SubscribeTitle>
+            <SubscriptionsWrapper orientation="vertical">
+              {mediaLinkList.map(mediaLink => {
+                if (mediaLink.type === 'iTunes') return <ITunesButton href={mediaLink.link} />
+                if (mediaLink.type === 'yaMusic') return <YaMusicButton href={mediaLink.link} />
 
-              return null
-            })}
-          </SubscriptionsWrapper>
-        </RightBlock>
+                return null
+              })}
+            </SubscriptionsWrapper>
+          </RightBlock>
+        ) : null}
       </Container>
-      <HubaImageContainer />
-    </SectionRoot>
-  ) : null
+    ) : (
+      <Container>
+        <Placeholder sectionName="Музыка" />
+      </Container>
+    )}
+    <HubaImageContainer />
+  </SectionRoot>
+)
 
 export default Music
