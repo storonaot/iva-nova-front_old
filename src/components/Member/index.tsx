@@ -16,8 +16,8 @@ import ImageGallery from './ImageGallery'
 import { ABOUT_URL } from '../../constants/sources'
 
 interface Props {
-  member: Member
-  memberList: Member[]
+  member?: Member
+  memberList?: Member[]
 }
 
 const MONTHES = [
@@ -36,6 +36,8 @@ const MONTHES = [
 ]
 
 const MemberComp: FC<Props> = ({ member, memberList }) => {
+  if (!member) return null
+
   const date = new Date(member.date_of_birth)
   const monsOgBirthIndex = date.getMonth()
   const monsOgBirth = MONTHES[monsOgBirthIndex]

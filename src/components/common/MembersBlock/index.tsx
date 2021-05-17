@@ -8,15 +8,15 @@ import Container from '../Container'
 import Title from '../Title'
 import { Member } from '../../../api/types'
 
-const MembersBlock: FC<{ list: Member[]; title: string }> = ({ list, title }) => {
-  return (
+const MembersBlock: FC<{ list?: Member[]; title: string }> = ({ list, title }) => {
+  return list ? (
     <SectionRoot bgImage={bgImage} bgRepeat="xy">
       <Container>
         <Title withMargin>{title}</Title>
         <MemberList list={list} />
       </Container>
     </SectionRoot>
-  )
+  ) : null
 }
 
 export default MembersBlock

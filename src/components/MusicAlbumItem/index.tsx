@@ -33,10 +33,12 @@ import { Album, TrackItem } from '../../api/types'
 import { getFullMediaUrl } from '../../helpers'
 
 interface Props {
-  item: Album
+  item?: Album
 }
 
 const MusicAlbumItem: FC<Props> = ({ item }) => {
+  if (!item) return null
+
   const shouldShowSubscriptionLinks = item.ya_music_src || item.itunes_src
 
   return (

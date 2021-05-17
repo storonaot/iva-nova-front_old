@@ -7,8 +7,6 @@ import Button from '../../common/Button'
 import Socials from '../../common/Socials'
 import AspectRatioImage from '../../common/AspectRatioImage'
 
-import mainPhoto from './main_photo.jpg'
-
 import {
   ITunesButton,
   YaMusicButton,
@@ -44,16 +42,16 @@ const Hero: FC<Props> = ({ mediaLinkList, socialNetworkList, about }) => (
     <TreeImageContainer />
     <Wrapper>
       <Card>
-        <ImageWrapper>
-          <AspectRatioImage imageUrl={about ? getFullMediaUrl(about.main_photo.url) : mainPhoto} />
-        </ImageWrapper>
+        {about ? (
+          <ImageWrapper>
+            <AspectRatioImage imageUrl={getFullMediaUrl(about.main_photo.url)} />
+          </ImageWrapper>
+        ) : (
+          'Главное изобрачение не загружено'
+        )}
         <Content>
-          <Title>{about ? about.title : 'Ива Нова (этно-экстрим, world music)'}</Title>
-          <Description>
-            {about
-              ? about.description_short
-              : '- это альтернативный этно-экстрим, который экспериментально сочетает в себе славянские мотивы и панковский напор, танцевальные техно-ритмы и авангардные шумовые эффекты.'}
-          </Description>
+          <Title>{about ? about.title : 'Заголовок не заполнен'}</Title>
+          <Description>{about ? about.description_short : 'Описание не заполнено'}</Description>
           <ButtonWrapper>
             <Button href={ABOUT_URL} isBlock>
               подробнее о группе

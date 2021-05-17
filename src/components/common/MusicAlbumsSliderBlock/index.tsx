@@ -11,22 +11,23 @@ import { Album } from '../../../api/types'
 
 interface Props {
   title?: string
-  list: Album[]
+  list?: Album[]
 }
 
-const MusicAlbumsSliderBlock: FC<Props> = ({ title = 'Другие альбомы', list }) => (
-  <Container>
-    <Wrapper>
-      <Heading title={title} withMargin />
-      <SliderWrapper>
-        <Slider>
-          {list.map(album => (
-            <AlbumItem key={album.id} album={album} />
-          ))}
-        </Slider>
-      </SliderWrapper>
-    </Wrapper>
-  </Container>
-)
+const MusicAlbumsSliderBlock: FC<Props> = ({ title = 'Другие альбомы', list }) =>
+  list ? (
+    <Container>
+      <Wrapper>
+        <Heading title={title} withMargin />
+        <SliderWrapper>
+          <Slider>
+            {list.map(album => (
+              <AlbumItem key={album.id} album={album} />
+            ))}
+          </Slider>
+        </SliderWrapper>
+      </Wrapper>
+    </Container>
+  ) : null
 
 export default MusicAlbumsSliderBlock
