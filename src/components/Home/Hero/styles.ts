@@ -16,7 +16,8 @@ import {
   SPACE_4,
   SPACE_3,
   LINES_COLOR,
-} from '../../../theme/index'
+  REGULAR_RADIUS,
+} from '../../../theme'
 
 export const Root = styled.div`
   position: relative;
@@ -58,6 +59,8 @@ export const Card = styled(CardComponent)`
     top: ${selectCustomSize('heroCardTopOffset')};
     border: 1px solid ${LINES_COLOR};
     padding: ${SPACE_4};
+    border-top-left-radius: ${REGULAR_RADIUS};
+    border-top-right-radius: ${REGULAR_RADIUS};
   `}
 `
 

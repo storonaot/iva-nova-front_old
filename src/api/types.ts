@@ -81,7 +81,7 @@ export interface Member {
   photos: Image[]
   main_photo: Image
   active_periods?: string
-  city_of_birth: City
+  place_of_birth: string
 }
 
 export interface MediaLink {

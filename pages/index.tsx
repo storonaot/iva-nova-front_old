@@ -5,13 +5,7 @@ import Schedule from '../src/components/Home/Schedule'
 import News from '../src/components/common/NewsSliderBlock'
 import Music from '../src/components/Home/Music'
 import Video from '../src/components/Home/Video'
-import {
-  fetchTrackList,
-  fetchMediaLinkList,
-  fetchSocialNetworkList,
-  fetchAbout,
-  fetchEventList,
-} from '../src/api'
+import { fetchMediaLinkList, fetchSocialNetworkList, fetchAbout, fetchEventList } from '../src/api'
 import { TrackItem, EventItem, MediaLink, SocialNetworkItem, About } from '../src/api/types'
 
 interface Props {
@@ -46,7 +40,6 @@ const IndexPage: FC<Props> = ({
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const trackList = await fetchTrackList('onMainPage_eq=true')
     const mediaLinkList = await fetchMediaLinkList()
     const socialNetworkList = await fetchSocialNetworkList()
     const about = await fetchAbout()
@@ -54,7 +47,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     return {
       props: {
-        trackList,
         mediaLinkList,
         socialNetworkList,
         about,

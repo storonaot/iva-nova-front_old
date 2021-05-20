@@ -35,10 +35,13 @@ export const fetchSocialNetworkList = (paramsString?: string) =>
     .get(paramsString ? `/social-networks?${paramsString}` : '/social-networks')
     .then(({ data }) => data)
 
+// export const fetchAbout = (paramsString?: string) =>
+//   axios
+//     .get(paramsString ? `/abouts?${paramsString}` : '/abouts')
+//     .then(({ data }) => (data.length ? data[0] : null))
+
 export const fetchAbout = (paramsString?: string) =>
-  axios
-    .get(paramsString ? `/abouts?${paramsString}` : '/abouts')
-    .then(({ data }) => (data.length ? data[0] : null))
+  axios.get(paramsString ? `/about?${paramsString}` : '/about').then(({ data }) => data)
 
 export const fetchMembers = (paramsString?: string) =>
   axios.get(paramsString ? `/members?${paramsString}` : '/members').then(({ data }) => data)

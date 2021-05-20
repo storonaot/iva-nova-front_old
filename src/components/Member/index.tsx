@@ -53,8 +53,8 @@ const MemberComp: FC<Props> = ({ member, memberList }) => {
             <Link href={`${ABOUT_URL}`}>О группе</Link>
           </MainHeading>
           <Subtitle>
-            (род. {dateOfBirth} {monsOgBirth} в {yearOfBirth} году в г.
-            {member.city_of_birth.title}) - {member.specialization}
+            (род. {dateOfBirth} {monsOgBirth} в {yearOfBirth} году в{member.place_of_birth}) -{' '}
+            {member.specialization}
           </Subtitle>
           <ImageGallery photos={member.photos.slice(0, 4)} />
           <HTMLContent inputString={member.description} />
