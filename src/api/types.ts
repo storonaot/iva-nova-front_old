@@ -84,29 +84,10 @@ export interface Member {
   place_of_birth: string
 }
 
-// export interface MediaLink {
-//   id: number
-//   link: string
-//   type: 'iTunes' | 'yaMusic'
-// }
-
 export interface MediaLinks {
   itunes_src: string
   ya_music_src: string
 }
-
-// export enum SocialNetworkType {
-//   VK = 'vk',
-//   FB = 'fb',
-//   YOUTUBE = 'youtube',
-//   INSTA = 'insta',
-// }
-
-// export interface SocialNetworkItem {
-//   id: number
-//   link: string
-//   type: SocialNetworkType
-// }
 
 export interface Socials {
   vk_src: string

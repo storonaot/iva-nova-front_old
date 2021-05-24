@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import Header from '../Header'
 import Footer from '../Footer'
-import { SocialNetworkItem } from '../../api/types'
+import { Socials } from '../../api/types'
 
 const Root = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const Content = styled.div`
 `
 
 interface Props {
-  socials: SocialNetworkItem[]
+  socials: Socials
 }
 
 const Layout: FC<Props> = ({ children, socials }) => {
