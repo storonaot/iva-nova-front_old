@@ -7,12 +7,12 @@ import { MENU_ITEMS, MenuItem as MenuItemType } from '../../../constants/ui'
 import Socials from '../../common/Socials'
 
 import { MenuRoot, MenuItem, Overlay, MenuWrapper } from './styles'
-import { SocialNetworkItem } from '../../../api/types'
+import { Socials as SocialsType } from '../../../api/types'
 
 interface Props {
   isActive?: boolean
   setInactive: () => void
-  socials: SocialNetworkItem[]
+  socials: SocialsType
 }
 
 const MobileMenu: FC<Props> = ({ isActive, setInactive, socials }) => {
@@ -27,7 +27,7 @@ const MobileMenu: FC<Props> = ({ isActive, setInactive, socials }) => {
             <MenuItem isActive={router.pathname === menuItem.source}>{menuItem.title}</MenuItem>
           </Link>
         ))}
-        <Socials size={45} list={socials} />
+        <Socials size={45} socials={socials} />
       </MenuRoot>
     </MenuWrapper>
   )

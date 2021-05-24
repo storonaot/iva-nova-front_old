@@ -42,7 +42,15 @@ const NewsSliderBlock: FC<Props> = ({ title = 'Свежие новости' }) =
         <ShowOn tablet desktop>
           <BottomBlock>
             <HintText>Чтобы быть в курсе, не забывайте подписаться на нас!</HintText>
-            <Socials padded={false} list={[]} />
+            <Socials
+              padded={false}
+              socials={{
+                vk_src: '',
+                fb_src: '',
+                youtube_src: '',
+                insta_src: '',
+              }}
+            />
           </BottomBlock>
         </ShowOn>
       </Card>

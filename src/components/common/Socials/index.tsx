@@ -6,39 +6,37 @@ import YoutubeIcon from '../../../static/svg/youtube.svg'
 import InstaIcon from '../../../static/svg/insta.svg'
 
 import { SocialsRoot, IconWrapper } from './styles'
-import { SocialNetworkItem, SocialNetworkType } from '../../../api/types'
+import { Socials as SocialsType } from '../../../api/types'
 
 export interface Props {
   size?: number
   padded?: boolean
-  list: SocialNetworkItem[]
+  socials: SocialsType
 }
 
-const Socials = ({ size = 40, padded = true, list = [] }: Props) => {
-  const getIcon = (type: SocialNetworkType) => {
-    switch (type) {
-      case 'vk':
-        return <VkIcon />
-      case 'fb':
-        return <FbIcon />
-      case 'youtube':
-        return <YoutubeIcon />
-      default:
-        return <InstaIcon />
-    }
-  }
-
-  const listWithIcons = list.map(item => ({ ...item, icon: getIcon(item.type) }))
-
+const Socials = ({ size = 40, padded = true, socials }: Props) => {
   return (
     <SocialsRoot padded={padded}>
-      {listWithIcons.map(item => (
-        <IconWrapper key={item.id} size={size}>
-          <a style={{ display: 'block' }} href={item.link} target="_blank" rel="noreferrer">
-            {item.icon}
-          </a>
-        </IconWrapper>
-      ))}
+      <IconWrapper size={size}>
+        <a style={{ display: 'block' }} href={socials.vk_src} target="_blank" rel="noreferrer">
+          <VkIcon />
+        </a>
+      </IconWrapper>
+      <IconWrapper size={size}>
+        <a style={{ display: 'block' }} href={socials.fb_src} target="_blank" rel="noreferrer">
+          <FbIcon />
+        </a>
+      </IconWrapper>
+      <IconWrapper size={size}>
+        <a style={{ display: 'block' }} href={socials.youtube_src} target="_blank" rel="noreferrer">
+          <YoutubeIcon />
+        </a>
+      </IconWrapper>
+      <IconWrapper size={size}>
+        <a style={{ display: 'block' }} href={socials.insta_src} target="_blank" rel="noreferrer">
+          <InstaIcon />
+        </a>
+      </IconWrapper>
     </SocialsRoot>
   )
 }

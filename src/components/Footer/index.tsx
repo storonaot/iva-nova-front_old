@@ -14,10 +14,10 @@ import {
   SocialsWrapper,
   Copyright,
 } from './styles'
-import { SocialNetworkItem } from '../../api/types'
+import { Socials as SocialsType } from '../../api/types'
 
 interface Props {
-  socials: SocialNetworkItem[]
+  socials: SocialsType
 }
 
 const Footer: FC<Props> = ({ socials }) => (
@@ -28,7 +28,7 @@ const Footer: FC<Props> = ({ socials }) => (
       <div>
         <Title>ИВА НОВА (этно-экстрим, world music)</Title>
         <SocialsWrapper>
-          <Socials size={40} padded={false} list={socials} />
+          <Socials size={40} padded={false} socials={socials} />
         </SocialsWrapper>
         <Button href={CONTACTS_URL} isGhost>
           контакты

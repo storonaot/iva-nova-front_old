@@ -7,7 +7,7 @@ import { ThemeProvider as ThemeProviderMUI } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import 'css-wipe'
 import '../src/static/stylesheets/global.css'
-import { fetchSocialNetworkList } from '../src/api'
+import { fetchSocialNetworks } from '../src/api'
 import Layout from '../src/components/Layout'
 
 import theme from '../src/theme'
@@ -26,8 +26,8 @@ const MyApp = ({ Component, pageProps }) => {
 
   const getData = async () => {
     try {
-      const socialNetworkList = await fetchSocialNetworkList()
-      setSocials(socialNetworkList)
+      const socialNetworks = await fetchSocialNetworks()
+      setSocials(socialNetworks)
     } catch (error) {
       console.error('error', error.message)
     }

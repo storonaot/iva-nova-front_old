@@ -18,10 +18,10 @@ import {
 import BurgerIcon from '../../static/svg/burger.svg'
 import CrossIcon from '../../static/svg/cross.svg'
 import Logo from '../../static/svg/logo.svg'
-import { SocialNetworkItem } from '../../api/types'
+import { Socials as SocialsType } from '../../api/types'
 
 interface Props {
-  socials: SocialNetworkItem[]
+  socials: SocialsType
 }
 
 const Header: FC<Props> = ({ socials }) => {
@@ -42,7 +42,7 @@ const Header: FC<Props> = ({ socials }) => {
         </Link>
         <Menu />
         <SocialsWrapper>
-          <Socials size={30} list={socials} />
+          <Socials size={30} socials={socials} />
         </SocialsWrapper>
         <Lang />
       </HeaderInner>

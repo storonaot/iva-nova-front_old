@@ -5,34 +5,27 @@ import Schedule from '../src/components/Home/Schedule'
 import News from '../src/components/common/NewsSliderBlock'
 import Music from '../src/components/Home/Music'
 import Video from '../src/components/Home/Video'
-import { fetchMediaLinkList, fetchSocialNetworkList, fetchAbout, fetchEventList } from '../src/api'
-import { TrackItem, EventItem, MediaLink, SocialNetworkItem, About } from '../src/api/types'
+import { fetchMediaLinks, fetchSocialNetworks, fetchAbout, fetchEventList } from '../src/api'
+import { TrackItem, EventItem, MediaLinks, About, Socials as SocialsType } from '../src/api/types'
 
 interface Props {
   trackList?: TrackItem[]
-  mediaLinkList?: MediaLink[]
-  socialNetworkList?: SocialNetworkItem[]
+  mediaLinks?: MediaLinks
+  socialNetworks?: SocialsType
   about?: About | null
   events?: EventItem[]
   error?: string
 }
 
-const IndexPage: FC<Props> = ({
-  trackList,
-  mediaLinkList,
-  socialNetworkList,
-  about,
-  events,
-  error,
-}) => {
+const IndexPage: FC<Props> = ({ trackList, mediaLinks, socialNetworks, about, events, error }) => {
   return error ? (
     <>{error}</>
   ) : (
     <>
-      <Hero mediaLinkList={mediaLinkList} socialNetworkList={socialNetworkList} about={about} />
+      <Hero mediaLinks={mediaLinks} socialNetworks={socialNetworks} about={about} />
       <Schedule events={events} />
       <News />
-      <Music trackList={trackList} mediaLinkList={mediaLinkList} />
+      <Music trackList={trackList} mediaLinks={mediaLinks} />
       <Video />
     </>
   )
@@ -40,15 +33,15 @@ const IndexPage: FC<Props> = ({
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const mediaLinkList = await fetchMediaLinkList()
-    const socialNetworkList = await fetchSocialNetworkList()
+    const mediaLinks = await fetchMediaLinks()
+    const socialNetworks = await fetchSocialNetworks()
     const about = await fetchAbout()
     const events = await fetchEventList(`date_gt=${Date.now()}&_limit=10`)
 
     return {
       props: {
-        mediaLinkList,
-        socialNetworkList,
+        mediaLinks,
+        socialNetworks,
         about,
         events,
       },

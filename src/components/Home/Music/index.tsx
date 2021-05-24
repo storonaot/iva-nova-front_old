@@ -18,16 +18,16 @@ import Placeholder from '../../common/Placeholder'
 
 import bgImage from '../../../static/images/bg2.jpg'
 
-import { TrackItem, MediaLink } from '../../../api/types'
+import { TrackItem, MediaLinks } from '../../../api/types'
 
 import { HubaImageContainer, Container, LeftBlock, RightBlock, TracksWrapper } from './styles'
 
 interface Props {
   trackList?: TrackItem[]
-  mediaLinkList?: MediaLink[]
+  mediaLinks?: MediaLinks
 }
 
-const Music: FC<Props> = ({ trackList, mediaLinkList }) => (
+const Music: FC<Props> = ({ trackList, mediaLinks }) => (
   <SectionRoot bgImage={bgImage}>
     {trackList?.length ? (
       <Container>
@@ -44,16 +44,12 @@ const Music: FC<Props> = ({ trackList, mediaLinkList }) => (
             </Button>
           </ShowOn>
         </LeftBlock>
-        {mediaLinkList?.length ? (
+        {mediaLinks ? (
           <RightBlock>
             <SubscribeTitle>Слушайте и скачивайте!</SubscribeTitle>
             <SubscriptionsWrapper orientation="vertical">
-              {mediaLinkList.map(mediaLink => {
-                if (mediaLink.type === 'iTunes') return <ITunesButton href={mediaLink.link} />
-                if (mediaLink.type === 'yaMusic') return <YaMusicButton href={mediaLink.link} />
-
-                return null
-              })}
+              <ITunesButton href={mediaLinks.itunes_src} />
+              <YaMusicButton href={mediaLinks.ya_music_src} />
             </SubscriptionsWrapper>
           </RightBlock>
         ) : null}
