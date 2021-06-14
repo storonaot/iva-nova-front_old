@@ -1,5 +1,6 @@
 /* eslint-disable react/no-danger */
 import React, { FC } from 'react'
+import { files } from 'dropbox'
 import Container from '../common/Container'
 import Title from '../common/Title'
 import Link from '../common/Link'
@@ -29,14 +30,15 @@ import {
   SubscribtionsWrapper,
   ContentWrapper,
 } from './styles'
-import { Album, TrackItem } from '../../api/types'
+import { Album } from '../../api/types'
 import { getFullMediaUrl } from '../../helpers'
 
 interface Props {
   item?: Album
+  audioLinks: files.GetTemporaryLinkResult[] | null
 }
 
-const MusicAlbumItem: FC<Props> = ({ item }) => {
+const MusicAlbumItem: FC<Props> = ({ item, audioLinks }) => {
   if (!item) return null
 
   const shouldShowSubscriptionLinks = item.ya_music_src || item.itunes_src
@@ -78,11 +80,13 @@ const MusicAlbumItem: FC<Props> = ({ item }) => {
         <ContentWrapper>
           <HTMLContent inputString={item.description} />
         </ContentWrapper>
-        <TrackList>
-          {item.tracks.map((track: TrackItem) => (
-            <Track key={track.id} track={track} />
-          ))}
-        </TrackList>
+        {audioLinks && audioLinks.length ? (
+          <TrackList>
+            {audioLinks.map(track => (
+              <Track key={track.metadata.id} track={track} />
+            ))}
+          </TrackList>
+        ) : null}
       </Container>
     </SectionRoot>
   )

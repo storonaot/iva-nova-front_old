@@ -2061,6 +2061,13 @@ domutils@^2.4.2:
     domelementtype "^2.0.1"
     domhandler "^4.0.0"
 
+dropbox@^9.8.6:
+  version "9.8.6"
+  resolved "https://registry.yarnpkg.com/dropbox/-/dropbox-9.8.6.tgz#a25887519d053a78285a2a7f88121b1af1c9bfd9"
+  integrity sha512-pRfPFvoeRCF/koVRzdtpXqzOh6hfptjQGBspYyZ1fyhnr2Zj1ZTZGhUdhL38c3NI7EfYBzXakanuNAMnJERcWg==
+  dependencies:
+    node-fetch "^2.6.1"
+
 duplexify@^3.4.2, duplexify@^3.6.0:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/duplexify/-/duplexify-3.7.1.tgz#2a4df5317f6ccfd91f86d6fd25d8d8a103b88309"

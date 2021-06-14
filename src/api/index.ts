@@ -1,9 +1,9 @@
 import axios from './axios'
-import { Album, City, EventItem, TrackItem } from './types'
+import { Album, City, EventItem, PhotoAlbum } from './types'
 
 export const fetchAlbumList = (paramsString?: string): Promise<Album[]> =>
   axios.get(paramsString ? `/albums?${paramsString}` : '/albums').then(({ data }) => data)
-export const fetchAlbum = (id: string | string[]): Promise<Album[]> =>
+export const fetchAlbum = (id: string | string[]): Promise<Album> =>
   axios.get(`/albums/${id}`).then(({ data }) => data)
 
 export const fetchEventList = (paramsString?: string): Promise<EventItem[]> =>
@@ -18,8 +18,8 @@ export const fetchEventsCount = (paramsString?: string): Promise<number> =>
 export const fetchCityList = (paramsString?: string): Promise<City[]> =>
   axios.get(paramsString ? `/cities?${paramsString}` : '/cities').then(({ data }) => data)
 
-export const fetchTrackList = (paramsString?: string): Promise<TrackItem[]> =>
-  axios.get(paramsString ? `/tracks?${paramsString}` : '/tracks').then(({ data }) => data)
+// export const fetchTrackList = (paramsString?: string): Promise<TrackItem[]> =>
+//   axios.get(paramsString ? `/tracks?${paramsString}` : '/tracks').then(({ data }) => data)
 
 export const fetchDocumentList = (paramsString?: string): Promise<{}> =>
   axios.get(paramsString ? `/documents?${paramsString}` : '/documents').then(({ data }) => data)
@@ -43,4 +43,14 @@ export const fetchMembers = (paramsString?: string) =>
 export const fetchMember = (id: string, paramsString?: string) =>
   axios
     .get(paramsString ? `/members/${id}?${paramsString}` : `/members/${id}`)
+    .then(({ data }) => data)
+
+export const fetchPhotoAlbums = (paramsString?: string) =>
+  axios
+    .get<PhotoAlbum[]>(paramsString ? `/photos?${paramsString}` : '/photos')
+    .then(({ data }) => data)
+
+export const fetchPhotoAlbum = (id: string | string[], paramsString?: string) =>
+  axios
+    .get<PhotoAlbum>(paramsString ? `/photos/${id}?${paramsString}` : `/photos/${id}`)
     .then(({ data }) => data)

@@ -46,8 +46,7 @@ export const Text = styled.p`
 
 interface Props {
   text: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  image: any
+  image: string
   mode?: 'video' | 'photo'
   aspectRatio?: AspectRatio
   to?: string

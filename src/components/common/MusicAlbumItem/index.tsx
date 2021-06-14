@@ -16,7 +16,7 @@ const MusicAlbumItem: FC<Props> = ({ album }) => (
     <Wrapper>
       <ImageRoot>
         <AspectRatioImage
-          imageUrl={getFullMediaUrl(album.cover.url)}
+          imageUrl={getFullMediaUrl(album.cover?.url)}
           aspectRatio={AspectRatio['1:1']}
         />
         <Overlay>
