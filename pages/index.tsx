@@ -6,10 +6,9 @@ import News from '../src/components/common/NewsSliderBlock'
 import Music from '../src/components/Home/Music'
 import Video from '../src/components/Home/Video'
 import { fetchMediaLinks, fetchSocialNetworks, fetchAbout, fetchEventList } from '../src/api'
-import { TrackItem, EventItem, MediaLinks, About, Socials as SocialsType } from '../src/api/types'
+import { EventItem, MediaLinks, About, Socials as SocialsType } from '../src/api/types'
 
 interface Props {
-  trackList?: TrackItem[]
   mediaLinks?: MediaLinks
   socialNetworks?: SocialsType
   about?: About | null
@@ -17,7 +16,7 @@ interface Props {
   error?: string
 }
 
-const IndexPage: FC<Props> = ({ trackList, mediaLinks, socialNetworks, about, events, error }) => {
+const IndexPage: FC<Props> = ({ mediaLinks, socialNetworks, about, events, error }) => {
   return error ? (
     <>{error}</>
   ) : (
@@ -25,7 +24,7 @@ const IndexPage: FC<Props> = ({ trackList, mediaLinks, socialNetworks, about, ev
       <Hero mediaLinks={mediaLinks} socialNetworks={socialNetworks} about={about} />
       <Schedule events={events} />
       <News />
-      <Music trackList={trackList} mediaLinks={mediaLinks} />
+      <Music trackList={[]} mediaLinks={mediaLinks} />
       <Video />
     </>
   )
