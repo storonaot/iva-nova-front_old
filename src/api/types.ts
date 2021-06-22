@@ -1,9 +1,9 @@
-// export interface TrackItem {
-//   id: number
-//   title: string
-//   audio_src: string
-//   ordinal_number: number
-// }
+export interface TrackItem {
+  id: number
+  title: string
+  audio_src: string
+  ordinal_number: number
+}
 
 export interface Image {
   id: number
