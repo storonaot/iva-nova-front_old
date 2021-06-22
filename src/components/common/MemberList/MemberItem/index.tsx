@@ -18,7 +18,7 @@ const MemberItem: FC<Props> = ({ member }) => (
     <a>
       <Card interactive padding="small">
         <AspectRatioImage
-          imageUrl={getFullMediaUrl(member.main_photo.url)}
+          imageUrl={getFullMediaUrl(member.main_photo?.url)}
           aspectRatio={AspectRatio['3:4']}
         />
         <Caption>

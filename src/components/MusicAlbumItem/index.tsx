@@ -55,7 +55,7 @@ const MusicAlbumItem: FC<Props> = ({ item, audioLinks }) => {
         <AlbumInfoWrapper>
           <ImageWrapper>
             <AspectRatioImage
-              imageUrl={getFullMediaUrl(item.cover.url)}
+              imageUrl={getFullMediaUrl(item.cover?.url)}
               aspectRatio={AspectRatio['1:1']}
             />
           </ImageWrapper>

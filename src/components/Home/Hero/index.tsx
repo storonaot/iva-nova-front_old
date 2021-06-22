@@ -44,7 +44,7 @@ const Hero: FC<Props> = ({ mediaLinks, socialNetworks, about }) => (
       <Card>
         {about ? (
           <ImageWrapper>
-            <AspectRatioImage imageUrl={getFullMediaUrl(about.main_photo.url)} />
+            <AspectRatioImage imageUrl={getFullMediaUrl(about.main_photo?.url)} />
           </ImageWrapper>
         ) : (
           'Главное изобрачение не загружено'
