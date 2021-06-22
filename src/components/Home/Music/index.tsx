@@ -13,14 +13,14 @@ import {
   SubscriptionsWrapper,
 } from '../../common/Subscriptions'
 
-import Track from '../../common/Track'
+// import Track from '../../common/Track'
 import Placeholder from '../../common/Placeholder'
 
 import bgImage from '../../../static/images/bg2.jpg'
 
 import { TrackItem, MediaLinks } from '../../../api/types'
 
-import { HubaImageContainer, Container, LeftBlock, RightBlock, TracksWrapper } from './styles'
+import { HubaImageContainer, Container, LeftBlock, RightBlock } from './styles'
 
 interface Props {
   trackList?: TrackItem[]
@@ -33,11 +33,11 @@ const Music: FC<Props> = ({ trackList, mediaLinks }) => (
       <Container>
         <LeftBlock>
           <Heading title="Музыка" btnTitle="вся музыка" btnHref={MUSIC_URL} />
-          <TracksWrapper>
+          {/* <TracksWrapper>
             {trackList.map((track: TrackItem) => (
               <Track key={track.id} track={track} />
             ))}
-          </TracksWrapper>
+          </TracksWrapper> */}
           <ShowOn mobile>
             <Button href={MUSIC_URL} isBlock>
               вся музыка

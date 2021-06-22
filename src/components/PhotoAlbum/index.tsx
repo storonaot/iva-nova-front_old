@@ -1,4 +1,7 @@
-import React, { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+/* eslint-disable @typescript-eslint/ban-ts-ignore */
+// @ts-ignore
+// @ts-nocheck
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
 import { files } from 'dropbox'
 import ReactDOM from 'react-dom'
 import Title from '../common/Title'
@@ -19,7 +22,7 @@ import Arrow from '../../static/svg/arrow.svg'
 
 // /Users/i.zhigalova/projects/iva-nova-front/src/static/svg/arrow.svg
 
-const Modal = ({ isOpened, children }) => {
+const Modal: FC<{ isOpened: boolean }> = ({ isOpened, children }) => {
   let container
   if (typeof window !== 'undefined') {
     const rootContainer = document.createElement('div')
@@ -50,13 +53,13 @@ const Modal = ({ isOpened, children }) => {
   return container && isOpened ? ReactDOM.createPortal(element, container) : null
 }
 
-const ModalContent = ({
-  setCurrentPhotoIndex,
-  setCurrentPhoto,
-  currentPhotoIndex,
-  photos,
-  currentPhoto,
-}) => {
+const ModalContent: FC<{
+  setCurrentPhotoIndex: (index: number | null) => void
+  setCurrentPhoto: (photo: files.GetTemporaryLinkResult | null) => void
+  currentPhotoIndex: number
+  photos: files.GetTemporaryLinkResult[] | null
+  currentPhoto: files.GetTemporaryLinkResult | null
+}> = ({ setCurrentPhotoIndex, setCurrentPhoto, currentPhotoIndex, photos, currentPhoto }) => {
   const wrapperRef = useRef(null)
   const goPrev = useCallback(() => {
     if (currentPhotoIndex != null && currentPhotoIndex > 0) {
@@ -71,6 +74,7 @@ const ModalContent = ({
       const newIndex = currentPhotoIndex + 1
 
       setCurrentPhotoIndex(newIndex)
+      // @ts-ignore
       setCurrentPhoto(photos[newIndex])
     }
   }, [currentPhotoIndex, currentPhoto])

@@ -22,8 +22,8 @@ import {
 import {
   MainHeading,
   ImageWrapper,
-  NumericList,
-  NumericListItem,
+  // NumericList,
+  // NumericListItem,
   TrackListWrapper,
   TrackList,
   AlbumInfoWrapper,
@@ -61,11 +61,11 @@ const MusicAlbumItem: FC<Props> = ({ item, audioLinks }) => {
           </ImageWrapper>
           <TrackListWrapper>
             <SubscribeTitle>Треклист</SubscribeTitle>
-            <NumericList>
+            {/* <NumericList>
               {item.tracks.map(track => (
                 <NumericListItem key={track.id}>{track.title}</NumericListItem>
               ))}
-            </NumericList>
+            </NumericList> */}
           </TrackListWrapper>
         </AlbumInfoWrapper>
         {shouldShowSubscriptionLinks && (
