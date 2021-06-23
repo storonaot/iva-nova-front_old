@@ -5,10 +5,10 @@ import Cross from '../../../../static/svg/cross.svg'
 import { ArrowWrapper, CrossWrapper } from './styles'
 
 interface Props<T> {
-  itemList: T[]
+  itemList: T[] | null
   setCurrentIndex: (index: number | null) => void
   setCurrentItem: (item: T | null) => void
-  currentIndex: number
+  currentIndex: number | null
   children: ReactNode
 }
 

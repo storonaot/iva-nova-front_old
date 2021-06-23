@@ -23,7 +23,7 @@ interface Props {
 }
 
 const PhotoAlbum: FC<Props> = ({ photos, photoAlbum }) => {
-  const [currentPhoto, setCurrentPhoto] = useState<PhotoAlbumType | null>(null)
+  const [currentPhoto, setCurrentPhoto] = useState<files.GetTemporaryLinkResult | null>(null)
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState<number | null>(null)
 
   const showFull = useCallback(id => {
@@ -67,7 +67,7 @@ const PhotoAlbum: FC<Props> = ({ photos, photoAlbum }) => {
           </Grid>
         )}
       </Container>
-      <Modal isOpened={currentPhoto}>
+      <Modal isOpened={!!currentPhoto}>
         <ModalContentWrapper
           itemList={photos}
           setCurrentIndex={setCurrentPhotoIndex}
