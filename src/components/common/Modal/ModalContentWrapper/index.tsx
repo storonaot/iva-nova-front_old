@@ -13,7 +13,7 @@ interface Props<T> {
 }
 
 const ModalContentWrapper = <T,>(props: Props<T>) => {
-  const wrapperRef = useRef(null)
+  const wrapperRef = useRef<HTMLDivElement>(null)
 
   const { itemList, setCurrentIndex, setCurrentItem, currentIndex, children } = props
 
