@@ -26,6 +26,8 @@ const ModalContentWrapper = <T,>(props: Props<T>) => {
   }, [wrapperRef])
 
   const goPrev = () => {
+    if (itemList == null) return
+
     if (currentIndex != null && currentIndex > 0) {
       const newIndex = currentIndex - 1
       setCurrentIndex(currentIndex - 1)
@@ -33,9 +35,10 @@ const ModalContentWrapper = <T,>(props: Props<T>) => {
     }
   }
   const goNext = () => {
+    if (itemList == null) return
+
     if (currentIndex != null && currentIndex < itemList?.length - 1) {
       const newIndex = currentIndex + 1
-
       setCurrentIndex(newIndex)
       setCurrentItem(itemList[newIndex])
     }
@@ -65,7 +68,11 @@ const ModalContentWrapper = <T,>(props: Props<T>) => {
         <Arrow />
       </ArrowWrapper>
       {children}
-      <ArrowWrapper isRight isDisabled={currentIndex === itemList.length - 1} onClick={goNext}>
+      <ArrowWrapper
+        isRight
+        isDisabled={itemList != null && currentIndex === itemList.length - 1}
+        onClick={goNext}
+      >
         <Arrow />
       </ArrowWrapper>
     </div>
