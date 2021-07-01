@@ -50,6 +50,7 @@ interface Props {
   mode?: 'video' | 'photo'
   aspectRatio?: AspectRatio
   to?: string
+  onClick?: () => void
 }
 
 const MediaFullPreview: FC<Props> = ({
@@ -58,11 +59,12 @@ const MediaFullPreview: FC<Props> = ({
   mode,
   aspectRatio = AspectRatio['16:9'],
   to,
+  onClick,
 }) => {
   const renderPreview = () => {
     return (
       <PreviewItem>
-        <Card interactive={!!to} padding="small">
+        <Card interactive={!!(to || onClick)} padding="small">
           <ImageWrapper>
             {mode === 'video' ? (
               <VideoPreview image={image} aspectRatio={aspectRatio} />

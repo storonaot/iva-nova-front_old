@@ -1,5 +1,5 @@
 import axios from './axios'
-import { Album, City, EventItem, PhotoAlbum } from './types'
+import { Album, City, EventItem, PhotoAlbum, Video } from './types'
 
 export const fetchAlbumList = (paramsString?: string): Promise<Album[]> =>
   axios.get(paramsString ? `/albums?${paramsString}` : '/albums').then(({ data }) => data)
@@ -54,3 +54,6 @@ export const fetchPhotoAlbum = (id: string | string[], paramsString?: string) =>
   axios
     .get<PhotoAlbum>(paramsString ? `/photos/${id}?${paramsString}` : `/photos/${id}`)
     .then(({ data }) => data)
+
+export const fetchVideos = (paramsString?: string) =>
+  axios.get<Video[]>(paramsString ? `/videos?${paramsString}` : `/videos`).then(({ data }) => data)

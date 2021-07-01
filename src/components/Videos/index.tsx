@@ -1,59 +1,80 @@
-import React from 'react'
-// import MediaFullPreview from '../common/MediaFullPreview'
-// import { VIDEOS_URL } from '../../constants/sources'
+import React, { FC, useCallback, useState } from 'react'
+import { Video } from '../../api/types'
+import MediaFullPreview from '../common/MediaFullPreview'
 
-// import videos from './data'
+import SectionRoot from '../common/SectionRoot'
 
-// import SectionRoot from '../common/SectionRoot'
+import bgImage from '../../static/images/bg3.png'
+import Title from '../common/Title'
+import Container from '../common/Container'
+import Tabs from '../common/Tabs'
+import Grid from '../common/Grid'
+import { AspectRatio } from '../common/AspectRatioImage'
+import Placeholder from '../common/Placeholder'
 
-// import bgImage from '../../static/images/bg3.png'
-// import Title from '../common/Title'
-// import Container from '../common/Container'
-// import Tabs from '../common/Tabs'
-// import Grid from '../common/Grid'
-// import { AspectRatio } from '../common/AspectRatioImage'
+const tabs = [
+  { id: 'all', label: 'Все видео' },
+  { id: 'clips', label: 'Клипы' },
+  { id: 'concerts', label: 'Концертные' },
+  { id: 'ethers', label: 'Эфиры' },
+  { id: 'other', label: 'Другое' },
+]
 
-// const tabs = [
-//   { id: 1, label: 'Все видео' },
-//   { id: 2, label: 'Клипы' },
-//   { id: 3, label: 'Концертные' },
-//   { id: 4, label: 'Эфиры' },
-//   { id: 5, label: 'Другое' },
-// ]
-
-const Videos = () => {
-  return <div>Videos</div>
+interface Props {
+  list: Video[]
 }
 
-// const Videos = () => {
-//   return (
-//     <SectionRoot bgImage={bgImage} opacity={0.5}>
-//       <Container>
-//         <Title withMargin>Фото</Title>
-//         <Tabs
-//           tabs={tabs}
-//           activeTab={1}
-//           onChange={tabId => {
-//             console.log(tabId)
-//           }}
-//         />
-//         <Grid>
-//           {videos.map(video => {
-//             return (
-//               <MediaFullPreview
-//                 key={video.id}
-//                 text={video.title}
-//                 image={video.image}
-//                 aspectRatio={AspectRatio['16:9']}
-//                 to={`${VIDEOS_URL}/${video.id}`}
-//                 mode="video"
-//               />
-//             )
-//           })}
-//         </Grid>
-//       </Container>
-//     </SectionRoot>
-//   )
-// }
+const Videos: FC<Props> = ({ list }) => {
+  const [currentTab, setTab] = useState('all')
+
+  const onChangeTab = useCallback(tabId => {
+    setTab(tabId)
+  }, [])
+
+  return (
+    <SectionRoot bgImage={bgImage} opacity={0.5}>
+      {list?.length ? (
+        <Container>
+          <Title withMargin>Видео</Title>
+          <Tabs tabs={tabs} activeTab={currentTab} onChange={onChangeTab} />
+          <Grid>
+            {list.map(video => {
+              return (
+                <MediaFullPreview
+                  key={video.id}
+                  text={video.title}
+                  image={video.preview?.url || ''}
+                  aspectRatio={AspectRatio['16:9']}
+                  mode="video"
+                  onClick={() => {}}
+                />
+              )
+            })}
+          </Grid>
+          {/* {list.map(video => (
+            <div key={video.id}>
+              <div>{video.title}</div>
+              <iframe
+                width="560"
+                height="315"
+                src={video.src}
+                title={video.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+              video.title
+            </div>
+          ))} */}
+        </Container>
+      ) : (
+        <Container>
+          <Title withMargin>Видео</Title>
+          <Placeholder sectionName="Видео" />
+        </Container>
+      )}
+    </SectionRoot>
+  )
+}
 
 export default Videos

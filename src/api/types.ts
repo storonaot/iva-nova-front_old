@@ -102,3 +102,11 @@ export interface PhotoAlbum {
   description: string
   dropbox_src: string
 }
+
+export interface Video {
+  id: number
+  title: string
+  preview?: Image
+  src: string
+  type: 'clips' | 'concerts' | 'ethers' | 'other'
+}
