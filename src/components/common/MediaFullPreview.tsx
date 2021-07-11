@@ -63,7 +63,7 @@ const MediaFullPreview: FC<Props> = ({
 }) => {
   const renderPreview = () => {
     return (
-      <PreviewItem>
+      <PreviewItem onClick={onClick}>
         <Card interactive={!!(to || onClick)} padding="small">
           <ImageWrapper>
             {mode === 'video' ? (

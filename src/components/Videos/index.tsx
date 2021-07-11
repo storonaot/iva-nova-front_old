@@ -3,6 +3,8 @@ import { Video } from '../../api/types'
 import MediaFullPreview from '../common/MediaFullPreview'
 
 import SectionRoot from '../common/SectionRoot'
+import Modal from '../common/Modal'
+import ModalContentWrapper from '../common/Modal/ModalContentWrapper'
 
 import bgImage from '../../static/images/bg3.png'
 import Title from '../common/Title'
@@ -21,15 +23,30 @@ const tabs = [
 ]
 
 interface Props {
-  list: Video[]
+  list?: Video[]
 }
 
 const Videos: FC<Props> = ({ list }) => {
   const [currentTab, setTab] = useState('all')
 
+  const [currentVideo, setCurrentVideo] = useState<Video | null>(null)
+  const [currentVideoIndex, setCurrentVideoIndex] = useState<number | null>(null)
+
   const onChangeTab = useCallback(tabId => {
     setTab(tabId)
   }, [])
+
+  const showFull = (videoId: number) => {
+    if (list) {
+      const targetIndex = list.findIndex(video => video.id === videoId)
+      const targetVideo = list[targetIndex]
+
+      if (targetVideo != null) {
+        setCurrentVideo(targetVideo)
+        setCurrentVideoIndex(targetIndex)
+      }
+    }
+  }
 
   return (
     <SectionRoot bgImage={bgImage} opacity={0.5}>
@@ -46,26 +63,33 @@ const Videos: FC<Props> = ({ list }) => {
                   image={video.preview?.url || ''}
                   aspectRatio={AspectRatio['16:9']}
                   mode="video"
-                  onClick={() => {}}
+                  onClick={() => {
+                    showFull(video.id)
+                  }}
                 />
               )
             })}
           </Grid>
-          {/* {list.map(video => (
-            <div key={video.id}>
-              <div>{video.title}</div>
-              <iframe
-                width="560"
-                height="315"
-                src={video.src}
-                title={video.title}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-              video.title
-            </div>
-          ))} */}
+          <Modal isOpened={!!currentVideo}>
+            <ModalContentWrapper
+              itemList={list}
+              setCurrentIndex={setCurrentVideoIndex}
+              setCurrentItem={setCurrentVideo}
+              currentIndex={currentVideoIndex}
+            >
+              {currentVideo && (
+                <iframe
+                  width="560"
+                  height="315"
+                  src={currentVideo.src}
+                  title={currentVideo.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              )}
+            </ModalContentWrapper>
+          </Modal>
         </Container>
       ) : (
         <Container>
