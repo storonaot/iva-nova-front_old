@@ -82,15 +82,16 @@ const Videos: FC<Props> = ({ list }) => {
               currentIndex={currentVideoIndex}
             >
               {currentVideo && (
-                <iframe
-                  width="560"
-                  height="315"
-                  src={currentVideo.src}
-                  title={currentVideo.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+                <div style={{ position: 'relative', width: '70vw', paddingBottom: '56.25%' }}>
+                  {currentVideo.src}
+                  <iframe
+                    style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}
+                    src={`${currentVideo.src}?autoplay=1`}
+                    title={currentVideo.title}
+                    frameBorder="0"
+                    allowFullScreen
+                  />
+                </div>
               )}
             </ModalContentWrapper>
           </Modal>
