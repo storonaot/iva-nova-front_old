@@ -32,14 +32,17 @@ const Videos: FC<Props> = ({ list }) => {
   const [currentVideo, setCurrentVideo] = useState<Video | null>(null)
   const [currentVideoIndex, setCurrentVideoIndex] = useState<number | null>(null)
 
+  const filteredList =
+    currentTab === 'all' ? list : list?.filter(video => video.type === currentTab)
+
   const onChangeTab = useCallback(tabId => {
     setTab(tabId)
   }, [])
 
   const showFull = (videoId: number) => {
-    if (list) {
-      const targetIndex = list.findIndex(video => video.id === videoId)
-      const targetVideo = list[targetIndex]
+    if (filteredList) {
+      const targetIndex = filteredList.findIndex(video => video.id === videoId)
+      const targetVideo = filteredList[targetIndex]
 
       if (targetVideo != null) {
         setCurrentVideo(targetVideo)
@@ -55,24 +58,25 @@ const Videos: FC<Props> = ({ list }) => {
           <Title withMargin>Видео</Title>
           <Tabs tabs={tabs} activeTab={currentTab} onChange={onChangeTab} />
           <Grid>
-            {list.map(video => {
-              return (
-                <MediaFullPreview
-                  key={video.id}
-                  text={video.title}
-                  image={video.preview?.url || ''}
-                  aspectRatio={AspectRatio['16:9']}
-                  mode="video"
-                  onClick={() => {
-                    showFull(video.id)
-                  }}
-                />
-              )
-            })}
+            {filteredList != null &&
+              filteredList.map(video => {
+                return (
+                  <MediaFullPreview
+                    key={video.id}
+                    text={video.title}
+                    image={video.preview?.url || ''}
+                    aspectRatio={AspectRatio['16:9']}
+                    mode="video"
+                    onClick={() => {
+                      showFull(video.id)
+                    }}
+                  />
+                )
+              })}
           </Grid>
           <Modal isOpened={!!currentVideo}>
             <ModalContentWrapper
-              itemList={list}
+              itemList={filteredList || []}
               setCurrentIndex={setCurrentVideoIndex}
               setCurrentItem={setCurrentVideo}
               currentIndex={currentVideoIndex}
