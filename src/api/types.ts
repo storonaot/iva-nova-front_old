@@ -17,7 +17,7 @@ export interface Album {
   short_description: string
   date: Date
   cover: Image
-  // tracks: TrackItem[]
+  tracks: TrackItem[]
   type: 'CD' | 'DVD'
   ya_music_src?: string
   itunes_src?: string

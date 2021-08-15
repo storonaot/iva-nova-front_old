@@ -1,9 +1,8 @@
-import React, { useRef } from 'react'
+import React, { memo } from 'react'
 import { files } from 'dropbox'
-// import { Play as PlayIcon } from '../Icons'
-// import { themeSettings } from '../../../theme'
-// import { Block2, IconWrapper, TimeLineWrapper, TimeLine } from './styles'
-// import { TrackItem } from '../../../api/types'
+import { Play as PlayIcon } from '../Icons'
+import { themeSettings } from '../../../theme'
+import { Block2, IconWrapper, TimeLineWrapper, TimeLine } from './styles'
 
 interface Props {
   // track: TrackItem
@@ -11,68 +10,49 @@ interface Props {
 }
 
 const Track = ({ track }: Props) => {
-  const audioRef = useRef<HTMLAudioElement>(null)
-
-  // const myaudio = new Audio(track.link)
-
-  // console.log('myaudio', myaudio)
-
-  // const seconds = (Number(track.timing) / 1000) % 60
-  // const minutes = parseInt(((Number(track.timing) / (1000 * 60)) % 60).toString(), 0)
-
-  // return (
-  //   <Block2 key={track.metadata.id}>
-  //     <IconWrapper>
-  //       <PlayIcon fill={themeSettings.colors.secondary} opacity="1" />
-  //     </IconWrapper>
-  //     <div>{track.metadata.name}</div>
-  //     <div>3:21</div>
-  //     <TimeLineWrapper>
-  //       <TimeLine width={30} />
-  //       <TimeLine width={20} lineColor="secondary" />
-  //     </TimeLineWrapper>
-  //     {myaudio.duration}
-  //   </Block2>
-  // )
-
-  // useEffect(() => {
-  //   if (audioRef.current != null) {
-  //     audioRef.current.addEventListener('seeked', () => {})
-  //   }
-  // }, [audioRef])
-
   return (
-    <>
-      <audio src={track.link} controls ref={audioRef} preload="metadata">
-        <track kind="captions" />
-      </audio>
-      <div>duration: {audioRef.current?.duration}</div>
-      <div>currentTime: {audioRef.current?.currentTime}</div>
-      <div>buffered.length: {audioRef.current?.buffered.length}</div>
-    </>
+    <Block2 key={track.metadata.id}>
+      <IconWrapper>
+        <PlayIcon fill={themeSettings.colors.secondary} opacity="1" />
+      </IconWrapper>
+      <div>{track.metadata.name}</div>
+      <div>3:21</div>
+      <TimeLineWrapper>
+        <TimeLine width={30} />
+        <TimeLine width={20} lineColor="secondary" />
+      </TimeLineWrapper>
+    </Block2>
   )
-
-  // return (
-  //   <div>
-  //     <audio controls>
-  //       <source src={track.audio_link} type="audio/mpeg" />
-  //       <track kind="captions" />
-  //     </audio>
-  //     <Block2 key={track.id}>
-  //       <IconWrapper>
-  //         <PlayIcon fill={themeSettings.colors.secondary} opacity="1" />
-  //       </IconWrapper>
-  //       <div>{track.name}</div>
-  //       <div>
-  //         {minutes}:{seconds}
-  //       </div>
-  //       <TimeLineWrapper>
-  //         <TimeLine width={30} />
-  //         <TimeLine width={20} lineColor="secondary" />
-  //       </TimeLineWrapper>
-  //     </Block2>
-  //   </div>
-  // )
 }
 
-export default Track
+export default memo(Track)
+
+// import { FC } from 'hoist-non-react-statics/node_modules/@types/react'
+// import React from 'react'
+// import { useAudioPlayer } from 'react-use-audio-player'
+
+// interface Props {
+//   file: unknown
+// }
+
+// const AudioPlayer: FC<Props> = ({ file }) => {
+//   console.log('file', file)
+
+//   const { togglePlayPause, ready, loading, playing } = useAudioPlayer({
+//     src: file.link,
+//     format: 'mp3',
+//     autoplay: false,
+//     onend: () => console.log('sound has ended!'),
+//   })
+
+//   if (!ready && !loading) return <div>No audio to play</div>
+//   if (loading) return <div>Loading audio</div>
+
+//   return (
+//     <div>
+//       <button onClick={togglePlayPause}>{playing ? 'Pause' : 'Play'}</button>
+//     </div>
+//   )
+// }
+
+// export default AudioPlayer
