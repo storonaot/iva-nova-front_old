@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { LINES_COLOR, SPACE_3, SPACE_4, SPACE_2, SPACE_10 } from '../../theme'
+import { LINES_COLOR, SPACE_3, SPACE_4, SPACE_10 } from '../../theme'
 
 export const MainHeading = styled.div`
   display: flex;
@@ -28,17 +28,6 @@ export const NumericListItem = styled.li`
 
 export const TrackListWrapper = styled.div`
   margin-left: ${SPACE_4};
-`
-
-export const TrackList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  & > *:nth-child(odd) {
-    margin-right: ${SPACE_2};
-  }
-  & > *:nth-child(even) {
-    margin-left: ${SPACE_2};
-  }
 `
 
 export const AlbumInfoWrapper = styled.div`

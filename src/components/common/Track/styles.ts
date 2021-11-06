@@ -35,6 +35,7 @@ export const IconWrapper = styled.div`
   margin-right: ${SPACE_3};
   width: 32px;
   overflow: hidden;
+  cursor: pointer;
 `
 
 // export const TimeLineWrapper = styled.div`
@@ -53,7 +54,7 @@ export const IconWrapper = styled.div`
 //     lineColor === 'secondary' ? colors.secondary : colors.lightGray};
 // `
 
-export const SeekSlider = styled.input<{ value: number }>`
+export const SeekSlider = styled.input<{ currentPercentage: string }>`
   cursor: pointer;
   position: absolute;
   width: 100%;
@@ -68,7 +69,7 @@ export const SeekSlider = styled.input<{ value: number }>`
     position: absolute;
     content: '';
     left: 0;
-    width: ${({ value }) => value}%;
+    width: ${({ currentPercentage }) => currentPercentage};
     height: 4px;
     background-color: ${({ theme: { colors } }) => colors.secondary};
     cursor: pointer;

@@ -5,7 +5,7 @@ import Title from '../common/Title'
 import Link from '../common/Link'
 import HTMLContent from '../common/HTMLContent'
 import AspectRatioImage, { AspectRatio } from '../common/AspectRatioImage'
-import Track from '../common/Track'
+import AudioPlayer from '../common/AudioPlayer'
 import bgImage from '../../static/images/bg2.jpg'
 import SectionRoot from '../common/SectionRoot'
 
@@ -24,7 +24,6 @@ import {
   NumericList,
   NumericListItem,
   TrackListWrapper,
-  TrackList,
   AlbumInfoWrapper,
   SubscribtionsWrapper,
   ContentWrapper,
@@ -79,13 +78,7 @@ const MusicAlbumItem: FC<Props> = ({ item, audioLinks }) => {
         <ContentWrapper>
           <HTMLContent inputString={item.description} />
         </ContentWrapper>
-        {audioLinks && audioLinks.length ? (
-          <TrackList>
-            {audioLinks.map(track => (
-              <Track key={track.metadata.id} track={track} />
-            ))}
-          </TrackList>
-        ) : null}
+        {audioLinks && audioLinks.length ? <AudioPlayer tracks={audioLinks} /> : null}
       </Container>
     </SectionRoot>
   )
