@@ -44,12 +44,12 @@ const Track: FC<Props> = ({ track, isPlaying, setIsPlaying, setCurrentTrackId })
   const startTimer = useCallback(() => {
     clearInterval(intervalRef.current)
 
-    intervalRef.current = setInterval(() => {
-      if (audioRef.current) {
-        if (audioRef.current.ended) reset()
-        else setTrackProgress(audioRef.current.currentTime)
-      }
-    }, 1000)
+    // intervalRef.current = setInterval(() => {
+    //   if (audioRef.current) {
+    //     if (audioRef.current.ended) reset()
+    //     else setTrackProgress(audioRef.current.currentTime)
+    //   }
+    // }, 1000)
   }, [setTrackProgress, reset, audioRef.current?.currentTime])
 
   const start = useCallback(() => {
@@ -107,7 +107,8 @@ const Track: FC<Props> = ({ track, isPlaying, setIsPlaying, setCurrentTrackId })
   //   startTimer()
   // }
 
-  const [val, setVal] = useState(0)
+  // const [val, setVal] = useState(0)
+  const [val] = useState(0)
 
   return (
     <>
@@ -127,7 +128,7 @@ const Track: FC<Props> = ({ track, isPlaying, setIsPlaying, setCurrentTrackId })
           step="1"
           min="0"
           value={val}
-          onChange={e => setVal(e.target.value)}
+          // onChange={e => setVal(e.target.value)}
           currentPercentage={`${val}%`}
           // onChange={e => {
           //   console.log('e', e.target)
