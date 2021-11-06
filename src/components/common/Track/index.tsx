@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
 import React, { useEffect, useMemo, memo, useCallback, useRef, useState, FC } from 'react'
 import { files } from 'dropbox'
 import { Block2, IconWrapper, SeekSlider } from './styles'
