@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import { files } from 'dropbox'
 import Container from '../common/Container'
 import Title from '../common/Title'
@@ -41,6 +41,11 @@ const MusicAlbumItem: FC<Props> = ({ item, audioLinks }) => {
 
   const shouldShowSubscriptionLinks = item.ya_music_src || item.itunes_src
 
+  const tracks = useMemo(
+    () => item.tracks.sort((a, b) => (a.ordinal_number > b.ordinal_number ? 1 : -1)),
+    [item.tracks],
+  )
+
   return (
     <SectionRoot bgImage={bgImage} bgRepeat="x">
       <Container>
@@ -60,7 +65,7 @@ const MusicAlbumItem: FC<Props> = ({ item, audioLinks }) => {
           <TrackListWrapper>
             <SubscribeTitle>Треклист</SubscribeTitle>
             <NumericList>
-              {item.tracks.map(track => (
+              {tracks.map(track => (
                 <NumericListItem key={track.id}>{track.title}</NumericListItem>
               ))}
             </NumericList>

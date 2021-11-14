@@ -35,5 +35,6 @@ export const COLORS = {
   grayDark: '#565656',
 }
 
-export const DEFAULT_IMAGE_URL =
-  'https://upload.wikimedia.org/wikipedia/ru/2/2a/Adventure_Time_with_Finn_%26_Jake.png'
+// export const DEFAULT_IMAGE_URL =
+//   'https://upload.wikimedia.org/wikipedia/ru/2/2a/Adventure_Time_with_Finn_%26_Jake.png'
+export const DEFAULT_IMAGE_URL = ''
