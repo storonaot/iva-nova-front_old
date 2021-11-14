@@ -44,12 +44,12 @@ const Track: FC<Props> = ({ track, isPlaying, setIsPlaying, setCurrentTrackId })
   const startTimer = useCallback(() => {
     clearInterval(intervalRef.current)
 
-    intervalRef.current = setInterval(() => {
-      if (audioRef.current) {
-        if (audioRef.current.ended) reset()
-        else setTrackProgress(audioRef.current.currentTime)
-      }
-    }, 1000)
+    // intervalRef.current = setInterval(() => {
+    //   if (audioRef.current) {
+    //     if (audioRef.current.ended) reset()
+    //     else setTrackProgress(audioRef.current.currentTime)
+    //   }
+    // }, 1000)
   }, [setTrackProgress, reset, audioRef.current?.currentTime])
 
   const start = useCallback(() => {
