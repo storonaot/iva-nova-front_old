@@ -7,6 +7,7 @@ import { SPACE_2, SECONDARY_FONT, SECONDARY_COLOR } from '../../theme'
 interface Props {
   href: string
   children: string
+  isBlank?: boolean
 }
 
 const SpanLink = styled.span`
@@ -18,10 +19,15 @@ const SpanLink = styled.span`
   color: ${SECONDARY_COLOR};
 `
 
-const Link = ({ href, children }: Props) => (
-  <NextLink href={href}>
-    <SpanLink>{children}</SpanLink>
-  </NextLink>
-)
+const Link = ({ href, children, isBlank }: Props) =>
+  isBlank ? (
+    <a href={href} target="blank" rel="noopener norefferer">
+      <SpanLink>{children}</SpanLink>
+    </a>
+  ) : (
+    <NextLink href={href}>
+      <SpanLink>{children}</SpanLink>
+    </NextLink>
+  )
 
 export default Link

@@ -12,11 +12,9 @@ const AudioPlayer: FC<Props> = ({ tracks }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTrackId, setCurrentTrackId] = useState<string | number | null>(null)
 
-  console.log('isPlaying', isPlaying, currentTrackId)
-
   return (
     <TrackList>
-      {tracks.map(track => (
+      {tracks.slice(0, 1).map(track => (
         <Track
           key={track.metadata.id}
           track={track}
