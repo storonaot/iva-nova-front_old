@@ -49,11 +49,13 @@ export const getServerSideProps: GetServerSideProps = async context => {
         .result
 
       const filePaths = thumbs.entries.map(file => ({
-        path: file.path_display as string,
+        path: file.path_display,
         size: 'w256h256',
       }))
 
-      photoThumbs = await (await dbx.filesGetThumbnailBatch({ entries: filePaths })).result.entries
+      const args = ({ entries: filePaths } as unknown) as { entries: files.ThumbnailArg[] }
+
+      photoThumbs = await (await dbx.filesGetThumbnailBatch(args)).result.entries
     }
 
     return {
