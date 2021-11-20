@@ -19,17 +19,20 @@ import ModalContentWrapper from '../common/Modal/ModalContentWrapper'
 
 interface Props {
   photoAlbum: PhotoAlbumType
-  photos: files.GetTemporaryLinkResult[] | null
+  photoLinks: files.GetTemporaryLinkResult[] | null
+  photoThumbs: files.GetThumbnailBatchResultEntrySuccess[] | null
 }
 
-const PhotoAlbum: FC<Props> = ({ photos, photoAlbum }) => {
+const PhotoAlbum: FC<Props> = ({ photoLinks, photoAlbum }) => {
   const [currentPhoto, setCurrentPhoto] = useState<files.GetTemporaryLinkResult | null>(null)
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState<number | null>(null)
 
+  // линки меняем на тамбы
+
   const showFull = useCallback(id => {
-    if (photos) {
-      const targetIndex = photos.findIndex(photo => photo.metadata.id === id)
-      const targetPhoto = photos[targetIndex]
+    if (photoLinks) {
+      const targetIndex = photoLinks.findIndex(photo => photo.metadata.id === id)
+      const targetPhoto = photoLinks[targetIndex]
 
       if (targetPhoto != null) {
         setCurrentPhoto(targetPhoto)
@@ -46,9 +49,9 @@ const PhotoAlbum: FC<Props> = ({ photos, photoAlbum }) => {
           <Link href={`${PHOTOS_URL}`}>Все альбомы</Link>
         </MainHeading>
         {photoAlbum.description && <Description>{photoAlbum.description}</Description>}
-        {photos && (
+        {photoLinks && (
           <Grid gridSize={4}>
-            {photos.map(photo => {
+            {photoLinks.map(photo => {
               return (
                 <div
                   key={photo.metadata.id}
@@ -69,7 +72,7 @@ const PhotoAlbum: FC<Props> = ({ photos, photoAlbum }) => {
       </Container>
       <Modal isOpened={!!currentPhoto}>
         <ModalContentWrapper
-          itemList={photos}
+          itemList={photoLinks}
           setCurrentIndex={setCurrentPhotoIndex}
           setCurrentItem={setCurrentPhoto}
           currentIndex={currentPhotoIndex}

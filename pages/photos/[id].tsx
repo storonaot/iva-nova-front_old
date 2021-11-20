@@ -11,11 +11,16 @@ import dbx from '../../src/api/dbx'
 interface Props {
   photoAlbum: PhotoAlbumType
   error?: string
-  photos: files.GetTemporaryLinkResult[] | null
+  photoLinks: files.GetTemporaryLinkResult[] | null
+  photoThumbs: files.GetThumbnailBatchResultEntrySuccess[] | null
 }
 
-const PhotoAlbumPage: FC<Props> = ({ photoAlbum, error, photos }) => {
-  return error ? <>{error}</> : <PhotoAlbum photos={photos} photoAlbum={photoAlbum} />
+const PhotoAlbumPage: FC<Props> = ({ photoAlbum, error, photoLinks, photoThumbs }) => {
+  return error ? (
+    <>{error}</>
+  ) : (
+    <PhotoAlbum photoLinks={photoLinks} photoThumbs={photoThumbs} photoAlbum={photoAlbum} />
+  )
 }
 
 export const getServerSideProps: GetServerSideProps = async context => {
@@ -26,10 +31,12 @@ export const getServerSideProps: GetServerSideProps = async context => {
     const photoAlbum = await fetchPhotoAlbum(id)
 
     let photoLinks = null
+    let photoThumbs = null
 
     if (photoAlbum.dropbox_src) {
       const photoFiles = await (await dbx.filesListFolder({ path: `/${photoAlbum.dropbox_src}` }))
         .result
+
       photoLinks = await Promise.all(
         photoFiles.entries.map(file => {
           return dbx.filesGetTemporaryLink({ path: file.path_lower as string })
@@ -37,12 +44,23 @@ export const getServerSideProps: GetServerSideProps = async context => {
       ).then(res => {
         return Object.values(res).map(i => i.result)
       })
+
+      const thumbs = await (await dbx.filesListFolder({ path: `/${photoAlbum.dropbox_src}` }))
+        .result
+
+      const filePaths = thumbs.entries.map(file => ({
+        path: file.path_display as string,
+        size: 'w256h256',
+      }))
+
+      photoThumbs = await (await dbx.filesGetThumbnailBatch({ entries: filePaths })).result.entries
     }
 
     return {
       props: {
         photoAlbum,
-        photos: photoLinks,
+        photoLinks,
+        photoThumbs,
       },
     }
   } catch (error) {
