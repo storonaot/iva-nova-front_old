@@ -5,17 +5,21 @@ import Cross from '../../../../static/svg/cross.svg'
 import { ArrowWrapper, CrossWrapper } from './styles'
 
 interface Props<T> {
-  itemList: T[] | null
+  itemList: Array<T>
   setCurrentIndex: (index: number | null) => void
-  setCurrentItem: (item: T | null) => void
+  setCurrentItem: (item: T) => void
   currentIndex: number | null
   children: ReactNode
 }
 
-const ModalContentWrapper = <T,>(props: Props<T>) => {
+const ModalContentWrapper = <T,>({
+  itemList,
+  setCurrentIndex,
+  setCurrentItem,
+  currentIndex,
+  children,
+}: Props<T>) => {
   const wrapperRef = useRef<HTMLDivElement>(null)
-
-  const { itemList, setCurrentIndex, setCurrentItem, currentIndex, children } = props
 
   useEffect(() => {
     if (wrapperRef.current != null) wrapperRef.current.focus()

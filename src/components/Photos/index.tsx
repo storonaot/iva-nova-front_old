@@ -35,7 +35,7 @@ const Photos: FC<Props> = ({ years, photoAlbums }) => {
   }, [currentTabId])
 
   return (
-    <SectionRoot bgImage={bgImage} opacity={0.5}>
+    <SectionRoot bgImage={bgImage} opacity={0.5} bgRepeat="x">
       <Container>
         <Title withMargin>Фото</Title>
         <Tabs

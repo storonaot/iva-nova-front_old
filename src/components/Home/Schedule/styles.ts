@@ -11,6 +11,7 @@ export const Root = styled.div`
   ${media.greaterThan('medium')`
     margin-top: ${selectCustomSize('heroTopOffsetNegative')};
     padding-top: calc(${selectCustomSize('heroTopOffset')} + ${SPACE_9});
+    padding-bottom: 1px;
   `}
 `
 

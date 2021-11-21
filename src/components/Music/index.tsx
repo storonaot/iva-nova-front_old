@@ -34,7 +34,7 @@ const Music: FC<Props> = ({ list = [] }) => {
   }, [])
 
   return (
-    <SectionRoot bgImage={bgImage}>
+    <SectionRoot bgImage={bgImage} bgRepeat="x">
       {list?.length ? (
         <Container>
           <Title withMargin>Музыка</Title>

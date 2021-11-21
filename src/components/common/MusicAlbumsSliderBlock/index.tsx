@@ -8,6 +8,7 @@ import AlbumItem from '../MusicAlbumItem'
 
 import { SliderWrapper } from './styles'
 import { Album } from '../../../api/types'
+import SectionRoot from '../SectionRoot'
 
 interface Props {
   title?: string
@@ -16,18 +17,20 @@ interface Props {
 
 const MusicAlbumsSliderBlock: FC<Props> = ({ title = 'Другие альбомы', list }) =>
   list ? (
-    <Container>
-      <Wrapper>
-        <Heading title={title} withMargin />
-        <SliderWrapper>
-          <Slider>
-            {list.map(album => (
-              <AlbumItem key={album.id} album={album} />
-            ))}
-          </Slider>
-        </SliderWrapper>
-      </Wrapper>
-    </Container>
+    <SectionRoot>
+      <Container>
+        <Wrapper>
+          <Heading title={title} withMargin />
+          <SliderWrapper>
+            <Slider>
+              {list.map(album => (
+                <AlbumItem key={album.id} album={album} />
+              ))}
+            </Slider>
+          </SliderWrapper>
+        </Wrapper>
+      </Container>
+    </SectionRoot>
   ) : null
 
 export default MusicAlbumsSliderBlock
