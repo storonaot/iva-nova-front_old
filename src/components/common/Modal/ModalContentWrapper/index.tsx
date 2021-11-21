@@ -7,7 +7,7 @@ import { ArrowWrapper, CrossWrapper } from './styles'
 interface Props<T> {
   itemList: Array<T>
   setCurrentIndex: (index: number | null) => void
-  setCurrentItem: (item: T) => void
+  setCurrentItem: (item: T | null) => void
   currentIndex: number | null
   children: ReactNode
 }
