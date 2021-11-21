@@ -62,11 +62,15 @@ interface PhotoInt {
   path?: string
 }
 
+interface PhotoLink {
+  [index: string]: files.GetTemporaryLinkResult
+}
+
 const PhotoAlbum: FC<Props> = ({ photoThumbs, photoAlbum, photoLinks }) => {
   const [currentPhoto, setCurrentPhoto] = useState<PhotoInt | null>(null)
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState<number | null>(null)
 
-  const photoLinksMap = useMemo(() => {
+  const photoLinksMap: PhotoLink | null = useMemo(() => {
     if (!photoLinks) return null
 
     return photoLinks.reduce((acc, current) => {
@@ -85,12 +89,12 @@ const PhotoAlbum: FC<Props> = ({ photoThumbs, photoAlbum, photoLinks }) => {
     if (photoThumbs == null) return []
 
     return photoThumbs.map((photo, index) => {
-      const photoLink = photoLinksMap[photo.metadata.id] as files.GetTemporaryLinkResult
+      const photoLink = photoLinksMap != null ? photoLinksMap[photo.metadata.id] : null
 
       return {
         id: index,
         thumb: `data:image/jpeg;base64, ${photo.thumbnail}`,
-        original: photoLinksMap != null ? photoLink.link : '',
+        original: photoLink != null ? photoLink.link : '',
         path: photo.metadata.path_lower,
       }
     })
