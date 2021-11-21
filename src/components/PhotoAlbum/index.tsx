@@ -85,10 +85,12 @@ const PhotoAlbum: FC<Props> = ({ photoThumbs, photoAlbum, photoLinks }) => {
     if (photoThumbs == null) return []
 
     return photoThumbs.map((photo, index) => {
+      const photoLink = photoLinksMap[photo.metadata.id] as files.GetTemporaryLinkResult
+
       return {
         id: index,
         thumb: `data:image/jpeg;base64, ${photo.thumbnail}`,
-        original: photoLinksMap[photo.metadata.id].link,
+        original: photoLinksMap != null ? photoLink.link : '',
         path: photo.metadata.path_lower,
       }
     })
