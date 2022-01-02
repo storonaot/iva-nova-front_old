@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import bgImage from '../../static/images/bg2.jpg'
 
 import SectionRoot from '../common/SectionRoot'
@@ -7,8 +7,8 @@ import Title from '../common/Title'
 import HTMLContent from '../common/HTMLContent'
 import { About, Member } from '../../api/types'
 import MembersBlock from '../common/MembersBlock'
-import ImageGallery from './ImageGalery'
 import Placeholder from '../common/Placeholder'
+import { getFullMediaUrl } from '../../helpers'
 
 interface Props {
   about?: About | null
@@ -35,13 +35,25 @@ const AboutComponent: FC<Props> = ({ about, memberList = [] }) => {
     },
   )
 
+  const mainPhoto = useMemo(() => {
+    return about && about.photos[0]
+  }, [about])
+
   return about ? (
     <>
       <SectionRoot bgImage={bgImage} bgRepeat="x">
         <Container>
           <Title withMargin>О группе</Title>
           <HTMLContent inputString={about.description} />
-          <ImageGallery photos={about.photos} />
+          {mainPhoto && (
+            <img
+              alt={mainPhoto.name}
+              src={getFullMediaUrl(mainPhoto.url)}
+              style={{ width: '100%' }}
+            />
+          )}
+          {/* NOTE: пока неизвестно нужна ли такая галерея или оставим только одну заглавную фотку */}
+          {/* <ImageGallery photos={about.photos} /> */}
         </Container>
       </SectionRoot>
       <SectionRoot>

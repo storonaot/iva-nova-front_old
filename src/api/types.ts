@@ -8,6 +8,7 @@ export interface TrackItem {
 export interface Image {
   id: number
   url: string
+  name: string
 }
 
 export interface Album {
