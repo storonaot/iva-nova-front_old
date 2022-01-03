@@ -132,7 +132,7 @@ const Track: FC<Props> = ({ track, isPlaying, setPlaying, setCurrentTrackId }) =
     })
   }
 
-  const isDisabled = useMemo(() => duration == null, [duration])
+  const isDisabled = useMemo(() => duration == null || !isPlaying, [duration])
 
   return (
     <Block>
