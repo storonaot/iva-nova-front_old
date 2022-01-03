@@ -1,13 +1,4 @@
-import React, {
-  memo,
-  FC,
-  useEffect,
-  useRef,
-  useState,
-  useCallback,
-  useMemo,
-  MouseEvent,
-} from 'react'
+import React, { memo, FC, useEffect, useRef, useState, useCallback, useMemo } from 'react'
 
 import { files } from 'dropbox'
 import { intervalToDuration } from 'date-fns'
@@ -132,7 +123,7 @@ const Track: FC<Props> = ({ track, isPlaying, setPlaying, setCurrentTrackId }) =
     })
   }
 
-  const isDisabled = useMemo(() => duration == null || !isPlaying, [duration])
+  const isDisabled = useMemo(() => duration == null, [duration])
 
   return (
     <Block>
@@ -151,7 +142,7 @@ const Track: FC<Props> = ({ track, isPlaying, setPlaying, setCurrentTrackId }) =
         min="0"
         value={val}
         onMouseDown={event => {
-          if (!isDisabled) handleTimeDrag(event)
+          if (!isDisabled && isPlaying) handleTimeDrag(event)
         }}
         currentPercentage={`${val}%`}
         max={100}
