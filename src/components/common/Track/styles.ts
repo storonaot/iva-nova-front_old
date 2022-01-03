@@ -3,11 +3,12 @@ import BlockComp from '../Block'
 
 import { SPACE_1, SPACE_3, SECONDARY_FONT } from '../../../theme'
 
-export const Block2 = styled(BlockComp)`
+export const Block = styled(BlockComp)`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-gap: ${SPACE_1};
   font-family: ${SECONDARY_FONT};
+  position: relative;
   margin-bottom: 0;
   > *:first-child {
     grid-column: 1;
@@ -31,28 +32,14 @@ export const Block2 = styled(BlockComp)`
   }
 `
 
-export const IconWrapper = styled.div`
+export const IconWrapper = styled.div<{ isDisabled: boolean }>`
   margin-right: ${SPACE_3};
   width: 32px;
   overflow: hidden;
   cursor: pointer;
+  cursor: ${({ isDisabled }) => (isDisabled ? 'progress' : 'pointer')};
+  pointer-events: ${({ isDisabled }) => (isDisabled ? 'none' : 'auto')};
 `
-
-// export const TimeLineWrapper = styled.div`
-//   position: relative;
-//   height: 4px;
-//   width: 100%;
-//   background-color: #fff;
-//   overflow: hidden;
-// `
-
-// export const TimeLine = styled.div<{ lineColor?: string; width: number }>`
-//   width: ${({ width }) => width}%;
-//   height: 100%;
-//   position: absolute;
-//   background-color: ${({ lineColor, theme: { colors } }) =>
-//     lineColor === 'secondary' ? colors.secondary : colors.lightGray};
-// `
 
 export const SeekSlider = styled.input<{ currentPercentage: string }>`
   cursor: pointer;
@@ -63,7 +50,7 @@ export const SeekSlider = styled.input<{ currentPercentage: string }>`
     height: 100%;
     cursor: pointer;
     height: 4px;
-    background-color: ${({ theme: { colors } }) => colors.lightGray};
+    background-color: #fff;
   }
   &::before {
     position: absolute;

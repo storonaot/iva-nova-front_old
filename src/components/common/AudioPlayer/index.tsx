@@ -9,17 +9,17 @@ interface Props {
 }
 
 const AudioPlayer: FC<Props> = ({ tracks }) => {
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isPlaying, setPlaying] = useState(false)
   const [currentTrackId, setCurrentTrackId] = useState<string | number | null>(null)
 
   return (
     <TrackList>
-      {tracks.slice(0, 1).map(track => (
+      {tracks.map(track => (
         <Track
           key={track.metadata.id}
           track={track}
           isPlaying={isPlaying && currentTrackId === track.metadata.id}
-          setIsPlaying={setIsPlaying}
+          setPlaying={setPlaying}
           setCurrentTrackId={setCurrentTrackId}
         />
       ))}
