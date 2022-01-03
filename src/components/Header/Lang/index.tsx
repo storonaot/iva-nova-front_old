@@ -1,13 +1,17 @@
-import React from 'react'
-import { LangRoot, LangInner, LangItem } from './styles'
+// TODO: скрыто для второй итерации
 
-const Lang = () => (
-  <LangRoot>
-    <LangInner>
-      <LangItem>Eng</LangItem>
-      <LangItem isActive>Ru</LangItem>
-    </LangInner>
-  </LangRoot>
-)
+// import React from 'react'
+// import { LangRoot, LangInner, LangItem } from './styles'
+
+// const Lang = () =>  (
+//   <LangRoot>
+//     <LangInner>
+//       <LangItem>Eng</LangItem>
+//       <LangItem isActive>Ru</LangItem>
+//     </LangInner>
+//   </LangRoot>
+// )
+
+const Lang = () => null
 
 export default Lang

@@ -22,7 +22,7 @@ interface Props {
   setCurrentTrackId: (id: string | number | null) => void
 }
 
-const padZero = (num: number | undefined) => (num < 10 ? `0${num}` : num)
+const padZero = (num: number | undefined) => (num != null && num < 10 ? `0${num}` : num)
 
 const Track: FC<Props> = ({ track, isPlaying, setPlaying, setCurrentTrackId }) => {
   const {
