@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { GetServerSideProps } from 'next'
 import Hero from '../src/components/Home/Hero'
 import Schedule from '../src/components/Home/Schedule'
-import News from '../src/components/common/NewsSliderBlock'
+// import News from '../src/components/common/NewsSliderBlock'
 import Music from '../src/components/Home/Music'
 import Video from '../src/components/Home/Video'
 import { fetchMediaLinks, fetchSocialNetworks, fetchAbout, fetchEventList } from '../src/api'
@@ -23,7 +23,7 @@ const IndexPage: FC<Props> = ({ mediaLinks, socialNetworks, about, events, error
     <>
       <Hero mediaLinks={mediaLinks} socialNetworks={socialNetworks} about={about} />
       <Schedule events={events} />
-      <News />
+      {/* <News /> */}
       <Music trackList={[]} mediaLinks={mediaLinks} />
       <Video />
     </>

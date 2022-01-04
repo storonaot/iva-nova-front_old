@@ -16,7 +16,8 @@ import {
 // import Track from '../../common/Track'
 import Placeholder from '../../common/Placeholder'
 
-import bgImage from '../../../static/images/bg2.jpg'
+// import bgImage from '../../../static/images/bg2.jpg'
+import bgImage from '../../../static/images/bg1.jpg'
 
 import { TrackItem, MediaLinks } from '../../../api/types'
 
