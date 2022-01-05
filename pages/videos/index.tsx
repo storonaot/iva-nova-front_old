@@ -19,7 +19,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     return {
       props: {
-        videos,
+        videos: videos.slice(0, 3),
       },
     }
   } catch (error) {

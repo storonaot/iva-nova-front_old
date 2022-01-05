@@ -6,11 +6,24 @@ import Schedule from '../src/components/Home/Schedule'
 // import News from '../src/components/common/NewsSliderBlock'
 import Music from '../src/components/Home/Music'
 import Video from '../src/components/Home/Video'
-import { fetchMediaLinks, fetchSocialNetworks, fetchAbout, fetchEventList } from '../src/api'
-import { EventItem, MediaLinks, About, Socials as SocialsType } from '../src/api/types'
+import {
+  fetchMediaLinks,
+  fetchSocialNetworks,
+  fetchVideos,
+  fetchAbout,
+  fetchEventList,
+} from '../src/api'
+import {
+  EventItem,
+  MediaLinks,
+  About,
+  Socials as SocialsType,
+  Video as VideoType,
+} from '../src/api/types'
 import dbx from '../src/api/dbx'
 
 interface Props {
+  videos?: VideoType[]
   mediaLinks?: MediaLinks
   socialNetworks?: SocialsType
   audioLinks: files.GetTemporaryLinkResult[] | null
@@ -19,7 +32,15 @@ interface Props {
   error?: string
 }
 
-const IndexPage: FC<Props> = ({ mediaLinks, socialNetworks, about, events, error, audioLinks }) => {
+const IndexPage: FC<Props> = ({
+  mediaLinks,
+  socialNetworks,
+  about,
+  events,
+  error,
+  audioLinks,
+  videos,
+}) => {
   return error ? (
     <>{error}</>
   ) : (
@@ -28,7 +49,7 @@ const IndexPage: FC<Props> = ({ mediaLinks, socialNetworks, about, events, error
       <Schedule events={events} />
       {/* <News /> */}
       <Music audioLinks={audioLinks} mediaLinks={mediaLinks} />
-      <Video />
+      <Video videos={videos} />
     </>
   )
 }
@@ -40,6 +61,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const about = await fetchAbout()
     const events = await fetchEventList(`date_gt=${Date.now()}&_limit=10`)
     const musicFiles = await (await dbx.filesListFolder({ path: '/music/homepage' })).result
+    const videos = await fetchVideos(`_limit=3`)
 
     const audioLinks = await Promise.all(
       musicFiles.entries.map(file => {
@@ -56,6 +78,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         about,
         events,
         audioLinks: audioLinks || null,
+        videos,
       },
     }
   } catch (error) {

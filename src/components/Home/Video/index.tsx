@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { VIDEOS_URL } from '../../../constants/sources'
 
 import Heading from '../../common/Heading'
@@ -10,33 +10,54 @@ import SectionRoot from '../../common/SectionRoot'
 import bgImage from '../../../static/images/bg2.jpg'
 import Slider from '../../common/Slider'
 
-import videos from './data'
 import MediaFullPreview from '../../common/MediaFullPreview'
 import { AspectRatio } from '../../common/AspectRatioImage'
 
-interface VideoItem {
-  id: number
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  image: any
-  description: string
+import { Video as VideoType } from '../../../api/types'
+import VideoModal from '../../Videos/VideoModal'
+import useShowVideo from '../../Videos/useShowVideo'
+
+interface Props {
+  videos?: VideoType[]
 }
 
-const Video = () => {
+const Video: FC<Props> = ({ videos }) => {
+  const {
+    currentVideo,
+    setCurrentVideo,
+    currentVideoIndex,
+    setCurrentVideoIndex,
+    showFull,
+  } = useShowVideo(videos)
+
   return (
     <SectionRoot bgImage={bgImage}>
       <Container>
         <Heading title="Последние видео" btnTitle="все видео" btnHref={VIDEOS_URL} />
         <Slider>
-          {videos.map((item: VideoItem) => (
-            <MediaFullPreview
-              key={item.id}
-              mode="video"
-              aspectRatio={AspectRatio['16:9']}
-              text={item.description}
-              image={item.image}
-            />
-          ))}
+          {videos != null &&
+            videos.map(video => {
+              return (
+                <MediaFullPreview
+                  key={video.id}
+                  text={video.title}
+                  image={video.preview?.url || ''}
+                  aspectRatio={AspectRatio['16:9']}
+                  mode="video"
+                  onClick={() => {
+                    showFull(video.id)
+                  }}
+                />
+              )
+            })}
         </Slider>
+        <VideoModal
+          currentVideo={currentVideo}
+          list={videos}
+          setCurrentVideoIndex={setCurrentVideoIndex}
+          setCurrentVideo={setCurrentVideo}
+          currentVideoIndex={currentVideoIndex}
+        />
         <ShowOn mobile>
           <Button href={VIDEOS_URL} isBlock>
             все видео

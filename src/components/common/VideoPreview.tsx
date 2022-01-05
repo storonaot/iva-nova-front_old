@@ -6,6 +6,7 @@ import PlayIcon from '../../static/svg/play.svg'
 
 const Root = styled.div`
   position: relative;
+  background-color: #000;
 `
 
 const IconWrapper = styled.div`
@@ -19,8 +20,7 @@ const IconWrapper = styled.div`
 `
 
 interface Props {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  image: any
+  image: string
   aspectRatio: AspectRatio
 }
 

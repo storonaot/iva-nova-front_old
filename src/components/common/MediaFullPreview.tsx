@@ -9,6 +9,7 @@ import Card from './Card'
 import { SPACE_3, SECONDARY_FONT, SPACE_4, SPACE_2 } from '../../theme'
 import AspectRatioImage, { AspectRatio } from './AspectRatioImage'
 import VideoPreview from './VideoPreview'
+import { getFullMediaUrl } from '../../helpers'
 
 export const ImageWrapper = styled.div`
   margin-bottom: ${SPACE_3};
@@ -67,7 +68,7 @@ const MediaFullPreview: FC<Props> = ({
         <Card interactive={!!(to || onClick)} padding="small">
           <ImageWrapper>
             {mode === 'video' ? (
-              <VideoPreview image={image} aspectRatio={aspectRatio} />
+              <VideoPreview image={getFullMediaUrl(image)} aspectRatio={aspectRatio} />
             ) : (
               <AspectRatioImage imageUrl={image} aspectRatio={aspectRatio} />
             )}
