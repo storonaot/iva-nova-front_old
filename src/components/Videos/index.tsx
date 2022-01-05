@@ -38,7 +38,7 @@ const Videos: FC<Props> = ({ list }) => {
     currentVideoIndex,
     setCurrentVideoIndex,
     showFull,
-  } = useShowVideo(filteredList)
+  } = useShowVideo(filteredList || [])
 
   const onChangeTab = useCallback(tabId => {
     setTab(tabId)
