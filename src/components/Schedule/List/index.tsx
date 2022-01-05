@@ -8,7 +8,7 @@ import { Year, Wrapper } from './styles'
 
 const ScheduleList: FC<{ list: EventItem[] }> = ({ list }) => {
   const mapByYear = useMemo(() => {
-    return list.reduce((acc, current) => {
+    return list.reduce<{ [year: string]: EventItem[] }>((acc, current) => {
       const year = new Date(current.date).getFullYear()
 
       if (acc[year] != null) {
@@ -23,7 +23,7 @@ const ScheduleList: FC<{ list: EventItem[] }> = ({ list }) => {
     <ContentWrapper>
       {Object.keys(mapByYear)
         .sort((a, b) => (a < b ? 1 : -1))
-        .map(year => {
+        .map((year: keyof typeof mapByYear) => {
           const events = mapByYear[year] || []
 
           return (
