@@ -28,7 +28,7 @@ const Video: FC<Props> = ({ videos }) => {
     currentVideoIndex,
     setCurrentVideoIndex,
     showFull,
-  } = useShowVideo(videos)
+  } = useShowVideo(videos || [])
 
   return (
     <SectionRoot bgImage={bgImage}>
