@@ -21,13 +21,12 @@ const zeroPadded = (num: number) => {
 }
 
 const ScheduleItem: FC<{ item: EventItem }> = ({ item }) => {
+  const currentTimestamp = Date.now()
+  const eventTimestamp = new Date(item.date).getTime()
+  const isPastEvent = currentTimestamp > eventTimestamp
+  const isFutureEvent = currentTimestamp < eventTimestamp
+
   const renderEventInfoLink = useCallback(() => {
-    const currentTimestamp = Date.now()
-    const eventTimestamp = new Date(item.date).getTime()
-
-    const isPastEvent = currentTimestamp > eventTimestamp
-    const isFutureEvent = currentTimestamp < eventTimestamp
-
     if (isPastEvent && item.report_src) {
       return (
         <BuyLink href={item.report_src} rel="noreferrer" target="_blank">
@@ -51,7 +50,7 @@ const ScheduleItem: FC<{ item: EventItem }> = ({ item }) => {
   const currentDate = useMemo(() => zeroPadded(new Date(item.date).getDate()), [])
 
   return (
-    <Root>
+    <Root isPastEvent={isPastEvent}>
       <DateBlock>{`${currentDate}.${currentMonth}`}</DateBlock>
       <Year>{new Date(item.date).getFullYear()}</Year>
       <City>{item.city.title}</City>

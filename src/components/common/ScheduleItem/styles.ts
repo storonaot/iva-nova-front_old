@@ -21,7 +21,7 @@ export const RhombusWrapper = styled.div`
   left: ${SPACE_1};
 `
 
-export const Root = styled(Block)`
+export const Root = styled(Block)<{ isPastEvent: boolean }>`
   padding-left: ${SPACE_5};
   padding-right: ${SPACE_3};
   display: grid;
@@ -50,32 +50,42 @@ export const Root = styled(Block)`
     grid-column: span 4;
     grid-row: 4;
   }
+  > * {
+    opacity: ${({ isPastEvent }) => (isPastEvent ? 0.6 : 1)};
+  }
   ${media.greaterThan('medium')`
     grid-template-columns: repeat(12, 1fr);
     grid-gap: ${SPACE_1};
     padding-left: ${SPACE_3};
+    // дата
     > *:first-child {
       grid-column: 1 / span 2;
       grid-row: 1;
     }
+    // год
     > *:nth-child(2) {
       grid-column: 1 / span 2;
       grid-row: 2;
     }
-    > *:nth-child(3) {
-      grid-column: 10 / span 2;
-      grid-row: 1 / span 2;
-    }
+
+    // название концерта
     > *:nth-child(4) {
-      grid-column: 3 / span 7;
+      grid-column: 3 / span 6;
       grid-row: 1;
     }
+    // место проведения
     > *:nth-child(5) {
-      grid-column: 3 / span 7;
+      grid-column: 3 / span 6;
       grid-row: 2;
     }
+    // город
+    > *:nth-child(3) {
+      grid-column: 9 / span 2;
+      grid-row: 1 / span 2;
+    }
+    // ссылка
     > *:nth-child(6) {
-      grid-column: 11 / span 3;
+      grid-column: 11 / span 2;
       grid-row: 1 / span 2;
     }
   `}
