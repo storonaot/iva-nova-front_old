@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Video } from '../../api/types'
 
-const useShowVideo = list => {
+const useShowVideo = (list: Video[]) => {
   const [currentVideo, setCurrentVideo] = useState<Video | null>(null)
   const [currentVideoIndex, setCurrentVideoIndex] = useState<number | null>(null)
 
