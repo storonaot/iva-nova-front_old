@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { GetServerSideProps } from 'next'
+import { files } from 'dropbox'
 import Hero from '../src/components/Home/Hero'
 import Schedule from '../src/components/Home/Schedule'
 // import News from '../src/components/common/NewsSliderBlock'
@@ -7,16 +8,18 @@ import Music from '../src/components/Home/Music'
 import Video from '../src/components/Home/Video'
 import { fetchMediaLinks, fetchSocialNetworks, fetchAbout, fetchEventList } from '../src/api'
 import { EventItem, MediaLinks, About, Socials as SocialsType } from '../src/api/types'
+import dbx from '../src/api/dbx'
 
 interface Props {
   mediaLinks?: MediaLinks
   socialNetworks?: SocialsType
+  audioLinks: files.GetTemporaryLinkResult[] | null
   about?: About | null
   events?: EventItem[]
   error?: string
 }
 
-const IndexPage: FC<Props> = ({ mediaLinks, socialNetworks, about, events, error }) => {
+const IndexPage: FC<Props> = ({ mediaLinks, socialNetworks, about, events, error, audioLinks }) => {
   return error ? (
     <>{error}</>
   ) : (
@@ -24,7 +27,7 @@ const IndexPage: FC<Props> = ({ mediaLinks, socialNetworks, about, events, error
       <Hero mediaLinks={mediaLinks} socialNetworks={socialNetworks} about={about} />
       <Schedule events={events} />
       {/* <News /> */}
-      <Music trackList={[]} mediaLinks={mediaLinks} />
+      <Music audioLinks={audioLinks} mediaLinks={mediaLinks} />
       <Video />
     </>
   )
@@ -36,6 +39,15 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const socialNetworks = await fetchSocialNetworks()
     const about = await fetchAbout()
     const events = await fetchEventList(`date_gt=${Date.now()}&_limit=10`)
+    const musicFiles = await (await dbx.filesListFolder({ path: '/music/homepage' })).result
+
+    const audioLinks = await Promise.all(
+      musicFiles.entries.map(file => {
+        return dbx.filesGetTemporaryLink({ path: file.path_lower as string })
+      }),
+    ).then(res => {
+      return res.map(i => i.result)
+    })
 
     return {
       props: {
@@ -43,6 +55,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         socialNetworks,
         about,
         events,
+        audioLinks: audioLinks || null,
       },
     }
   } catch (error) {

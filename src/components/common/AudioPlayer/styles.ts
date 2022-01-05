@@ -1,14 +1,14 @@
 import styled from 'styled-components'
-import { SPACE_2, SPACE_3 } from '../../../theme'
+import { SPACE_2 } from '../../../theme'
 
-export const TrackList = styled.div`
+export const TrackList = styled.div<{ columns: 1 | 2 }>`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: ${SPACE_3};
+  grid-template-columns: ${({ columns }) => `repeat(${columns}, 1fr)`};
+  grid-gap: ${SPACE_2};
   & > *:nth-child(odd) {
-    margin-right: ${SPACE_2};
+    margin-right: ${({ columns, theme: { spacing } }) => (columns === 2 ? spacing.units * 2 : 0)}px;
   }
   & > *:nth-child(even) {
-    margin-left: ${SPACE_2};
+    margin-left: ${({ columns, theme: { spacing } }) => (columns === 2 ? spacing.units * 2 : 0)}px;
   }
 `

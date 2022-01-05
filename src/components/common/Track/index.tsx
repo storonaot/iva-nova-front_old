@@ -129,9 +129,9 @@ const Track: FC<Props> = ({ track, isPlaying, setPlaying, setCurrentTrackId }) =
     <Block>
       <IconWrapper onClick={togglePlay} isDisabled={isDisabled}>
         {isPlaying ? (
-          <PauseIcon fill={themeSettings.colors.secondary} opacity="1" />
+          <PauseIcon fill={themeSettings.colors.gray} opacity="1" />
         ) : (
-          <PlayIcon fill={themeSettings.colors.gray} opacity="1" />
+          <PlayIcon fill={themeSettings.colors.secondary} opacity="1" />
         )}
       </IconWrapper>
       <div>{name}</div>

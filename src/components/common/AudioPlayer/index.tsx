@@ -6,14 +6,15 @@ import Track from '../Track'
 
 interface Props {
   tracks: files.GetTemporaryLinkResult[]
+  columns?: 1 | 2
 }
 
-const AudioPlayer: FC<Props> = ({ tracks }) => {
+const AudioPlayer: FC<Props> = ({ tracks, columns = 2 }) => {
   const [isPlaying, setPlaying] = useState(false)
   const [currentTrackId, setCurrentTrackId] = useState<string | number | null>(null)
 
   return (
-    <TrackList>
+    <TrackList columns={columns}>
       {tracks.map(track => (
         <Track
           key={track.metadata.id}

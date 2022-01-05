@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 
+import { files } from 'dropbox'
 import { MUSIC_URL } from '../../../constants/sources'
 
 import Heading from '../../common/Heading'
@@ -12,6 +13,7 @@ import {
   SubscribeTitle,
   SubscriptionsWrapper,
 } from '../../common/Subscriptions'
+import AudioPlayer from '../../common/AudioPlayer'
 
 // import Track from '../../common/Track'
 import Placeholder from '../../common/Placeholder'
@@ -19,26 +21,22 @@ import Placeholder from '../../common/Placeholder'
 // import bgImage from '../../../static/images/bg2.jpg'
 import bgImage from '../../../static/images/bg1.jpg'
 
-import { TrackItem, MediaLinks } from '../../../api/types'
+import { MediaLinks } from '../../../api/types'
 
 import { HubaImageContainer, Container, LeftBlock, RightBlock } from './styles'
 
 interface Props {
-  trackList?: TrackItem[]
+  audioLinks: files.GetTemporaryLinkResult[] | null
   mediaLinks?: MediaLinks
 }
 
-const Music: FC<Props> = ({ trackList, mediaLinks }) => (
+const Music: FC<Props> = ({ audioLinks, mediaLinks }) => (
   <SectionRoot bgImage={bgImage}>
-    {trackList?.length ? (
+    {audioLinks && audioLinks.length ? (
       <Container>
         <LeftBlock>
           <Heading title="Музыка" btnTitle="вся музыка" btnHref={MUSIC_URL} />
-          {/* <TracksWrapper>
-            {trackList.map((track: TrackItem) => (
-              <Track key={track.id} track={track} />
-            ))}
-          </TracksWrapper> */}
+          <AudioPlayer tracks={audioLinks} columns={1} />
           <ShowOn mobile>
             <Button href={MUSIC_URL} isBlock>
               вся музыка
