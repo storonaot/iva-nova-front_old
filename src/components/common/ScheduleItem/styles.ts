@@ -63,15 +63,15 @@ export const Root = styled(Block)`
       grid-row: 2;
     }
     > *:nth-child(3) {
-      grid-column: 9 / span 2;
+      grid-column: 10 / span 2;
       grid-row: 1 / span 2;
     }
     > *:nth-child(4) {
-      grid-column: 3 / span 8;
+      grid-column: 3 / span 7;
       grid-row: 1;
     }
     > *:nth-child(5) {
-      grid-column: 3 / span 8;
+      grid-column: 3 / span 7;
       grid-row: 2;
     }
     > *:nth-child(6) {
