@@ -1,11 +1,12 @@
-import React, { FC, ReactElement } from 'react'
+import React, { FC } from 'react'
 
 import { Root } from './styles'
 
-const Slider: FC<{ children: ReactElement }> = ({ children }) => {
+const Slider: FC = ({ children }) => {
   return (
     <Root>
-      {React.Children.map(children, (child: React.ReactElement) => React.cloneElement(child))}
+      {children}
+      {/* {React.Children.map(children, (child: React.ReactElement) => React.cloneElement(child))} */}
     </Root>
   )
 }
