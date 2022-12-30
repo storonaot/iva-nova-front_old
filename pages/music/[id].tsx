@@ -37,6 +37,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
     if (item.dropbox_src) {
       const musicFiles = await (await dbx.filesListFolder({ path: item.dropbox_src })).result
+
       audioLinks = await Promise.all(
         musicFiles.entries.map(file => {
           return dbx.filesGetTemporaryLink({ path: file.path_lower as string })

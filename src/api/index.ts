@@ -8,7 +8,8 @@ export const fetchAlbum = (id: string | string[]): Promise<Album> =>
 
 export const fetchEventList = (paramsString?: string): Promise<EventItem[]> =>
   axios
-    .get(paramsString ? `/events?_sort=date:DESC&${paramsString}` : '/events?_sort=date:DESC')
+    // .get(paramsString ? `/events?_sort=date:DESC&${paramsString}` : '/events?_sort=date:DESC')
+    .get(paramsString ? `/events?${paramsString}` : '/events')
     .then(({ data }) => data)
 export const fetchEventsCount = (paramsString?: string): Promise<number> =>
   axios

@@ -141,6 +141,7 @@ const Track: FC<Props> = ({ track, isPlaying, setPlaying, setCurrentTrackId }) =
         step="1"
         min="0"
         value={val}
+        onChange={() => {}}
         onMouseDown={event => {
           if (!isDisabled && isPlaying) handleTimeDrag(event)
         }}

@@ -21,7 +21,7 @@ export const RhombusWrapper = styled.div`
   left: ${SPACE_1};
 `
 
-export const Root = styled(Block)<{ isPastEvent: boolean }>`
+export const Root = styled(Block)`
   padding-left: ${SPACE_5};
   padding-right: ${SPACE_3};
   display: grid;
@@ -49,9 +49,6 @@ export const Root = styled(Block)<{ isPastEvent: boolean }>`
   > *:nth-child(6) {
     grid-column: span 4;
     grid-row: 4;
-  }
-  > * {
-    opacity: ${({ isPastEvent }) => (isPastEvent ? 0.6 : 1)};
   }
   ${media.greaterThan('medium')`
     grid-template-columns: repeat(12, 1fr);

@@ -50,7 +50,7 @@ const ScheduleItem: FC<{ item: EventItem }> = ({ item }) => {
   const currentDate = useMemo(() => zeroPadded(new Date(item.date).getDate()), [])
 
   return (
-    <Root isPastEvent={isPastEvent}>
+    <Root>
       <DateBlock>{`${currentDate}.${currentMonth}`}</DateBlock>
       <Year>{new Date(item.date).getFullYear()}</Year>
       <City>{item.city.title}</City>
