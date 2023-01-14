@@ -11,6 +11,11 @@ export interface Image {
   name: string
 }
 
+export enum MusicAlbumType {
+  CD = 'CD',
+  DVD = 'DVD',
+}
+
 export interface Album {
   id: number
   title: string
@@ -19,7 +24,7 @@ export interface Album {
   date: Date
   cover: Image
   tracks: TrackItem[]
-  type: 'CD' | 'DVD'
+  type: MusicAlbumType
   ya_music_src?: string
   itunes_src?: string
   dropbox_src?: string
@@ -104,10 +109,18 @@ export interface PhotoAlbum {
   dropbox_src: string
 }
 
+export enum VideoType {
+  CLIP = 'clip',
+  CONCERT = 'concert',
+  ETHER = 'ether',
+  INTERVIEW = 'interview',
+  OTHER = 'other',
+}
+
 export interface Video {
   id: number
   title: string
   preview?: Image
   src: string
-  type: 'clips' | 'concerts' | 'ethers' | 'other'
+  type: VideoType
 }

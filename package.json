@@ -15,6 +15,7 @@
     "@material-ui/lab": "^4.0.0-alpha.54",
     "@types/react-dom": "^16.9.8",
     "axios": "^0.21.1",
+    "caniuse-lite": "^1.0.30001444",
     "classnames": "^2.2.6",
     "css-wipe": "^4.3.0",
     "date-fns": "^2.28.0",
